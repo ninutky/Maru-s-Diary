@@ -14,14 +14,14 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="60dp"
         android:text="비밀번호 변경"
-        android:textSize="20sp"
+        android:textSize="23dp"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_now_pw"
-        android:layout_width="327dp"
+        android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="50dp"
@@ -69,13 +69,13 @@
 
     <Button
         android:id="@+id/btn_check"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_border"
         android:paddingTop="1dp"
         android:text="완료"
-        android:textSize="15sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

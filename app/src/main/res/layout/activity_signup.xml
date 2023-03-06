@@ -1,4 +1,4 @@
-  <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,30 +8,31 @@
     tools:context=".SignupActivity">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
+        android:text="회원가입"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:text="회원가입"
-            android:textColor="#000000"
-            android:textSize="20dp" />
 
         <EditText
             android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/edittext_border"
             android:hint="ID"
             android:paddingLeft="25dp"
-            android:textColor="#B5B5B5" />
+            android:textColor="#4E4E4E" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,30 +44,32 @@
 
         <EditText
             android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/edittext_border"
             android:hint="PW"
+            android:inputType="textPassword"
             android:paddingLeft="20dp"
-            android:textColor="#B5B5B5" />
+            android:textColor="#4E4E4E" />
 
         <EditText
             android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginBottom="35dp"
             android:background="@drawable/edittext_border"
             android:hint="PW 재확인"
             android:paddingLeft="20dp"
-            android:textColor="#B5B5B5" />
+            android:inputType="textPassword"
+            android:textColor="#4E4E4E" />
 
         <EditText
             android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/edittext_border"
             android:hint="EMAIL"
             android:paddingLeft="20dp"
-            android:textColor="#B5B5B5" />
+            android:textColor="#4E4E4E" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,21 +77,22 @@
             android:layout_gravity="right"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="35dp"
+
             android:text="인증번호 보내기" />
 
         <EditText
             android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/edittext_border"
             android:hint="인증번호 입력"
             android:paddingLeft="20dp"
-            android:textColor="#B5B5B5" />
+            android:textColor="#4E4E4E" />
     </LinearLayout>
 
     <Button
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:textAllCaps="false"
         android:background="@drawable/button_border"
         android:textSize="18dp"

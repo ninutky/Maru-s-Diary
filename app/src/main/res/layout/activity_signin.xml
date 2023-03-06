@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -23,19 +23,20 @@
         android:layout_marginBottom="30dp">
         <EditText
             android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginBottom="15dp"
             android:paddingLeft="20dp"
             android:background="@drawable/edittext_border"
-            android:textColor="#B5B5B5"
+            android:textColor="#4E4E4E"
             android:hint="ID"/>
         <EditText
             android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginBottom="5dp"
             android:paddingLeft="20dp"
-            android:textColor="#B5B5B5"
+            android:textColor="#4E4E4E"
             android:background="@drawable/edittext_border"
+            android:inputType="textPassword"
             android:hint="PW"
             />
         <LinearLayout
@@ -57,7 +58,7 @@
 
     <Button
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:textAllCaps="false"
         android:background="@drawable/button_border"
         android:textSize="18dp"
