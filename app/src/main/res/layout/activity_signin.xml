@@ -9,8 +9,8 @@
     android:gravity="center">
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:src="@drawable/maru_logo_simple_version"
         android:layout_marginBottom="20dp"/>
 
@@ -47,10 +47,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="회원가입"
+                android:id="@+id/tvbtn_signup"
                 android:layout_marginRight="20px"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tvbtn_pwfind"
                 android:text="비밀번호 찾기"/>
         </LinearLayout>
     </LinearLayout>
