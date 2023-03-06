@@ -73,7 +73,6 @@
         android:layout_height="45dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_border"
-        android:paddingTop="1dp"
         android:text="완료"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
