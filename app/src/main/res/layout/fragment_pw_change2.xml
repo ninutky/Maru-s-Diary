@@ -37,7 +37,7 @@
 
     <EditText
         android:id="@+id/et_pw"
-        android:layout_width="327dp"
+        android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="35dp"
@@ -53,7 +53,7 @@
 
     <EditText
         android:id="@+id/et_pw2"
-        android:layout_width="327dp"
+        android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
