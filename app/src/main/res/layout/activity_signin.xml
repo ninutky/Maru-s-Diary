@@ -20,14 +20,17 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_marginBottom="30dp">
+
         <EditText
+            android:id="@+id/et_id"
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:layout_marginBottom="15dp"
-            android:paddingLeft="20dp"
             android:background="@drawable/edittext_border"
-            android:textColor="#4E4E4E"
-            android:hint="ID"/>
+            android:hint="ID"
+            android:paddingLeft="20dp"
+            android:textColor="#4E4E4E" />
+
         <EditText
             android:layout_width="320dp"
             android:layout_height="45dp"
@@ -36,6 +39,7 @@
             android:textColor="#4E4E4E"
             android:background="@drawable/edittext_border"
             android:inputType="textPassword"
+            android:id="@+id/et_pw"
             android:hint="PW"
             />
         <LinearLayout
@@ -59,10 +63,11 @@
 
     <Button
         android:layout_width="150dp"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:textAllCaps="false"
         android:background="@drawable/button_border"
         android:textSize="18dp"
+        android:id="@+id/btn_signin"
         android:text="Sign in"/>
 
 </LinearLayout>
