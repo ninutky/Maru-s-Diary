@@ -9,11 +9,10 @@
     android:gravity="center">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:src="@drawable/maru_logo_simple_version"
-        android:background="@drawable/square_background_border_black"
-        android:layout_marginBottom="100px"/>
+        android:layout_marginBottom="20dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
