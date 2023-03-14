@@ -20,27 +20,43 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_pw"
-        android:hint="새 비밀번호"
+        android:id="@+id/et_now_pw"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
-        android:paddingLeft="15dp"
         android:background="@drawable/edittext_border"
         android:ems="10"
+        android:hint="현재 비밀번호"
         android:inputType="textPassword"
+        android:paddingLeft="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_text" />
+
+    <EditText
+        android:id="@+id/et_pw"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/edittext_border"
+        android:ems="10"
+        android:hint="새 비밀번호"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_now_pw" />
 
     <EditText
         android:id="@+id/et_pw2"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/edittext_border"
         android:ems="10"
@@ -52,15 +68,18 @@
         app:layout_constraintTop_toBottomOf="@+id/et_pw" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_check"
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/button_border"
         android:text="완료"
         android:textSize="18sp"
-        android:background="@drawable/button_border"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_pw2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_pw2"
+        app:layout_constraintVertical_bias="0.047" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

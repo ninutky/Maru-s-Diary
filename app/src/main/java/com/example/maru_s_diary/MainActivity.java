@@ -10,7 +10,6 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     private PwChangeFragment fragmentA;
-    private PwChangeFragment2 fragmentB;
     private FragmentTransaction transaction;
 
     @Override
@@ -20,10 +19,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         fragmentA = new PwChangeFragment();
-        fragmentB = new PwChangeFragment2();
 
 //        transaction = fragmentManager.beginTransaction();
-//        transaction.replace(R.id.fragmentA, fragmentB).commitAllowingStateLoss();
+//        transaction.replace(R.id.frameLayout, fragmentB).commitAllowingStateLoss();
 
         setContentView(R.layout.activity_main);
     }
