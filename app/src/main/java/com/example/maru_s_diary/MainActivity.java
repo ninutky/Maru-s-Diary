@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentA = new PwChangeFragment();
         fragmentB = new PwChangeFragment2();
 
-        transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frameLayout, fragmentB).commitAllowingStateLoss();
+//        transaction = fragmentManager.beginTransaction();
+//        transaction.replace(R.id.fragmentA, fragmentB).commitAllowingStateLoss();
 
         setContentView(R.layout.activity_main);
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,4 +19,23 @@
         app:itemTextColor="@color/black"
         app:menu="@menu/home"
         app:labelVisibilityMode="labeled"/>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+
+            app:logo="@drawable/maru_logo_simple_version"
+
+            app:menu="@menu/top_nav_menu"
+            app:popupTheme="@style/Theme.MarusDiary.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
 </RelativeLayout>
