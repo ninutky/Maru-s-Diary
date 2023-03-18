@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/alarm"
+        android:id="@+id/action_alarm"
         android:icon="@drawable/alarm"
         app:showAsAction="ifRoom"
         android:title="알람"/>
