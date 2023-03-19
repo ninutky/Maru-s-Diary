@@ -13,6 +13,68 @@
         android:padding="5dp"
         android:layout_weight="1">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/diary_background">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2000.00.00"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:textSize="12dp"
+                android:drawableEnd="@drawable/weather"
+                android:drawablePadding="10dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제목"
+                android:drawableStart="@drawable/mood"
+                android:drawablePadding="85dp"
+                android:textSize="20dp"
+                android:drawableEnd="@drawable/report"
+                android:textStyle="bold"
+                android:layout_marginLeft="27dp"
+                android:layout_marginTop="7dp" />
+
+
+            <ImageView
+                android:id="@+id/imgv1"
+                android:src="@drawable/photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="내용"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="35dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/comments"
+                android:drawableLeft="@drawable/like"
+                android:layout_marginTop="150dp"
+                android:layout_marginLeft="230dp"/>
+
+
+        </LinearLayout>
+
+
+
     </FrameLayout>
     <!--하단바 코드 -->
     <LinearLayout
