@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AlarmSettingFragment"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/menu"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="알림 설정"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:gravity="center"/>
+
+    <ImageButton
+        android:layout_width="12dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/left_arrow" />
+
+    <LinearLayout
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Switch
+            android:text="모든 알림"
+            android:textSize="18sp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/rect1"/>
+
+        <Switch
+            android:text="댓글 알림"
+            android:textSize="18sp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/rect3" />
+
+        <Switch
+            android:text="좋아요 알림"
+            android:textSize="18sp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/rect3" />
+
+        <Switch
+            android:text="방해금지 모드"
+            android:textSize="18sp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:background="@drawable/rect3" />
+
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rect2" />
+
+    </LinearLayout>
+
+</FrameLayout>
