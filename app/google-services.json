@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1025379254052",
+    "project_id": "maru-s-diary",
+    "storage_bucket": "maru-s-diary.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025379254052:android:3a270b69e4de368626fdb1",
+        "android_client_info": {
+          "package_name": "com.example.maru_s_diary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1025379254052-j7p1mngi2gr32bmsert6uf5nbf9upbms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPtyK8zvL94seR8jA7fxs4lj8FeQmbRHg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1025379254052-j7p1mngi2gr32bmsert6uf5nbf9upbms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
