@@ -43,6 +43,9 @@
             android:layout_gravity="center"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
+            android:checked="true"
+            android:thumb="@drawable/switch_thumb_selector"
+            android:track="@drawable/switch_track_selector"
             android:background="@drawable/rect1"/>
 
         <Switch
@@ -54,6 +57,9 @@
             android:layout_gravity="center"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
+            android:checked="true"
+            android:thumb="@drawable/switch_thumb_selector"
+            android:track="@drawable/switch_track_selector"
             android:background="@drawable/rect3" />
 
         <Switch
@@ -65,6 +71,9 @@
             android:layout_gravity="center"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
+            android:checked="true"
+            android:thumb="@drawable/switch_thumb_selector"
+            android:track="@drawable/switch_track_selector"
             android:background="@drawable/rect3" />
 
         <Switch
@@ -76,6 +85,9 @@
             android:layout_gravity="center"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"
+            android:checked="true"
+            android:thumb="@drawable/switch_thumb_selector"
+            android:track="@drawable/switch_track_selector"
             android:background="@drawable/rect3" />
 
         <ImageView
@@ -83,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:layout_gravity="center"
-            android:background="@drawable/rect2" />
+            android:background="@drawable/rect4" />
 
     </LinearLayout>
 
