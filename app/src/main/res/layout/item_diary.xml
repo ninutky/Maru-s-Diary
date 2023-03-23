@@ -7,10 +7,10 @@
     android:layout_height="wrap_content"
     android:background="@drawable/edittext_border"
     android:orientation="vertical"
-    android:paddingBottom="23dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
-    android:paddingTop="23dp"
     android:layout_marginBottom="20dp">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
             android:layout_marginLeft="5dp"
             android:textSize="15dp"
             android:id="@+id/list_heart_count"
-            android:text="28"/>
+            android:text="100"/>
     </LinearLayout>
 
 
