@@ -7,7 +7,11 @@
     android:layout_height="wrap_content"
     android:background="@drawable/edittext_border"
     android:orientation="vertical"
-    android:padding="38dp">
+    android:paddingBottom="23dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="23dp"
+    android:layout_marginBottom="20dp">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2022.01.01"
-            android:textSize="15dp"
+            android:textSize="13dp"
             android:id="@+id/list_datetime"
             android:layout_marginRight="10dp"/>
         <ImageView
@@ -43,7 +47,7 @@
             android:layout_height="wrap_content"
             android:text="제목"
             android:id="@+id/list_title"
-            android:textSize="20dp"
+            android:textSize="18dp"
             />
     </LinearLayout>
 
@@ -51,11 +55,11 @@
         android:id="@+id/list_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="15dp"
         android:ellipsize="end"
         android:maxLines="3"
         android:text="내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용"
-        android:textSize="16dp"/>
+        android:textSize="15dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -65,8 +69,8 @@
 
         <ImageButton
             android:id="@+id/list_heart_imgbtn"
-            android:layout_width="30dp"
-            android:layout_height="28dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:contentDescription="heart"
             android:padding="1sp"
             android:scaleType="centerCrop"
@@ -75,8 +79,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginLeft="3dp"
-            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dp"
             android:id="@+id/list_heart_count"
             android:text="28"/>
     </LinearLayout>

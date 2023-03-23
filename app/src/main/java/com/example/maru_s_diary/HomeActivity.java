@@ -26,25 +26,5 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
-        recyclerView.setAdapter(adapter);
-
-        // 알림 버튼을 눌렀을 때 실행
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.action_alarm) { // 알람 버튼 클릭 이벤트 처리
-                    // 프래그먼트 이동
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.container, new AlarmFragment());
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 }
