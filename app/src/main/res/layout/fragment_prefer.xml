@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="69dp"
+        android:background="@drawable/rect1_arrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:text="테마 변경"/>
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="69dp"
+        android:background="@drawable/rect3_arrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:text="알림 설정"/>
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="69dp"
+        android:background="@drawable/rect3_arrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:text="비밀번호 변경"/>
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="69dp"
+        android:background="@drawable/rect3"
+        android:gravity="center_vertical"
+        android:drawablePadding="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:textSize="18sp"
+            android:text="계정 로그아웃"
+            android:textColor="#000000"/>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/logout_img"
+            />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>
