@@ -14,19 +14,12 @@ public class HomeActivity extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_home);
-//
-//        LinearLayoutManager linearLayoutManager
-//                = new LinearLayoutManager(this);
-//
-//        recyclerView = findViewById(R.id.recyclerView);
-//        recyclerView.setLayoutManager(linearLayoutManager);
-//
-//
-//    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

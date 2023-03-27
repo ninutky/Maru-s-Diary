@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:id="@+id/fragment_prefer">
+    tools:context=".SettingsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +24,6 @@
             android:textSize="24sp"
             android:gravity="center"/>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="150dp"
@@ -58,8 +58,8 @@
                 android:textColor="#4D4D4D"
                 android:textSize="18sp"
                 />
-            </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="69dp"
-            android:id="@+id/prefer_logout_tvbtn"
+            android:id="@+id/prefer_logout_llbtn"
             android:background="@drawable/rect3"
             android:gravity="center_vertical"
             android:layout_marginTop="2dp"
@@ -131,5 +131,4 @@
             android:text="계정 삭제"
             android:textStyle="bold"/>
     </LinearLayout>
-
 </LinearLayout>
