@@ -65,6 +65,15 @@
             android:layout_gravity="center"
             android:paddingLeft="20dp"
             android:background="@drawable/edittext_border"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_red_border"
+            android:text="계정 삭제"
+            android:textColor="#f00"
+            android:layout_gravity="center"/>
     </LinearLayout>
 
 </LinearLayout>
