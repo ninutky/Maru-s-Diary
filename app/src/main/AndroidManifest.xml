@@ -29,6 +29,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".SignupActivity" />
+        <activity android:name=".HomeActivity" />
     </application>
 
 </manifest>
