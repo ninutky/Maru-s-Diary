@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MarusDiary"
         tools:targetApi="31">
         <activity
+            android:name=".DeleteAccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -26,6 +29,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".SignupActivity" />
+        <activity android:name=".HomeActivity" />
     </application>
 
 </manifest>

@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     private AlarmSettingFragment fragmentAlarmSetting = new AlarmSettingFragment();
+    private SettingsFragment fragmentSetting = new SettingsFragment();
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
                 case R.id.setting_item: {
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.home_ly, fragmentSetting)
+                            .commit();
                     return true;
                 }
             }

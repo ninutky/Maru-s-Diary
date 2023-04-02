@@ -6,27 +6,11 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:logo="@drawable/maru_logo_simple_version"
-            app:menu="@menu/top_nav_menu"
-            app:popupTheme="@style/Theme.MarusDiary.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="0dp"
