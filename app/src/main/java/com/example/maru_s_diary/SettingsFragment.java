@@ -23,7 +23,7 @@ public class SettingsFragment extends Fragment {
         prefer_logout_llbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dia
+
             }
         });
         return v;
