@@ -30,7 +30,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="50dp"
-            android:src="@drawable/Line" />
+            android:src="@drawable/line" />
         <TextView
             android:text="아니오"
             android:textSize="20sp"
