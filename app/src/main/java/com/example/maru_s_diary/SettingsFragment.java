@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 public class SettingsFragment extends Fragment {
     TextView prefer_delaccount_tvbtn;
+    LinearLayout prefer_logout_llbtn;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
         prefer_delaccount_tvbtn = v.findViewById(R.id.prefer_delaccount_tvbtn);
+        prefer_logout_llbtn = v.findViewById(R.id.prefer_logout_llbtn);
         prefer_delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -29,6 +31,15 @@ public class SettingsFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        prefer_logout_llbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         return v;
     }
+
+
 }
