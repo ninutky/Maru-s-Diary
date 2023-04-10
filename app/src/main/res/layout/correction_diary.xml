@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".NewPageActivity"
+    tools:context=".ClickDeleteDiary"
     android:background="@color/white">
 
     <FrameLayout
@@ -34,6 +34,7 @@
             android:background="@drawable/left_arrow" />
 
         <ImageButton
+            android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -42,9 +43,10 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="450dp"
             android:orientation="vertical"
-            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="45dp"
             android:background="@drawable/diary_background">
 
             <TextView
@@ -91,9 +93,10 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/showBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="600dp"
+            android:layout_marginTop="550dp"
             android:layout_marginLeft="280dp"
             android:textColor="@color/black"
             android:text="완료"/>

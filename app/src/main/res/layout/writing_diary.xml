@@ -42,9 +42,10 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="450dp"
             android:orientation="vertical"
-            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="45dp"
             android:background="@drawable/diary_background">
 
             <TextView
@@ -57,17 +58,26 @@
                 android:drawableEnd="@drawable/weather"
                 android:drawablePadding="10dp"
                 android:textColor="@color/black" />
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="제목을 입력하세요"
-                android:drawableStart="@drawable/mood"
-                android:drawablePadding="5dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="27dp"
-                android:layout_marginTop="7dp" />
+                android:layout_height="wrap_content">
 
+                <ImageButton
+                    android:id="@+id/mood"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/mood"
+                    android:layout_marginLeft="30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="제목을 입력하세요"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/imgv1"
@@ -92,7 +102,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="600dp"
+            android:layout_marginTop="550dp"
             android:layout_marginLeft="280dp"
             android:textColor="@color/black"
             android:text="게시"/>

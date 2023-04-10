@@ -19,7 +19,7 @@ public class ClickDeleteDiary extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.click_delete_diary);
+        setContentView(R.layout.correction_diary);
 
         dilaog01 = new Dialog(ClickDeleteDiary.this);       // Dialog 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
