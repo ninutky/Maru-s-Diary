@@ -1,6 +1,7 @@
 package com.example.maru_s_diary;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout home_ly;
     BottomNavigationView bottomNavigationView;
 
-    private AlarmSettingFragment fragmentAlarmSetting = new AlarmSettingFragment();
+    private AlarmSettingActivity fragmentAlarmSetting = new AlarmSettingActivity();
     private SettingsFragment fragmentSetting = new SettingsFragment();
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -64,12 +65,16 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.mypage_item: {
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.home_ly, fragmentAlarmSetting)
-                            .commit();
                     return true;
                 }
                 case R.id.home_item: {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                    builder.setTitle("인사말").setMessage("반갑습니다");
+
+                    AlertDialog alertDialog = builder.create();
+
+                    alertDialog.show();
                     return true;
                 }
                 case R.id.setting_item: {
