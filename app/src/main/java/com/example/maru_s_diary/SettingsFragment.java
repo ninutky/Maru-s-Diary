@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 public class SettingsFragment extends Fragment {
     TextView prefer_delaccount_tvbtn;
+    TextView prefer_alram_tvbtn;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +22,20 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
+
         prefer_delaccount_tvbtn = v.findViewById(R.id.prefer_delaccount_tvbtn);
-        prefer_delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), DeleteAccountActivity.class);
-                startActivity(intent);
-            }
+        prefer_alram_tvbtn = v.findViewById(R.id.prefer_alram_tvbtn);
+
+        prefer_delaccount_tvbtn.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), DeleteAccountActivity.class);
+            startActivity(intent);
         });
+
+        prefer_alram_tvbtn.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), AlarmSettingActivity.class);
+            startActivity(intent);
+        });
+
         return v;
     }
 }
