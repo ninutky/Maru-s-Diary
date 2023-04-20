@@ -17,9 +17,10 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 public class SettingsFragment extends Fragment {
-    TextView delaccount_tvbtn, changepw_tvbtn, alram_tvbtn;
+    TextView delaccount_tvbtn, changepw_tvbtn, alram_tvbtn, changetheme_tvbtn;
+
     LinearLayout logout_llbtn;
-    Dialog loutdlg;
+    Dialog loutdlg, themedlg;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +35,15 @@ public class SettingsFragment extends Fragment {
         logout_llbtn = v.findViewById(R.id.set_logout_llbtn);
         changepw_tvbtn = v.findViewById(R.id.set_changepw_tvbtn);
         alram_tvbtn = v.findViewById(R.id.set_alram_tvbtn);
+        changetheme_tvbtn = v.findViewById(R.id.set_changetheme_tvbtn);
 
         loutdlg = new Dialog(getActivity());
         loutdlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         loutdlg.setContentView(R.layout.fragment_logout_dialog);
+
+        themedlg = new Dialog(getActivity());
+        themedlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        themedlg.setContentView(R.layout.fragment_theme_dialog);
 
         delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +64,7 @@ public class SettingsFragment extends Fragment {
         logout_llbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog();
+                showloutDialog();
             }
         });
 
@@ -70,13 +76,19 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        changetheme_tvbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showthemeDialog();
+            }
+        });
 
         return v;
 
 
     }
 
-    public void showDialog(){
+    public void showloutDialog(){
         loutdlg.show(); // 다이얼로그 띄우기
 
         /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
@@ -106,6 +118,33 @@ public class SettingsFragment extends Fragment {
                 // 로그아웃
             }
         });
+
+
+    }
+
+    public void showthemeDialog(){
+        themedlg.show(); // 다이얼로그 띄우기
+
+        /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
+
+        // 위젯 연결 방식은 각자 취향대로~
+        // '아래 아니오 버튼'처럼 일반적인 방법대로 연결하면 재사용에 용이하고,
+        // '아래 네 버튼'처럼 바로 연결하면 일회성으로 사용하기 편함.
+        // *주의할 점: findViewById()를 쓸 때는 -> 앞에 반드시 다이얼로그 이름을 붙여야 한다.
+
+        // dialog 라운드 끝 하얀 배경 삭제
+        themedlg.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        // 저장 버튼
+        themedlg.findViewById(R.id.theme_save).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 원하는 기능 구현
+                // 로그아웃
+            }
+        });
+
+
     }
 
 }
