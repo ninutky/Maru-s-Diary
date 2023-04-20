@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -139,6 +140,8 @@ public class SettingsFragment extends Fragment {
         themedlg.findViewById(R.id.theme_save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getContext(), "테마가 저장되었습니다.",Toast.LENGTH_SHORT).show();
+                themedlg.dismiss();
                 // 원하는 기능 구현
                 // 테마 저장
             }
