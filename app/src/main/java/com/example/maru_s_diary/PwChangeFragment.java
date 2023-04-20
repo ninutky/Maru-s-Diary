@@ -14,7 +14,7 @@ public class PwChangeFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pw_change);
 
-        backBtn = findViewById(R.id.pwc_backBtn);
+        backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -2,11 +2,14 @@ package com.example.maru_s_diary;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,7 +17,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 public class SettingsFragment extends Fragment {
-    TextView delaccount_tvbtn, changepw_tvbtn;
+    TextView delaccount_tvbtn, changepw_tvbtn, alram_tvbtn;
     LinearLayout logout_llbtn;
     Dialog loutdlg;
     @Override
@@ -30,6 +33,7 @@ public class SettingsFragment extends Fragment {
         delaccount_tvbtn = v.findViewById(R.id.set_delaccount_tvbtn);
         logout_llbtn = v.findViewById(R.id.set_logout_llbtn);
         changepw_tvbtn = v.findViewById(R.id.set_changepw_tvbtn);
+        alram_tvbtn = v.findViewById(R.id.set_alram_tvbtn);
 
         loutdlg = new Dialog(getActivity());
         loutdlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -58,6 +62,14 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        alram_tvbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AlarmSettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return v;
 
@@ -73,6 +85,9 @@ public class SettingsFragment extends Fragment {
         // '아래 아니오 버튼'처럼 일반적인 방법대로 연결하면 재사용에 용이하고,
         // '아래 네 버튼'처럼 바로 연결하면 일회성으로 사용하기 편함.
         // *주의할 점: findViewById()를 쓸 때는 -> 앞에 반드시 다이얼로그 이름을 붙여야 한다.
+
+        // dialog 라운드 끝 하얀 배경 삭제
+        loutdlg.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         // 아니오 버튼
         Button noBtn = loutdlg.findViewById(R.id.noBtn);
