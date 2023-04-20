@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/round_bg"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+        <LinearLayout
+            android:id="@+id/theme_skyblue"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="#90F2FF"
+            android:gravity="center"
+            android:layout_marginRight="20dp">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/theme_check"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/theme_yellow"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="#FFFA87"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/theme_check"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/theme_green"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="#A8E88A"
+            android:gravity="center"
+            android:layout_marginRight="20dp">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/theme_check"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/theme_purple"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="#C5A8F3"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/theme_check"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.widget.Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="end"
+        android:text="저장"
+        android:textColor="@color/black"
+        android:background="@drawable/button_border"
+        android:id="@+id/theme_save"
+        android:textSize="20sp" />
+</LinearLayout>
