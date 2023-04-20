@@ -34,11 +34,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
+            android:layout_gravity="start"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:logo="@drawable/maru_logo_simple_version"
             app:menu="@menu/top_nav_menu"
+
             app:popupTheme="@style/Theme.MarusDiary.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>

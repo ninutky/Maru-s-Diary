@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -122,6 +121,7 @@ public class SettingsFragment extends Fragment {
 
     }
 
+
     public void showthemeDialog(){
         themedlg.show(); // 다이얼로그 띄우기
 
@@ -140,9 +140,58 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // 원하는 기능 구현
-                // 로그아웃
+                // 테마 저장
             }
         });
+
+        themedlg.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.dismiss();
+            }
+        });
+
+        themedlg.findViewById(R.id.theme_skyblue).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.findViewById(R.id.skyblye_check).setVisibility(View.VISIBLE);
+                themedlg.findViewById(R.id.yellow_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.green_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.purple_check).setVisibility(View.INVISIBLE);
+            }
+        });
+
+        themedlg.findViewById(R.id.theme_purple).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.findViewById(R.id.skyblye_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.yellow_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.green_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.purple_check).setVisibility(View.VISIBLE);
+            }
+        });
+
+        themedlg.findViewById(R.id.theme_yellow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.findViewById(R.id.skyblye_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.yellow_check).setVisibility(View.VISIBLE);
+                themedlg.findViewById(R.id.green_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.purple_check).setVisibility(View.INVISIBLE);
+            }
+        });
+
+        themedlg.findViewById(R.id.theme_green).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.findViewById(R.id.skyblye_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.yellow_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.green_check).setVisibility(View.VISIBLE);
+                themedlg.findViewById(R.id.purple_check).setVisibility(View.INVISIBLE);
+            }
+        });
+
+        
 
 
     }

@@ -52,14 +52,6 @@
                 android:textSize="20sp"
                 android:textColor="#000"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/set_eamil_tv"
-                android:text="aaa@gmail.com"
-                android:textColor="#4D4D4D"
-                android:textSize="18sp"
-                />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

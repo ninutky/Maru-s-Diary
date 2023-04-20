@@ -89,6 +89,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/button_border"
         android:text="완료"
+        android:textColor="#000"
         android:textSize="18sp"/>
 
 </LinearLayout>

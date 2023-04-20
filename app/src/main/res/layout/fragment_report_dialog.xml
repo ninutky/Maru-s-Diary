@@ -75,6 +75,7 @@
         android:id="@+id/theme_save"
         android:layout_marginBottom="25dp"
         android:layout_marginRight="25dp"
+        style="?android:attr/borderlessButtonStyle"
         android:textSize="20sp" />
 
 </LinearLayout>

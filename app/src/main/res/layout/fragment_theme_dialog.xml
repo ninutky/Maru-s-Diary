@@ -5,12 +5,24 @@
     android:layout_gravity="center"
     android:background="@drawable/round_bg"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:paddingRight="20dp"
+    android:paddingLeft="30dp"
+    android:paddingBottom="30dp">
+
+    <ImageButton
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/cancel_button"
+        android:background="@drawable/cancel" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp">
+
         <LinearLayout
             android:id="@+id/theme_skyblue"
             android:layout_width="100dp"
@@ -20,8 +32,10 @@
             android:gravity="center"
             android:layout_marginRight="20dp">
             <ImageView
+                android:visibility="invisible"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:id="@+id/skyblye_check"
                 android:src="@drawable/theme_check"/>
         </LinearLayout>
         <LinearLayout
@@ -32,8 +46,10 @@
             android:backgroundTint="#FFFA87"
             android:gravity="center">
             <ImageView
+                android:visibility="invisible"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:id="@+id/yellow_check"
                 android:src="@drawable/theme_check"/>
         </LinearLayout>
     </LinearLayout>
@@ -50,6 +66,8 @@
             android:gravity="center"
             android:layout_marginRight="20dp">
             <ImageView
+                android:id="@+id/green_check"
+                android:visibility="invisible"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/theme_check"/>
@@ -62,6 +80,8 @@
             android:backgroundTint="#C5A8F3"
             android:gravity="center">
             <ImageView
+                android:id="@+id/purple_check"
+                android:visibility="invisible"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/theme_check"/>
@@ -78,5 +98,6 @@
         android:textColor="@color/black"
         android:background="@drawable/button_border"
         android:id="@+id/theme_save"
+        style="?android:attr/borderlessButtonStyle"
         android:textSize="20sp" />
 </LinearLayout>
