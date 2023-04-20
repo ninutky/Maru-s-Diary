@@ -39,7 +39,7 @@
             android:src="@drawable/temp_profile_img"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="5dp"
-            android:id="@+id/prefer_profile_img"/>
+            android:id="@+id/set_profile_img"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/prefer_id_tv"
+                android:id="@+id/set_id_tv"
                 android:text="(ID)"
                 android:textSize="20sp"
                 android:textColor="#000"
@@ -55,7 +55,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/prefer_eamil_tv"
+                android:id="@+id/set_eamil_tv"
                 android:text="aaa@gmail.com"
                 android:textColor="#4D4D4D"
                 android:textSize="18sp"
@@ -74,7 +74,7 @@
             android:paddingLeft="20dp"
             android:textSize="18sp"
             android:textColor="#000000"
-            android:id="@+id/prefer_changetheme_tvbtn"
+            android:id="@+id/set_changetheme_tvbtn"
             android:text="테마 변경"/>
         <TextView
             android:layout_width="350dp"
@@ -83,7 +83,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:layout_marginTop="2dp"
-            android:id="@+id/prefer_alram_tvbtn"
+            android:id="@+id/set_alram_tvbtn"
             android:textSize="18sp"
             android:textColor="#000000"
             android:text="알림 설정"/>
@@ -96,12 +96,12 @@
             android:layout_marginTop="2dp"
             android:textSize="18sp"
             android:textColor="#000000"
-            android:id="@+id/prefer_changepw_tvbtn"
+            android:id="@+id/set_changepw_tvbtn"
             android:text="비밀번호 변경"/>
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="69dp"
-            android:id="@+id/prefer_logout_llbtn"
+            android:id="@+id/set_logout_llbtn"
             android:background="@drawable/rect3"
             android:gravity="center_vertical"
             android:layout_marginTop="2dp"
@@ -123,7 +123,7 @@
         <TextView
             android:layout_width="350dp"
             android:layout_height="69dp"
-            android:id="@+id/prefer_delaccount_tvbtn"
+            android:id="@+id/set_delaccount_tvbtn"
             android:background="@drawable/rect2"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
