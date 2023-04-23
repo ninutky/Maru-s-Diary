@@ -78,7 +78,8 @@
             android:background="@drawable/rect3" />
 
         <Switch
-            android:text="방해금지 모드"
+            android:id="@+id/dnd_mode_switch"
+            android:text="방해 금지 모드"
             android:textSize="18sp"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -91,12 +92,41 @@
             android:track="@drawable/switch_track_selector"
             android:background="@drawable/rect3" />
 
-        <ImageView
-            android:layout_width="350dp"
+        <FrameLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_gravity="center"
-            android:background="@drawable/rect4" />
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rect4"/>
+
+            <LinearLayout
+                android:id="@+id/dnd_mode_ly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="시작"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="40dp" />
+
+                <TextView
+                    android:text="종료"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="110dp"/>
+            </LinearLayout>
+
+        </FrameLayout>
 
     </LinearLayout>
 
