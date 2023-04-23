@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SettingsFragment fragmentSetting = new SettingsFragment();
     private MypageCorrectionFragment fragmentMyPageCorrection = new MypageCorrectionFragment();
+    private HomeFragment fragmentHome = new HomeFragment();
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction fragmentTransaction;
 
@@ -72,10 +73,13 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
                 case R.id.home_item: {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setTitle("인사말").setMessage("반갑습니다");
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
+                    fragmentTransaction = fragmentManager.beginTransaction(); // fragmentTransaction 객체 초기화
+                    fragmentTransaction.replace(R.id.home_ly, fragmentHome);
+                    fragmentTransaction.commit();
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+//                    builder.setTitle("인사말").setMessage("반갑습니다");
+//                    AlertDialog alertDialog = builder.create();
+//                    alertDialog.show();
                     return true;
                 }
                 case R.id.setting_item: {
