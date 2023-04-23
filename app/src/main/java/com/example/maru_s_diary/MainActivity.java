@@ -18,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout home_ly;
     BottomNavigationView bottomNavigationView;
 
-    private AlarmSettingActivity fragmentAlarmSetting = new AlarmSettingActivity();
     private SettingsFragment fragmentSetting = new SettingsFragment();
+    private MypageCorrectionFragment fragmentMyPageCorrection = new MypageCorrectionFragment();
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    private FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 if (id == R.id.action_alarm) { // 알람 버튼 클릭 이벤트 처리
                     // 프래그먼트 이동
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.container, new AlarmFragment());
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
@@ -65,15 +66,15 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.mypage_item: {
+                    fragmentTransaction = fragmentManager.beginTransaction(); // fragmentTransaction 객체 초기화
+                    fragmentTransaction.replace(R.id.home_ly, fragmentMyPageCorrection);
+                    fragmentTransaction.commit();
                     return true;
                 }
                 case R.id.home_item: {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
                     builder.setTitle("인사말").setMessage("반갑습니다");
-
                     AlertDialog alertDialog = builder.create();
-
                     alertDialog.show();
                     return true;
                 }

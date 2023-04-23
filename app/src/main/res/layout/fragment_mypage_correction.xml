@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FragmentMypageCorrectionActivity">
+    tools:context=".MypageCorrectionFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -33,7 +33,6 @@
         android:backgroundTint="#b0b0b0"
         app:tint="@null"
         app:srcCompat="@drawable/edit"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

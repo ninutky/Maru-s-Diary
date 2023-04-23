@@ -119,9 +119,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-
     }
-
 
     public void showthemeDialog(){
         themedlg.show(); // 다이얼로그 띄우기
