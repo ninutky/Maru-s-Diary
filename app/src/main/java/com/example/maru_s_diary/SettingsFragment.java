@@ -32,7 +32,9 @@ public class SettingsFragment extends Fragment {
     CircleImageView profile_img;
 
     LinearLayout[] themes;
-    ImageView[] chks;
+
+    CircleImageView[] prfimgs;
+    ImageView[] thmchks, prfchks;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class SettingsFragment extends Fragment {
         changepw_tvbtn = v.findViewById(R.id.set_changepw_tvbtn);
         alram_tvbtn = v.findViewById(R.id.set_alram_tvbtn);
         changetheme_tvbtn = v.findViewById(R.id.set_changetheme_tvbtn);
-        profile_img = v.findViewById(R.id.set_profile_img);
+        profile_img = (CircleImageView) v.findViewById(R.id.set_profile_img);
 
         loutdlg = new Dialog(getActivity());
         loutdlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -104,7 +106,7 @@ public class SettingsFragment extends Fragment {
         profile_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                showProfileDialog();
             }
         });
 
@@ -183,11 +185,17 @@ public class SettingsFragment extends Fragment {
         themes[2] = (themedlg.findViewById(R.id.theme_purple));
         themes[3] = (themedlg.findViewById(R.id.theme_skyblue));
 
-        chks = new ImageView[4];
-        chks[0] = (themedlg.findViewById(R.id.green_check));
-        chks[1] = (themedlg.findViewById(R.id.yellow_check));
-        chks[2] = (themedlg.findViewById(R.id.purple_check));
-        chks[3] = (themedlg.findViewById(R.id.skyblye_check));
+        themes = new LinearLayout[4];
+        themes[0] = (themedlg.findViewById(R.id.theme_green));
+        themes[1] = (themedlg.findViewById(R.id.theme_yellow));
+        themes[2] = (themedlg.findViewById(R.id.theme_purple));
+        themes[3] = (themedlg.findViewById(R.id.theme_skyblue));
+
+        thmchks = new ImageView[4];
+        thmchks[0] = (themedlg.findViewById(R.id.green_check));
+        thmchks[1] = (themedlg.findViewById(R.id.yellow_check));
+        thmchks[2] = (themedlg.findViewById(R.id.purple_check));
+        thmchks[3] = (themedlg.findViewById(R.id.skyblye_check));
 
         for(int i = 0; i < 4; i++){
             int finalI = i;
@@ -195,9 +203,9 @@ public class SettingsFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     for (int j = 0; j < 4; j++) {
-                        chks[j].setVisibility(View.INVISIBLE);
+                        thmchks[j].setVisibility(View.INVISIBLE);
                     }
-                    chks[finalI].setVisibility(View.VISIBLE);
+                    thmchks[finalI].setVisibility(View.VISIBLE);
                 }
             });
         }
@@ -205,7 +213,7 @@ public class SettingsFragment extends Fragment {
 
     }
 
-    public void showProfile() {
+    public void showProfileDialog() {
         profiledlg.show(); // 다이얼로그 띄우기
 
         /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
@@ -222,19 +230,48 @@ public class SettingsFragment extends Fragment {
         profiledlg.findViewById(R.id.theme_save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "테마가 저장되었습니다.",Toast.LENGTH_SHORT).show();
-                themedlg.dismiss();
+                Toast.makeText(getContext(), "프로필 사진이 저장되었습니다.",Toast.LENGTH_SHORT).show();
+                profiledlg.dismiss();
                 // 원하는 기능 구현
                 // 테마 저장
             }
         });
 
-        themedlg.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+        profiledlg.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                themedlg.dismiss();
+                profiledlg.dismiss();
             }
         });
+
+        prfimgs = new CircleImageView[6];
+        prfimgs[0] = (profiledlg.findViewById(R.id.profile_img_1));
+        prfimgs[1] = (profiledlg.findViewById(R.id.profile_img_2));
+        prfimgs[2] = (profiledlg.findViewById(R.id.profile_img_3));
+        prfimgs[3] = (profiledlg.findViewById(R.id.profile_img_4));
+        prfimgs[4] = (profiledlg.findViewById(R.id.profile_img_5));
+        prfimgs[5] = (profiledlg.findViewById(R.id.profile_img_6));
+
+        prfchks = new ImageView[6];
+        prfchks[0] = (profiledlg.findViewById(R.id.profile_chk_1));
+        prfchks[1] = (profiledlg.findViewById(R.id.profile_chk_2));
+        prfchks[2] = (profiledlg.findViewById(R.id.profile_chk_3));
+        prfchks[3] = (profiledlg.findViewById(R.id.profile_chk_4));
+        prfchks[4] = (profiledlg.findViewById(R.id.profile_chk_5));
+        prfchks[5] = (profiledlg.findViewById(R.id.profile_chk_6));
+
+        for(int i = 0; i < 6; i++){
+            int finalI = i;
+            prfimgs[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    for (int j = 0; j < 6; j++) {
+                        prfchks[j].setVisibility(View.INVISIBLE);
+                    }
+                    prfchks[finalI].setVisibility(View.VISIBLE);
+                }
+            });
+        }
 
 
 
