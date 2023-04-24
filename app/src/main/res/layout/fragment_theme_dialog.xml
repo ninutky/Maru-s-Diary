@@ -73,14 +73,14 @@
                 android:src="@drawable/theme_check"/>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/theme_purple"
+            android:id="@+id/theme_pink"
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="#C5A8F3"
+            android:backgroundTint="#fa9ac8"
             android:gravity="center">
             <ImageView
-                android:id="@+id/purple_check"
+                android:id="@+id/pink_check"
                 android:visibility="invisible"
                 android:layout_width="50dp"
                 android:layout_height="50dp"

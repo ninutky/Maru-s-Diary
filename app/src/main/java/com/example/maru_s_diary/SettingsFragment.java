@@ -182,19 +182,19 @@ public class SettingsFragment extends Fragment {
         themes = new LinearLayout[4];
         themes[0] = (themedlg.findViewById(R.id.theme_green));
         themes[1] = (themedlg.findViewById(R.id.theme_yellow));
-        themes[2] = (themedlg.findViewById(R.id.theme_purple));
+        themes[2] = (themedlg.findViewById(R.id.theme_pink));
         themes[3] = (themedlg.findViewById(R.id.theme_skyblue));
 
         themes = new LinearLayout[4];
         themes[0] = (themedlg.findViewById(R.id.theme_green));
         themes[1] = (themedlg.findViewById(R.id.theme_yellow));
-        themes[2] = (themedlg.findViewById(R.id.theme_purple));
+        themes[2] = (themedlg.findViewById(R.id.theme_pink));
         themes[3] = (themedlg.findViewById(R.id.theme_skyblue));
 
         thmchks = new ImageView[4];
         thmchks[0] = (themedlg.findViewById(R.id.green_check));
         thmchks[1] = (themedlg.findViewById(R.id.yellow_check));
-        thmchks[2] = (themedlg.findViewById(R.id.purple_check));
+        thmchks[2] = (themedlg.findViewById(R.id.pink_check));
         thmchks[3] = (themedlg.findViewById(R.id.skyblye_check));
 
         for(int i = 0; i < 4; i++){
