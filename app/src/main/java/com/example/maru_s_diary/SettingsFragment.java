@@ -16,11 +16,15 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class SettingsFragment extends Fragment {
     TextView delaccount_tvbtn, changepw_tvbtn, alram_tvbtn, changetheme_tvbtn;
 
     LinearLayout logout_llbtn;
-    Dialog loutdlg, themedlg;
+    Dialog loutdlg, themedlg, profiledlg;
+
+    CircleImageView profile_img;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class SettingsFragment extends Fragment {
         changepw_tvbtn = v.findViewById(R.id.set_changepw_tvbtn);
         alram_tvbtn = v.findViewById(R.id.set_alram_tvbtn);
         changetheme_tvbtn = v.findViewById(R.id.set_changetheme_tvbtn);
+        profile_img = v.findViewById(R.id.set_profile_img);
 
         loutdlg = new Dialog(getActivity());
         loutdlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -44,6 +49,10 @@ public class SettingsFragment extends Fragment {
         themedlg = new Dialog(getActivity());
         themedlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         themedlg.setContentView(R.layout.fragment_theme_dialog);
+
+        profiledlg = new Dialog(getActivity());
+        profiledlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        profiledlg.setContentView(R.layout.);
 
         delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +89,13 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 showthemeDialog();
+            }
+        });
+
+        profile_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
@@ -192,9 +208,78 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        
-
-
     }
 
+    public void showProfile() {
+        themedlg.show(); // 다이얼로그 띄우기
+
+        /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
+
+        // 위젯 연결 방식은 각자 취향대로~
+        // '아래 아니오 버튼'처럼 일반적인 방법대로 연결하면 재사용에 용이하고,
+        // '아래 네 버튼'처럼 바로 연결하면 일회성으로 사용하기 편함.
+        // *주의할 점: findViewById()를 쓸 때는 -> 앞에 반드시 다이얼로그 이름을 붙여야 한다.
+
+        // dialog 라운드 끝 하얀 배경 삭제
+        themedlg.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        // 저장 버튼
+        themedlg.findViewById(R.id.theme_save).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "테마가 저장되었습니다.",Toast.LENGTH_SHORT).show();
+                themedlg.dismiss();
+                // 원하는 기능 구현
+                // 테마 저장
+            }
+        });
+
+        themedlg.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.dismiss();
+            }
+        });
+
+        themedlg.findViewById(R.id.theme_skyblue).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.findViewById(R.id.skyblye_check).setVisibility(View.VISIBLE);
+                themedlg.findViewById(R.id.yellow_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.green_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.purple_check).setVisibility(View.INVISIBLE);
+            }
+        });
+
+        themedlg.findViewById(R.id.theme_purple).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.findViewById(R.id.skyblye_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.yellow_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.green_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.purple_check).setVisibility(View.VISIBLE);
+            }
+        });
+
+        themedlg.findViewById(R.id.theme_yellow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.findViewById(R.id.skyblye_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.yellow_check).setVisibility(View.VISIBLE);
+                themedlg.findViewById(R.id.green_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.purple_check).setVisibility(View.INVISIBLE);
+            }
+        });
+
+        themedlg.findViewById(R.id.theme_green).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themedlg.findViewById(R.id.skyblye_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.yellow_check).setVisibility(View.INVISIBLE);
+                themedlg.findViewById(R.id.green_check).setVisibility(View.VISIBLE);
+                themedlg.findViewById(R.id.purple_check).setVisibility(View.INVISIBLE);
+            }
+        });
+
+    }
 }
