@@ -19,6 +19,9 @@ import java.util.Arrays;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -36,10 +39,13 @@ public class SettingsFragment extends Fragment {
     CircleImageView[] prfimgs;
     ImageView[] thmchks, prfchks;
 
-    @Override
+    private FirebaseAuth mFirebaseAuth; // 파이어베이스 관련
+    private DatabaseReference mDatabaseReference; // 데이터베이스 관련련
+
+   @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mFirebaseAuth = FirebaseAuth.getInstance();
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,7 +70,6 @@ public class SettingsFragment extends Fragment {
         profiledlg = new Dialog(getActivity());
         profiledlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         profiledlg.setContentView(R.layout.fragment_profile_dialog);
-
         delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,12 +143,11 @@ public class SettingsFragment extends Fragment {
             }
         });
         // 네 버튼
-        loutdlg.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 원하는 기능 구현
-                // 로그아웃
-            }
+        loutdlg.findViewById(R.id.yesBtn).setOnClickListener(v -> {
+           mFirebaseAuth.signOut();
+           Intent intent = new Intent(getActivity(), SigninActivity.class);
+           startActivity(intent);
+           getActivity().finish();
         });
 
     }

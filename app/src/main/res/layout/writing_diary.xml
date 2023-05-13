@@ -81,11 +81,11 @@
 
             <ImageView
                 android:id="@+id/imgv1"
-                android:src="@drawable/photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"/>
+                android:src="@drawable/photo" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -21,7 +21,6 @@
         <activity
             android:name=".SignupActivity"
             android:exported="true">
-
         </activity>
         <activity
             android:name=".SigninActivity"

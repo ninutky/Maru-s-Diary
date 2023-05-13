@@ -38,13 +38,6 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-//        //액션 바 등록하기
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setTitle("Create Account");
-//
-//        actionBar.setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
-//        actionBar.setDisplayShowHomeEnabled(true); //홈 아이콘
-
         //파이어베이스 접근 설정
         // user = firebaseAuth.getCurrentUser();
         firebaseAuth =  FirebaseAuth.getInstance();
@@ -110,8 +103,8 @@ public class SignupActivity extends AppCompatActivity {
 
                             } else {
                                 mDialog.dismiss();
-                                Toast.makeText(SignupActivity.this, "이미 존재하는 아이디 입니다.", Toast.LENGTH_SHORT).show();
-                                return;  //해당 메소드 진행을 멈추고 빠져나감.
+                                Toast.makeText(SignupActivity.this, "이미 존재하는 이메일 입니다.", Toast.LENGTH_SHORT).show();
+                                return;  //해당 메소드 진행을 멈추고 빠져나감.ㅛ
 
                             }
 

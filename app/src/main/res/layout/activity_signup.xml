@@ -76,6 +76,7 @@
             android:paddingLeft="20dp"
             android:textColor="#4E4E4E" />
 
+        <!--
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,16 +94,17 @@
             android:hint="인증번호 입력"
             android:paddingLeft="20dp"
             android:textColor="#4E4E4E" />
+        -->
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_signup"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:textAllCaps="false"
-        android:background="@drawable/button_border"
-        android:textSize="18dp"
         android:layout_gravity="center"
-        android:id="@+id/btn_signup"
-        android:text="Sign up"/>
+        android:background="@drawable/button_border"
+        android:text="Sign up"
+        android:textAllCaps="false"
+        android:textSize="18dp" />
 
 </LinearLayout>
