@@ -20,8 +20,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -29,6 +32,7 @@ public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
     EditText mEmailText, mPasswordText, mPasswordcheckText, mId;
     Button mregisterBtn;
+    TextView mCheckId;
     private FirebaseAuth firebaseAuth;
 
 
@@ -48,10 +52,39 @@ public class SignupActivity extends AppCompatActivity {
         mPasswordcheckText = findViewById(R.id.et_checksignup_pwd);
         mregisterBtn = findViewById(R.id.btn_signup);
         mId = findViewById(R.id.et_signup_id);
+        mCheckId = findViewById(R.id.tvbtn_pwdoublechk);
 
         //파이어베이스 user 로 접글
 
         //가입버튼 클릭리스너   -->  firebase에 데이터를 저장한다.
+        mCheckId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = mId.getText().toString().trim();
+                if (id.isEmpty()) {
+                    Toast.makeText(SignupActivity.this, "아이디를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // 중복확인
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                reference.orderByChild("id").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            Toast.makeText(SignupActivity.this, "이미 사용 중인 아이디입니다", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(SignupActivity.this, "사용 가능한 아이디입니다", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e(TAG, "아이디 중복확인 오류", error.toException());
+                    }
+                });
+            }
+        });
         mregisterBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -104,7 +137,7 @@ public class SignupActivity extends AppCompatActivity {
                             } else {
                                 mDialog.dismiss();
                                 Toast.makeText(SignupActivity.this, "이미 존재하는 이메일 입니다.", Toast.LENGTH_SHORT).show();
-                                return;  //해당 메소드 진행을 멈추고 빠져나감.ㅛ
+                                return;  //해당 메소드 진행을 멈추고 빠져나감.
 
                             }
 
