@@ -34,7 +34,7 @@ public class SignupActivity extends AppCompatActivity {
     Button mregisterBtn;
     TextView mCheckId;
     private FirebaseAuth firebaseAuth;
-
+    private boolean isIdAvailable = false; // 아이디 중복 여부를 저장하는 변수
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -73,8 +73,10 @@ public class SignupActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             Toast.makeText(SignupActivity.this, "이미 사용 중인 아이디입니다", Toast.LENGTH_SHORT).show();
+                            isIdAvailable = false;
                         } else {
                             Toast.makeText(SignupActivity.this, "사용 가능한 아이디입니다", Toast.LENGTH_SHORT).show();
+                            isIdAvailable = true;
                         }
                     }
 
@@ -86,15 +88,17 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
         mregisterBtn.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
-
                 //가입 정보 가져오기
                 final String email = mEmailText.getText().toString().trim();
                 String pwd = mPasswordText.getText().toString().trim();
                 String pwdcheck = mPasswordcheckText.getText().toString().trim();
 
+                if(!isIdAvailable) {
+                    Toast.makeText(SignupActivity.this, "아이디 중복을 확인해주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if(pwd.equals(pwdcheck)) {
                     Log.d(TAG, "등록 버튼 " + email + " , " + pwd);
