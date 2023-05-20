@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class SettingsFragment extends Fragment {
     CircleImageView[] prfimgs;
     ImageView[] thmchks, prfchks;
 
+    private TextView userIdTextView;    // 로그인되어 있는 아이디
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 관련
     private DatabaseReference mDatabaseReference; // 데이터베이스 관련련
 
@@ -59,6 +61,7 @@ public class SettingsFragment extends Fragment {
         alram_tvbtn = v.findViewById(R.id.set_alram_tvbtn);
         changetheme_tvbtn = v.findViewById(R.id.set_changetheme_tvbtn);
         profile_img = (CircleImageView) v.findViewById(R.id.set_profile_img);
+        userIdTextView = v.findViewById(R.id.set_id_tv);
 
         loutdlg = new Dialog(getActivity());
         loutdlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -71,6 +74,16 @@ public class SettingsFragment extends Fragment {
         profiledlg = new Dialog(getActivity());
         profiledlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         profiledlg.setContentView(R.layout.fragment_profile_dialog);
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(currentUser != null){
+            String email = currentUser.getEmail();
+            if(email != null){
+                String displayEmail = email.substring(0, email.indexOf('@'));
+                userIdTextView.setText(displayEmail);
+            }
+        }
+
         delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

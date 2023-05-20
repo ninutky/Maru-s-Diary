@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SigninActivity extends AppCompatActivity {
     Button mLoginBtn;
-    TextView mSignup;
+    TextView mSignup, findId;
     EditText mId, mPassword;
     private FirebaseAuth firebaseAuth;
 
@@ -36,6 +36,7 @@ public class SigninActivity extends AppCompatActivity {
         mSignup = findViewById(R.id.tvbtn_signup);
         mId = findViewById(R.id.et_id);
         mPassword = findViewById(R.id.et_pw);
+        findId = findViewById(R.id.tvbtn_idfind);
 
         // 회원가입을 누르면
         mSignup.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +58,7 @@ public class SigninActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()) {
+                                    Toast.makeText(SigninActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(SigninActivity.this, MainActivity.class);
                                     startActivity(intent);
                                 } else {
@@ -64,6 +66,13 @@ public class SigninActivity extends AppCompatActivity {
                                 }
                             }
                         });
+            }
+        });
+
+        findId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SigninActivity.this, FindId.class));
             }
         });
 
