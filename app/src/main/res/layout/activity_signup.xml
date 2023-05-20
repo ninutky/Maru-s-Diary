@@ -7,12 +7,19 @@
     android:orientation="vertical"
     tools:context=".SignupActivity">
 
+    <ImageButton
+        android:layout_width="12dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/backBtn"
+        android:background="@drawable/left_arrow" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:text="회원가입"
         android:textColor="#000000"
         android:textSize="23dp" />
