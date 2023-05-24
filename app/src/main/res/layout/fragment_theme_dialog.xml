@@ -28,7 +28,7 @@
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="#FFFA87"
+            android:backgroundTint="@color/yellow"
             android:gravity="center"
             android:layout_marginRight="20dp">
             <ImageView
@@ -43,7 +43,7 @@
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="#90F2FF"
+            android:backgroundTint="@color/skyblue"
             android:gravity="center">
             <ImageView
                 android:visibility="invisible"
@@ -62,7 +62,7 @@
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="#A8E88A"
+            android:backgroundTint="@color/green"
             android:gravity="center"
             android:layout_marginRight="20dp">
             <ImageView
@@ -77,7 +77,7 @@
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="#fa9ac8"
+            android:backgroundTint="@color/pink"
             android:gravity="center">
             <ImageView
                 android:id="@+id/pink_check"
