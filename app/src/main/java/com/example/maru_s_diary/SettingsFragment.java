@@ -213,7 +213,7 @@ public class SettingsFragment extends Fragment {
         thmchks[0] = (themedlg.findViewById(R.id.green_check));
         thmchks[1] = (themedlg.findViewById(R.id.yellow_check));
         thmchks[2] = (themedlg.findViewById(R.id.pink_check));
-        thmchks[3] = (themedlg.findViewById(R.id.skyblye_check));
+        thmchks[3] = (themedlg.findViewById(R.id.skyblue_check));
 
         for(int i = 0; i < 4; i++){
             int finalI = i;
