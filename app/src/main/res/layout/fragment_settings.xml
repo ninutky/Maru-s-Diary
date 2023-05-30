@@ -21,7 +21,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/temp_profile_img"
+            android:src="@drawable/yellow_rabbit"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="5dp"
             android:id="@+id/set_profile_img"/>

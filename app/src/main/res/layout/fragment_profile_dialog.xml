@@ -31,7 +31,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp_profile_img"
+                android:src="@drawable/pink_rabbit"
                 android:id="@+id/profile_img_1"
                 android:gravity="center"/>
             <LinearLayout
@@ -54,7 +54,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp_profile_img"
+                android:src="@drawable/blue_rabbit"
                 android:id="@+id/profile_img_2"
                 android:gravity="center"/>
             <LinearLayout
@@ -76,7 +76,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp_profile_img"
+                android:src="@drawable/yellow_rabbit"
                 android:id="@+id/profile_img_3"
                 android:gravity="center"/>
             <LinearLayout
@@ -106,7 +106,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp_profile_img"
+                android:src="@drawable/orange_rabbit"
                 android:id="@+id/profile_img_4"
                 android:gravity="center"/>
             <LinearLayout
@@ -129,7 +129,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp_profile_img"
+                android:src="@drawable/mint_rabbit"
                 android:id="@+id/profile_img_5"
                 android:gravity="center"/>
             <LinearLayout
@@ -151,7 +151,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/temp_profile_img"
+                android:src="@drawable/purple_rabbit"
                 android:id="@+id/profile_img_6"
                 android:gravity="center"/>
             <LinearLayout
