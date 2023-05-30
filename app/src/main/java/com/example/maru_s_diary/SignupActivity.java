@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
     EditText mEmailText, mPasswordText, mPasswordcheckText, mId;
     Button mregisterBtn;
+    ImageButton backBtn;
     TextView mCheckId;
     private FirebaseAuth firebaseAuth;
     private boolean isIdAvailable = false; // 아이디 중복 여부를 저장하는 변수
@@ -43,7 +45,6 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         //파이어베이스 접근 설정
-        // user = firebaseAuth.getCurrentUser();
         firebaseAuth =  FirebaseAuth.getInstance();
         //firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -53,10 +54,19 @@ public class SignupActivity extends AppCompatActivity {
         mregisterBtn = findViewById(R.id.btn_signup);
         mId = findViewById(R.id.et_signup_id);
         mCheckId = findViewById(R.id.tvbtn_pwdoublechk);
+        backBtn = findViewById(R.id.backBtn);
 
         //파이어베이스 user 로 접글
 
         //가입버튼 클릭리스너   -->  firebase에 데이터를 저장한다.
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         mCheckId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_text"
@@ -18,50 +19,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
         android:id="@+id/fi_id"
-        android:hint="EMAIL"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
-        android:paddingLeft="15dp"
         android:background="@drawable/edittext_border"
         android:ems="10"
-        android:inputType="textPassword"
+        android:hint="EMAIL"
+        android:paddingLeft="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_text" />
 
-
-    <EditText
-        android:id="@+id/send"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/edittext_border"
-        android:ems="10"
-        android:hint="인증번호 확인"
-        android:inputType="textPassword"
-        android:paddingLeft="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fi_id" />
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/nextbutton"
         android:layout_width="150dp"
         android:layout_height="45dp"
-        android:layout_marginTop="30dp"
+        android:background="@drawable/button_border"
         android:text="다음"
         android:textSize="18sp"
-        android:background="@drawable/button_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/send" />
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="130dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

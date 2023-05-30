@@ -61,8 +61,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvbtn_pwfind"
-                android:text="비밀번호 찾기" />
+                android:id="@+id/tvbtn_idfind"
+                android:text="아이디 찾기" />
         </LinearLayout>
     </LinearLayout>
 

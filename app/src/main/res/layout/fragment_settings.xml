@@ -33,7 +33,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/set_id_tv"
-                android:text="(ID)"
                 android:textSize="20sp"
                 android:textColor="#000"
                 />

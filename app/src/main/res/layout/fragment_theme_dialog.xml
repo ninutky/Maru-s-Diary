@@ -24,32 +24,32 @@
         android:layout_marginBottom="20dp">
 
         <LinearLayout
-            android:id="@+id/theme_skyblue"
-            android:layout_width="100dp"
-            android:layout_height="120dp"
-            android:background="@drawable/round_bg"
-            android:backgroundTint="#90F2FF"
-            android:gravity="center"
-            android:layout_marginRight="20dp">
-            <ImageView
-                android:visibility="invisible"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/skyblye_check"
-                android:src="@drawable/theme_check"/>
-        </LinearLayout>
-        <LinearLayout
             android:id="@+id/theme_yellow"
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="#FFFA87"
+            android:backgroundTint="@color/yellow"
+            android:gravity="center"
+            android:layout_marginRight="20dp">
+            <ImageView
+                android:visibility="visible"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/yellow_check"
+                android:src="@drawable/theme_check"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/theme_skyblue"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="@color/skyblue"
             android:gravity="center">
             <ImageView
                 android:visibility="invisible"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/yellow_check"
+                android:id="@+id/skyblue_check"
                 android:src="@drawable/theme_check"/>
         </LinearLayout>
     </LinearLayout>
@@ -62,7 +62,7 @@
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="#A8E88A"
+            android:backgroundTint="@color/green"
             android:gravity="center"
             android:layout_marginRight="20dp">
             <ImageView
@@ -77,7 +77,7 @@
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="#fa9ac8"
+            android:backgroundTint="@color/pink"
             android:gravity="center">
             <ImageView
                 android:id="@+id/pink_check"
