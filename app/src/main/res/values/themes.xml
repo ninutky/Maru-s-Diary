@@ -14,10 +14,16 @@
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="Theme.MarusDiary.noActionBar" parent="Theme.MaterialComponents.Light.NoActionBar" />
 
     <style name="Theme.MarusDiary.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppThemeActionBarLogo" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="logo">@mipmap/ic_launcher</item>
+        <item name="displayOptions">useLogo|showHome</item>
+    </style>
 
 </resources>

@@ -24,35 +24,15 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood1"/>
+            android:src="@drawable/sun"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood2"/>
+            android:src="@drawable/cloud"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood3"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
-        <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/mood4"/>
-        <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/mood5"/>
-        <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/mood6"/>
+            android:src="@drawable/wind"/>
     </LinearLayout>
 
     <LinearLayout
@@ -65,15 +45,15 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood7"/>
+            android:src="@drawable/rain"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood9"/>
+            android:src="@drawable/lighntnong"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood9"/>
+            android:src="@drawable/snow"/>
     </LinearLayout>
 
 

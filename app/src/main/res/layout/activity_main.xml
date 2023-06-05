@@ -36,6 +36,7 @@
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <androidx.appcompat.widget.Toolbar
             android:layout_gravity="start"
             android:id="@+id/toolbar"

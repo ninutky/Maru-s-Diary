@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class FindId extends AppCompatActivity {
     EditText email;
     Button nextBtn;
+    ImageButton backbtn;
     private DatabaseReference userRef;
 
     @SuppressLint("MissingInflatedId")
@@ -29,7 +31,16 @@ public class FindId extends AppCompatActivity {
 
         email = findViewById(R.id.fi_id);
         nextBtn = findViewById(R.id.nextbutton);
+        backbtn = findViewById(R.id.id_backbtn);
         userRef = FirebaseDatabase.getInstance().getReference("user");
+
+        // 이전 버튼
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         // 다음버튼을 누를시
         nextBtn.setOnClickListener(new View.OnClickListener() {
