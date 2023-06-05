@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
@@ -29,4 +30,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         return v;
     }
+
+
+
 }
