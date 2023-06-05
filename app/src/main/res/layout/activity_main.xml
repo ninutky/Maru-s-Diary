@@ -15,7 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_bottom_navigation_view"
@@ -44,5 +47,9 @@
             app:popupTheme="@style/Theme.MarusDiary.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
 
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.example.maru_s_diary;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -290,7 +292,6 @@ public class SettingsFragment extends Fragment {
                 }
             });
         }
-
 
 
     }
