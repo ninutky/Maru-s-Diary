@@ -69,12 +69,12 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
 
-        findId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SigninActivity.this, FindId.class));
-            }
-        });
+//        findId.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(SigninActivity.this, FindId.class));
+//            }
+//        });
 
     }
 }

@@ -15,7 +15,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/menu"/>
+            android:background="@drawable/menu"
+            android:backgroundTint="@color/yellow" />
 
         <TextView
             android:layout_width="match_parent"
@@ -108,6 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/menu"
+        android:backgroundTint="@color/yellow"
         android:layout_weight="13">
         <RelativeLayout
             android:layout_width="match_parent"

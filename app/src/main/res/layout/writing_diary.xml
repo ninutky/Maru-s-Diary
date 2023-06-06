@@ -15,7 +15,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/menu"/>
+            android:background="@drawable/menu"
+            android:backgroundTint="@color/yellow"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -46,7 +47,8 @@
             android:orientation="vertical"
             android:layout_marginTop="80dp"
             android:layout_marginLeft="45dp"
-            android:background="@drawable/diary_background">
+            android:background="@drawable/diary_background"
+            android:backgroundTint="@color/yellow_50">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -114,6 +116,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/menu"
+        android:backgroundTint="@color/yellow"
         android:layout_weight="13">
         <RelativeLayout
             android:layout_width="match_parent"
