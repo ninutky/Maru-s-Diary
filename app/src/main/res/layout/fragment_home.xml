@@ -1,4 +1,4 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <!--
-        1. 스크롤 시에만 네브바에 가려지게 하기 위에서 리사이클러뷰 상단에 빈공간이 필요했음
+        1. 스크롤 시에만 네브바에 가려지게 하기 위해서 리사이클러뷰 상단에 빈공간이 필요했음
         2. 근데 빈공간을 만들기 위해서는 AppBar을 넣는게 최선이라고 ChatGPT가 알려줌
            => 빈공간으로 AppBar를 활용함
         -->
@@ -32,6 +31,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/btn_write"
             android:layout_marginBottom="60dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -60,13 +60,12 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="90dp"
-        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:backgroundTint="#b0b0b0"
         android:clickable="true"
         app:borderWidth="0dp"
-        app:layout_anchor="@id/main_recyclerview"
-        app:layout_anchorGravity="bottom|end"
         app:srcCompat="@drawable/edit"
         app:tint="@null" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

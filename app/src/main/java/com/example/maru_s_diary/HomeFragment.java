@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
     private RecyclerView mPostRecyclerView;
     private PostAdapter mAdapter;
     private List<Post> mDatas;
@@ -32,7 +30,6 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         mPostRecyclerView=v.findViewById(R.id.main_recyclerview);
         mDatas=new ArrayList<>();
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
         mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
         mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
         mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));

@@ -18,25 +18,34 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:gravity="center_vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2022.01.01"
             android:textSize="13dp"
             android:id="@+id/list_datetime"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp" />
+
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:id="@+id/list_weather_img"
-            android:src="@drawable/weather_sun"/>
+            android:src="@drawable/weather_sun" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <ImageButton
+            android:id="@+id/btn_mypage_correction"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="180dp"
             android:background="@drawable/correction" />
+
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
