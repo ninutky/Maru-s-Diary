@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -34,15 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-        init(); //객체 정의
-        setupListeners(); //리스너 등록
-
+        init(); // 객체 정의
+        setupListeners(); // 리스너 등록
     }
 
     private void init() {
         home_ly = findViewById(R.id.home_ly);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        home_ly.setLayoutParams(layoutParams);
         bottomNavigationView = findViewById(R.id.main_bottom_navigation_view);
     }
 

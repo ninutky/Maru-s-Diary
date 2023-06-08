@@ -33,17 +33,17 @@ public class HomeFragment extends Fragment {
         mPostRecyclerView=v.findViewById(R.id.main_recyclerview);
         mDatas=new ArrayList<>();
         mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/01",99));
-        mDatas.add(new Post(null,"title~","contents?!!",1,1,"2023/01/01",0));
-
-
+        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
+        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
+        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
+        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
+        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
+        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
+        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
+        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
 
         mAdapter=new PostAdapter(mDatas);
         mPostRecyclerView.setAdapter(mAdapter);
-        recyclerView = v.findViewById(R.id.recyclerView);
-        LinearLayoutManager linearLayoutManager
-                = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
         return v;
     }
 
