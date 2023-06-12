@@ -48,7 +48,8 @@
             android:orientation="vertical"
             android:layout_marginTop="80dp"
             android:layout_marginLeft="45dp"
-            android:background="@drawable/diary_background">
+            android:background="@drawable/diary_background"
+            android:backgroundTint="@color/yellow_50">
 
             <TextView
                 android:layout_width="wrap_content"

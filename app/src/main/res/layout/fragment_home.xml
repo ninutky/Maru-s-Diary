@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -52,7 +53,7 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
-    </LinearLayout>
+    </FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_write"
@@ -62,7 +63,7 @@
         android:layout_marginBottom="90dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:backgroundTint="#b0b0b0"
+        android:backgroundTint="@color/yellow"
         android:clickable="true"
         app:borderWidth="0dp"
         app:srcCompat="@drawable/edit"

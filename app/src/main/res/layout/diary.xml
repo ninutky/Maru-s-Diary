@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".NewPageActivity"
+    tools:context=".Diary"
     android:background="@color/white">
 
     <FrameLayout
@@ -20,6 +20,10 @@
             android:layout_gravity="center"
             android:background="@drawable/diary_background">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,8 +35,18 @@
                 android:drawablePadding="10dp"
                 android:textColor="@color/black" />
 
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/back_btn"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:src="@drawable/right_arrow"
+                android:layout_marginLeft="150dp" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <ImageButton
@@ -75,8 +89,8 @@
                 android:layout_marginLeft="35dp"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -107,50 +121,50 @@
 
 
     </FrameLayout>
-    <!--하단바 코드 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/menu"
-        android:layout_weight="13">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:layout_weight="1">
-            <ImageView
-                android:id="@+id/new_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/mypage" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:layout_weight="1">
+<!--    &lt;!&ndash;하단바 코드 &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@drawable/menu"-->
+<!--        android:layout_weight="13">-->
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_weight="1">-->
+<!--            <ImageView-->
+<!--                android:id="@+id/new_image_view"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:src="@drawable/mypage" />-->
+<!--        </RelativeLayout>-->
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_weight="1">-->
 
-            <ImageView
-                android:id="@+id/money_off_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/home" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:layout_weight="1">
+<!--            <ImageView-->
+<!--                android:id="@+id/money_off_image_view"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:src="@drawable/home" />-->
+<!--        </RelativeLayout>-->
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_weight="1">-->
 
-            <ImageView
-                android:id="@+id/home_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/setting" />
-        </RelativeLayout>
-    </LinearLayout>
+<!--            <ImageView-->
+<!--                android:id="@+id/home_image_view"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:src="@drawable/setting" />-->
+<!--        </RelativeLayout>-->
+<!--    </LinearLayout>-->
 
 </LinearLayout>
