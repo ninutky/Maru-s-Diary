@@ -18,27 +18,31 @@
             android:textStyle="bold"
             android:textSize="25sp"
             android:textColor="@color/black"
-            android:layout_margin="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"/>
 
         <ImageButton
+            android:id="@+id/exit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/cancel"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="210dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="170dp"/>
 
     </LinearLayout>
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp">
+        android:layout_marginLeft="10dp">
         <RadioButton
             android:text="광고, 스팸이 의심됩니다."
             android:textSize="20sp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:checked="true"/>
         <RadioButton
             android:text="과도한 욕설을 담고 있습니다."
             android:textSize="20sp"
@@ -72,6 +76,7 @@
     </RadioGroup>
 
     <android.widget.Button
+        android:id="@+id/report_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -79,7 +84,6 @@
         android:text="신고"
         android:textColor="@color/black"
         android:background="@drawable/button_border"
-        android:id="@+id/theme_save"
         android:layout_marginBottom="25dp"
         android:layout_marginRight="25dp"
         style="?android:attr/borderlessButtonStyle"

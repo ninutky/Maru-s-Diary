@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         init(); // 객체 정의
         setupListeners(); // 리스너 등록
+
     }
 
     private void init() {
