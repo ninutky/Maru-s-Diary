@@ -84,6 +84,8 @@ public class SettingsFragment extends Fragment {
                 String displayEmail = email.substring(0, email.indexOf('@'));
                 userIdTextView.setText(displayEmail);
             }
+        } else {
+            userIdTextView.setText("(null)");
         }
 
         delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
