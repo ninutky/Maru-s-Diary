@@ -50,16 +50,32 @@
             android:background="@drawable/diary_background"
             android:backgroundTint="@color/yellow_50">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2000.00.00"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:textSize="12dp"
-                android:drawableEnd="@drawable/weather"
-                android:drawablePadding="10dp"
-                android:textColor="@color/black" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2000.00.00"
+                    android:layout_marginLeft="33dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="12dp"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black" />
+
+                <ImageButton
+                    android:id="@+id/weather"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/weather"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="13dp"
+                    android:background="@android:color/transparent"/>
+
+
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -71,14 +87,15 @@
                     android:src="@drawable/mood"
                     android:layout_marginLeft="30dp"/>
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="제목을 입력하세요"
                     android:textSize="16dp"
                     android:textStyle="bold"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"/>
+                    android:layout_marginTop="2dp"
+                    android:background="@android:color/transparent"/>
             </LinearLayout>
 
             <ImageView
@@ -89,16 +106,15 @@
                 android:layout_marginTop="10dp"
                 android:src="@drawable/photo" />
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="내용을 입력하세요(최대 1000자)"
                 android:textColor="@color/black"
                 android:textSize="12dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="35dp"/>
-
-
+                android:layout_marginLeft="35dp"
+                android:background="@android:color/transparent"/>
         </LinearLayout>
 
         <Button
@@ -109,53 +125,5 @@
             android:textColor="@color/black"
             android:text="게시"/>
 
-
     </FrameLayout>
-    <!--하단바 코드 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/menu"
-        android:backgroundTint="@color/yellow"
-        android:layout_weight="13">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:layout_weight="1">
-            <ImageView
-                android:id="@+id/new_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/mypage" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/money_off_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/home" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/home_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/setting" />
-        </RelativeLayout>
-    </LinearLayout>
-
 </LinearLayout>

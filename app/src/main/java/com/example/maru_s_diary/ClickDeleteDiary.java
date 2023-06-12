@@ -15,6 +15,9 @@ import android.widget.Button;
 public class ClickDeleteDiary extends AppCompatActivity {
 
     Dialog dilaog01; // 커스텀 다이얼로그
+    Dialog dilaog02; // 커스텀 다이얼로그
+    Dialog dilaog03; // 커스텀 다이얼로그
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,30 @@ public class ClickDeleteDiary extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showDialog01(); // 아래 showDialog01() 함수 호출
+            }
+        });
+
+        dilaog02 = new Dialog(ClickDeleteDiary.this);       // Dialog 초기화
+        dilaog02.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        dilaog02.setContentView(R.layout.dialog02);             // xml 레이아웃 파일과 연결
+
+        // 버튼: 커스텀 다이얼로그 띄우기
+        findViewById(R.id.mood).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog02(); // 아래 showDialog02() 함수 호출
+            }
+        });
+
+        dilaog03 = new Dialog(ClickDeleteDiary.this);       // Dialog 초기화
+        dilaog03.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        dilaog03.setContentView(R.layout.dialog03);             // xml 레이아웃 파일과 연결
+
+        // 버튼: 커스텀 다이얼로그 띄우기
+        findViewById(R.id.weather).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog03(); // 아래 showDialog03() 함수 호출
             }
         });
     }
@@ -62,5 +89,29 @@ public class ClickDeleteDiary extends AppCompatActivity {
                 finish();           // 앱 종료
             }
         });
+    }
+
+    public void showDialog02(){
+        dilaog02.show(); // 다이얼로그 띄우기
+        dilaog02.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
+        /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
+
+        // 위젯 연결 방식은 각자 취향대로~
+        // '아래 아니오 버튼'처럼 일반적인 방법대로 연결하면 재사용에 용이하고,
+        // '아래 네 버튼'처럼 바로 연결하면 일회성으로 사용하기 편함.
+        // *주의할 점: findViewById()를 쓸 때는 -> 앞에 반드시 다이얼로그 이름을 붙여야 한다.
+
+    }
+
+    public void showDialog03(){
+        dilaog03.show(); // 다이얼로그 띄우기
+        dilaog03.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
+        /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
+
+        // 위젯 연결 방식은 각자 취향대로~
+        // '아래 아니오 버튼'처럼 일반적인 방법대로 연결하면 재사용에 용이하고,
+        // '아래 네 버튼'처럼 바로 연결하면 일회성으로 사용하기 편함.
+        // *주의할 점: findViewById()를 쓸 때는 -> 앞에 반드시 다이얼로그 이름을 붙여야 한다.
+
     }
 }
