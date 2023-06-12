@@ -6,7 +6,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".AlarmActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -23,7 +24,8 @@
         android:textSize="24sp"
         android:gravity="center"/>
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/back_btn"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_gravity="end"

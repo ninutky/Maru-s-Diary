@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -21,9 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-
-
 
     private LinearLayout home_ly;
     private BottomNavigationView bottomNavigationView;
@@ -41,6 +39,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        setSupportActionBar(myToolbar);
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        // 알림 버튼을 눌렀을 때 실행
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.action_alarm) { // 알람 버튼 클릭 이벤트 처리
+                    Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
+            }
+        });
+
         init(); // 객체 정의
         setupListeners(); // 리스너 등록
 
@@ -56,26 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // 선택 리스너 등록
     private void setupListeners() {
         bottomNavigationView.setOnNavigationItemSelectedListener(new TabSelectedListener());
-    }
-
-    // 알림 버튼을 눌렀을 때 실행
-    private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.action_alarm) { // 알람 버튼 클릭 이벤트 처리
-                    // 프래그먼트 이동
-                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.container, new AlarmFragment());
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
