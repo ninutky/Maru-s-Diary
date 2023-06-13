@@ -29,6 +29,7 @@
         <activity
             android:name=".SigninActivity"
             android:exported="true">
+
         </activity>
         <activity
             android:name=".AlarmActivity"
@@ -48,6 +49,11 @@
         <activity android:name=".HomeFragment" />
         <activity
             android:name=".ClickDeleteDiary"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".NewPageActivity"
             android:exported="true">
 
         </activity>

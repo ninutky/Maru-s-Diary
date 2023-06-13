@@ -1,5 +1,6 @@
 package com.example.maru_s_diary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,13 +17,30 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
-public class HomeFragment extends Fragment {
-    private RecyclerView mPostRecyclerView;
-    private PostAdapter mAdapter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class HomeFragment extends Fragment implements View.OnClickListener{
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+    public RecyclerView mPostRecyclerView;
+    private EditText mTitle,mContents,mDate;
+    //    private int mWeather,mFeeling;
+    public PostAdapter mAdapter;
     private List<Post> mDatas;
+    FloatingActionButton writeButton;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,19 +52,33 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        mPostRecyclerView = v.findViewById(R.id.main_recyclerview);
-        mDatas=new ArrayList<>();
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
-        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30",10));
+        View v2 = inflater.inflate(R.layout.writing_diary, container, false);
 
-        mAdapter=new PostAdapter(mDatas);
-        mPostRecyclerView.setAdapter(mAdapter);
+        mTitle=v2.findViewById(R.id.post_title_edit);
+        mContents=v2.findViewById(R.id.post_contents_edit);
+//        mWeather=findViewById(R.id.weather);
+//        mFeeling=findViewById(R.id.mood);
+        mDate=v2.findViewById(R.id.date);
+        writeButton=v.findViewById(R.id.btn_write);
+        v2.findViewById(R.id.post_save_btn).setOnClickListener(this);
+        writeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), NewPageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mPostRecyclerView=v.findViewById(R.id.main_recyclerview);
+//        mDatas.add(new Post(null,"title","contents","2023/05/30"));
+//        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30"));
+//        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30"));
+//        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30"));
+//        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30"));
+//        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30"));
+//        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30"));
+//        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30"));
+
 
         // 리사이클러뷰 아이템 클릭 리스너 구현
         mPostRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -87,4 +120,57 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mDatas=new ArrayList<>();
+        mStore.collection(FirebaseID.post)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            if(task.getResult()!=null){
+                                for(DocumentSnapshot snap:task.getResult()){
+                                    Map<String,Object> shot= snap.getData();
+                                    String documentId=String.valueOf(shot.get(FirebaseID.documentId));
+                                    String title=String.valueOf(snap.get(FirebaseID.title));
+                                    String contents=String.valueOf(shot.get(FirebaseID.contents));
+//                                    int weather=(int) shot.get(FirebaseID.weather);
+//                                    int feeling=(int)shot.get(FirebaseID.feeling);
+                                    String date=String.valueOf(shot.get(FirebaseID.date));
+                                    //int heart=(int)shot.get(FirebaseID.heart);
+                                    Post data=new Post(documentId,title,contents,date);
+                                    mDatas.add(data);
+                                }
+                                mAdapter=new PostAdapter(mDatas);
+                                mPostRecyclerView.setAdapter(mAdapter);
+                            }
+
+                        }
+                    }
+                });
+
+    }
+    @Override
+    public void onClick(View view) {
+        if(mAuth.getCurrentUser()!=null){
+            String postId=mStore.collection(FirebaseID.post).document().getId();
+            Map<String,Object> data=new HashMap<>();
+            data.put(FirebaseID.documentId,mAuth.getCurrentUser().getUid());
+            data.put(FirebaseID.title,mTitle.getText().toString());
+            data.put(FirebaseID.contents,mContents.getText().toString());
+//            data.put(String.valueOf(FirebaseID.weather), mWeather);
+//            data.put(String.valueOf(FirebaseID.feeling), mFeeling);
+            data.put(FirebaseID.date,mDate.getText().toString());
+
+            mStore.collection(FirebaseID.post).document(postId).set(data, SetOptions.merge());
+
+        }
+
+
+
+    }
 }

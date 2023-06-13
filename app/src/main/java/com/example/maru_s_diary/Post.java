@@ -6,20 +6,21 @@ public class Post {
     private String documentId;
     private String title;
     private String contents;
-    private int weather;
-    private int feeling;
+//    private int weather;
+//    private int feeling;
     private String date;
 
 
     public Post() {
     }
 
-    public Post(String documentId, String title, String contents,int weather, int feeling, String date, int heart) {
+    //int weather, int feeling,
+    public Post(String documentId, String title, String contents, String date) {
         this.documentId = documentId;
         this.title = title;
         this.contents = contents;
-        this.weather = weather;
-        this.feeling = feeling;
+//        this.weather = weather;
+//        this.feeling = feeling;
         this.date = date;
     }
 
@@ -47,21 +48,21 @@ public class Post {
         this.contents = contents;
     }
 
-    public int getWeather() {
-        return weather;
-    }
-
-    public void setWeather(int weather) {
-        this.weather = weather;
-    }
-
-    public int getFeeling() {
-        return feeling;
-    }
-
-    public void setFeeling(int feeling) {
-        this.feeling = feeling;
-    }
+//    public int getWeather() {
+//        return weather;
+//    }
+//
+//    public void setWeather(int weather) {
+//        this.weather = weather;
+//    }
+//
+//    public int getFeeling() {
+//        return feeling;
+//    }
+//
+//    public void setFeeling(int feeling) {
+//        this.feeling = feeling;
+//    }
 
     public String getDate() {
         return date;
@@ -78,8 +79,6 @@ public class Post {
                 "documentId='" + documentId + '\'' +
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
-                ", weather=" + weather +
-                ", feeling=" + feeling +
                 ", date='" + date + '\'' +
                 '}';
     }
