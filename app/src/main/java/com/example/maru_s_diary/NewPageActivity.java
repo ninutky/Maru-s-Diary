@@ -62,7 +62,7 @@ public class NewPageActivity extends AppCompatActivity  {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
                                 Log.d("mytag", "complete");
-                                Toast.makeText(NewPageActivity.this, "글이 등록되었습닏", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(NewPageActivity.this, "글이 등록되었습니다", Toast.LENGTH_SHORT).show();
                                 NewPageActivity.this.finish();
                             }
                         });
