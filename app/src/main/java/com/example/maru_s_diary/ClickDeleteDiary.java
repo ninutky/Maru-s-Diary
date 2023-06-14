@@ -1,28 +1,58 @@
 package com.example.maru_s_diary;
 
-import androidx.appcompat.app.AlertDialog;
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TextView;
+
+import java.util.Calendar;
 
 
 public class ClickDeleteDiary extends AppCompatActivity {
 
+    private static final String TAG = "ClickDeleteDiary";
+
+    private TextView dialog;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
     Dialog dilaog01; // 커스텀 다이얼로그
     Dialog dilaog02; // 커스텀 다이얼로그
     Dialog dilaog03; // 커스텀 다이얼로그
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.correction_diary);
+//        dialog = (TextView) findViewById(R.id.days);
+        dialog = findViewById(R.id.days);
+
+        dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        ClickDeleteDiary.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
 
         dilaog01 = new Dialog(ClickDeleteDiary.this);       // Dialog 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
@@ -59,6 +89,16 @@ public class ClickDeleteDiary extends AppCompatActivity {
                 showDialog03(); // 아래 showDialog03() 함수 호출
             }
         });
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+
+                String date = month + "/" + day + "/" + year;
+                dialog.setText(date);
+            }
+        };
     }
 
     // dialog01을 디자인하는 함수
