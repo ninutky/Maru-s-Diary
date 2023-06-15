@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -29,28 +30,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MypageCorrectionFragment fragmentMyPageCorrection = new MypageCorrectionFragment();
     private HomeFragment fragmentHome = new HomeFragment();
     private FragmentManager fragmentManager = getSupportFragmentManager();
+    private ImageView alarmBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //툴바 설정
-//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-//        setSupportActionBar(myToolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        // 알림 버튼을 눌렀을 때 실행
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        alarmBtn = findViewById(R.id.alarm_btn);
+        // 알람 버튼 클릭 시
+        alarmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.action_alarm) { // 알람 버튼 클릭 이벤트 처리
-                    Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-                return false;
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
+                startActivity(intent);
             }
         });
 
