@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/round_bg"
+    android:backgroundTint="@color/white"
     android:orientation="vertical"
     android:paddingRight="20dp"
     android:paddingLeft="30dp"
@@ -16,7 +17,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
         android:id="@+id/cancel_button"
-        android:background="@drawable/cancel" />
+        android:background="@drawable/cancel"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,20 +25,21 @@
         android:layout_marginBottom="20dp">
 
         <LinearLayout
-            android:id="@+id/theme_yellow"
+            android:id="@+id/theme_pink"
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="@color/yellow"
+            android:backgroundTint="@color/pink"
             android:gravity="center"
             android:layout_marginRight="20dp">
             <ImageView
+                android:id="@+id/pink_check"
                 android:visibility="visible"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/yellow_check"
                 android:src="@drawable/theme_check"/>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/theme_skyblue"
             android:layout_width="100dp"
@@ -73,31 +75,33 @@
                 android:src="@drawable/theme_check"/>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/theme_pink"
+            android:id="@+id/theme_yellow"
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:background="@drawable/round_bg"
-            android:backgroundTint="@color/pink"
+            android:backgroundTint="@color/yellow"
             android:gravity="center">
             <ImageView
-                android:id="@+id/pink_check"
                 android:visibility="invisible"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:id="@+id/yellow_check"
                 android:src="@drawable/theme_check"/>
         </LinearLayout>
+
 
     </LinearLayout>
 
     <android.widget.Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="end"
         android:text="저장"
         android:textColor="@color/black"
         android:background="@drawable/button_border"
+        android:backgroundTint="@color/black_10"
         android:id="@+id/theme_save"
         style="?android:attr/borderlessButtonStyle"
-        android:textSize="20sp" />
+        android:textSize="15sp"  />
 </LinearLayout>

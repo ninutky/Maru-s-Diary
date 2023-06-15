@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     tools:context=".ReportDialogFragment"
     android:background="@drawable/dialog_background"
+    android:backgroundTint="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -26,7 +27,7 @@
             android:id="@+id/exit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/cancel"
+            android:background="@drawable/cancel"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="170dp"/>
 

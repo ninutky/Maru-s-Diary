@@ -29,19 +29,25 @@
                 android:layout_height="wrap_content"
                 android:text="2000.00.00"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:textSize="12dp"
-                android:drawableEnd="@drawable/weather"
+                android:layout_marginTop="17dp"
+                android:textSize="15dp"
                 android:drawablePadding="10dp"
                 android:textColor="@color/black" />
 
             <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/weather_sun"
+                android:scaleType="centerCrop" />
+
+            <ImageButton
                 android:id="@+id/back_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/right_arrow"
-                android:layout_marginLeft="150dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="135dp" />
 
         </LinearLayout>
 
@@ -50,8 +56,9 @@
                 android:layout_height="wrap_content">
 
                 <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/mood"
                     android:layout_marginLeft="15dp"/>
 
@@ -59,15 +66,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="제목"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
                     android:textStyle="bold"
-                    android:layout_marginTop="7dp" />
+                    android:layout_marginTop="7dp"/>
 
                 <ImageButton
                     android:id="@+id/report"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/report"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="150dp"/>
 
             </LinearLayout>
@@ -91,29 +100,38 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="152dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
 
                 <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/comments"
-                    android:layout_marginTop="150dp"
-                    android:layout_marginLeft="190dp"/>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="200dp"
+                    android:contentDescription="chat"
+                    android:padding="1sp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/comments" />
 
                 <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/like"
-                    android:layout_marginTop="150dp"/>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="heart"
+                    android:padding="1sp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/full_heart" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="5dp"
                     android:text="100"
-                    android:textStyle="bold"
-                    android:layout_marginTop="157dp"
-                    />
-
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -122,50 +140,4 @@
 
 
     </FrameLayout>
-<!--    &lt;!&ndash;하단바 코드 &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="@drawable/menu"-->
-<!--        android:layout_weight="13">-->
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_weight="1">-->
-<!--            <ImageView-->
-<!--                android:id="@+id/new_image_view"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:src="@drawable/mypage" />-->
-<!--        </RelativeLayout>-->
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/money_off_image_view"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:src="@drawable/home" />-->
-<!--        </RelativeLayout>-->
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/home_image_view"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:src="@drawable/setting" />-->
-<!--        </RelativeLayout>-->
-<!--    </LinearLayout>-->
-
 </LinearLayout>

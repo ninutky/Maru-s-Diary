@@ -4,13 +4,14 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/round_bg"
+    android:backgroundTint="@color/white"
     android:orientation="vertical">
 
     <ImageButton
         android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/cancel"
+        android:background="@drawable/cancel"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="210dp"/>
 
@@ -24,15 +25,15 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood1"/>
+            android:background="@drawable/mood1"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood2"/>
+            android:background="@drawable/mood2"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood3"/>
+            android:background="@drawable/mood3"/>
     </LinearLayout>
 
     <LinearLayout
@@ -44,15 +45,15 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood4"/>
+            android:background="@drawable/mood4"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood5"/>
+            android:background="@drawable/mood5"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood6"/>
+            android:background="@drawable/mood6"/>
     </LinearLayout>
 
     <LinearLayout
@@ -65,15 +66,15 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood7"/>
+            android:background="@drawable/mood7"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood9"/>
+            android:background="@drawable/mood9"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/mood9"/>
+            android:background="@drawable/mood9"/>
     </LinearLayout>
 
 
@@ -88,7 +89,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black"
-            android:text="저장" />
+            android:text="저장"
+            android:textSize="15sp" />
     </LinearLayout>
 
 </LinearLayout>

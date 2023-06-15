@@ -4,12 +4,13 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/round_bg"
+    android:backgroundTint="@color/white"
     android:orientation="vertical">
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/cancel"
+        android:background="@drawable/cancel"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="210dp"/>
 
@@ -24,15 +25,15 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/sun"/>
+            android:background="@drawable/sun"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/cloud"/>
+            android:background="@drawable/cloud"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/wind"/>
+            android:background="@drawable/wind"/>
     </LinearLayout>
 
     <LinearLayout
@@ -45,15 +46,15 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/rain"/>
+            android:background="@drawable/rain"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/lighntnong"/>
+            android:background="@drawable/lighntnong"/>
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/snow"/>
+            android:background="@drawable/snow"/>
     </LinearLayout>
 
 
@@ -67,8 +68,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="저장"
             android:textColor="@color/black"
-            android:text="저장" />
+            android:textSize="15sp"  />
     </LinearLayout>
 
 </LinearLayout>

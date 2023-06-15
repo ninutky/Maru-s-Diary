@@ -201,12 +201,13 @@ public class SettingsFragment extends Fragment {
                 }
 
                 if (selectedThemeIndex == 0) {
-                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+
                 } else if (selectedThemeIndex == 1) {
                     profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
                     changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
@@ -222,12 +223,12 @@ public class SettingsFragment extends Fragment {
                     logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
                     delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
                 } else {
-                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
                 }
             }
         });
@@ -240,22 +241,22 @@ public class SettingsFragment extends Fragment {
         });
 
         themes = new LinearLayout[4];
-        themes[0] = (themedlg.findViewById(R.id.theme_yellow));
+        themes[0] = (themedlg.findViewById(R.id.theme_pink));
         themes[1] = (themedlg.findViewById(R.id.theme_skyblue));
         themes[2] = (themedlg.findViewById(R.id.theme_green));
-        themes[3] = (themedlg.findViewById(R.id.theme_pink));
+        themes[3] = (themedlg.findViewById(R.id.theme_yellow));
 
         themes = new LinearLayout[4];
-        themes[0] = (themedlg.findViewById(R.id.theme_yellow));
+        themes[0] = (themedlg.findViewById(R.id.theme_pink));
         themes[1] = (themedlg.findViewById(R.id.theme_skyblue));
         themes[2] = (themedlg.findViewById(R.id.theme_green));
-        themes[3] = (themedlg.findViewById(R.id.theme_pink));
+        themes[3] = (themedlg.findViewById(R.id.theme_yellow));
 
         thmchks = new ImageView[4];
-        thmchks[0] = (themedlg.findViewById(R.id.yellow_check));
+        thmchks[0] = (themedlg.findViewById(R.id.pink_check));
         thmchks[1] = (themedlg.findViewById(R.id.skyblue_check));
         thmchks[2] = (themedlg.findViewById(R.id.green_check));
-        thmchks[3] = (themedlg.findViewById(R.id.pink_check));
+        thmchks[3] = (themedlg.findViewById(R.id.yellow_check));
 
         for(int i = 0; i < 4; i++) {
             int finalI = i;

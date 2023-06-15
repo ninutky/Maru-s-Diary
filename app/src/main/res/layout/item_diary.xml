@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/edittext_border"
-    android:backgroundTint="@color/yellow_50"
+    android:backgroundTint="@color/pink_50"
     android:orientation="vertical"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
@@ -37,10 +37,10 @@
         android:layout_marginBottom="13dp"
         android:gravity="center_vertical">
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="5dp"
-            android:padding="1sp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="8dp"
             android:id="@+id/list_feeling_img"
             android:src="@drawable/feeling_happy"/>
         <TextView
@@ -71,12 +71,12 @@
 
         <ImageButton
             android:id="@+id/list_heart_imgbtn"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:contentDescription="heart"
             android:padding="1sp"
             android:scaleType="centerCrop"
-            android:src="@drawable/full_heart" />
+            android:src="@drawable/full_heart"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

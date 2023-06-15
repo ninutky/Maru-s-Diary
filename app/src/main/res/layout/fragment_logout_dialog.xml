@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/round_bg"
+    android:backgroundTint="@color/white"
     android:orientation="vertical">
 
     <TextView
@@ -12,7 +13,8 @@
         android:layout_height="wrap_content"
         android:padding="30dp"
         android:textStyle="bold"
-        android:text="로그아웃 하시겠습니까?" />
+        android:text="로그아웃 하시겠습니까?"
+        android:textSize="15sp"  />
 
     <LinearLayout
         android:layout_width="match_parent"

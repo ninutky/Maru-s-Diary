@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/menu"
-        android:backgroundTint="@color/yellow"/>
+        android:backgroundTint="@color/pink"/>
 
     <TextView
         android:layout_width="match_parent"

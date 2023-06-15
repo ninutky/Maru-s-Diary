@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/menu"
-            android:backgroundTint="@color/yellow" />
+            android:backgroundTint="@color/pink" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,11 +27,11 @@
             android:gravity="center"/>
 
         <ImageButton
-            android:layout_width="12dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
             android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
             android:background="@drawable/left_arrow" />
     </FrameLayout>
 
@@ -91,6 +91,6 @@
         android:background="@drawable/button_border"
         android:text="완료"
         android:textColor="#000"
-        android:textSize="18sp"/>
+        android:textSize="15sp" />
 
 </LinearLayout>

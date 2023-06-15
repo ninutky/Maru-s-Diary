@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/round_bg"
+    android:backgroundTint="@color/white"
     android:orientation="vertical">
 
     <TextView
@@ -11,7 +12,8 @@
         android:layout_height="wrap_content"
         android:padding="30dp"
         android:textStyle="bold"
-        android:text="삭제 하시겠습니까?" />
+        android:text="삭제 하시겠습니까?"
+        android:textSize="15sp"  />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black"
-            android:text="아니오" />
+            android:text="아니오"
+            android:textSize="15sp"  />
 
         <Button
             android:id="@+id/yesBtn"
@@ -33,7 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black"
-            android:text="예" />
+            android:text="예"
+            android:textSize="15sp"  />
     </LinearLayout>
 
 </LinearLayout>

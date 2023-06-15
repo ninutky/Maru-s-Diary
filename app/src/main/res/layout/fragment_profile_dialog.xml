@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/round_bg"
+    android:backgroundTint="@color/white"
     android:orientation="vertical"
     android:paddingRight="20dp"
     android:paddingLeft="30dp"
@@ -169,14 +170,15 @@
     </LinearLayout>
 
     <android.widget.Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="end"
-        android:text="저장"
-        android:textColor="@color/black"
-        android:background="@drawable/button_border"
         android:id="@+id/theme_save"
         style="?android:attr/borderlessButtonStyle"
-        android:textSize="20sp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_border"
+        android:backgroundTint="@color/black_10"
+        android:text="저장"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 </LinearLayout>

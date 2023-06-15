@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/edittext_border"
-    android:backgroundTint="@color/yellow_50"
+    android:backgroundTint="@color/pink_50"
     android:orientation="vertical"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
@@ -56,6 +56,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginRight="5dp"
+            android:scaleType="centerCrop"
             android:padding="1sp"
             android:id="@+id/list_feeling_img"
             android:src="@drawable/feeling_happy"/>

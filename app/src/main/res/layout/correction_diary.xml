@@ -28,9 +28,10 @@
             android:gravity="center"/>
 
         <ImageButton
-            android:layout_width="12dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="20dp"
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
             android:background="@drawable/left_arrow" />
 
@@ -134,8 +135,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="550dp"
             android:layout_marginLeft="280dp"
+            android:background="@drawable/button_border"
+            android:backgroundTint="@color/black_10"
             android:textColor="@color/black"
-            android:text="완료"/>
+            android:text="완료"
+            android:textSize="15sp" />
     </FrameLayout>
 
 </LinearLayout>
