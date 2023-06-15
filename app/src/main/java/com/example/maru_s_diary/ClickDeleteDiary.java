@@ -15,13 +15,13 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 
 public class ClickDeleteDiary extends AppCompatActivity {
 
-    private static final String TAG = "ClickDeleteDiary";
 
     private TextView dialog;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -33,6 +33,7 @@ public class ClickDeleteDiary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.correction_diary);
+
 //        dialog = (TextView) findViewById(R.id.days);
         dialog = findViewById(R.id.days);
 
@@ -44,13 +45,13 @@ public class ClickDeleteDiary extends AppCompatActivity {
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
                         ClickDeleteDiary.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        android.R.style.Theme_Material_Light_Dialog,
                         mDateSetListener,
                         year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
             }
         });
 
@@ -92,13 +93,14 @@ public class ClickDeleteDiary extends AppCompatActivity {
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+                String strDate = String.valueOf(year) + ".";
+                strDate += String.valueOf(month+1) + ".";
+                strDate += String.valueOf(day);
 
-                String date = month + "/" + day + "/" + year;
-                dialog.setText(date);
+                Toast.makeText(getApplicationContext(), strDate, Toast.LENGTH_SHORT).show();
             }
         };
+
     }
 
     // dialog01을 디자인하는 함수
