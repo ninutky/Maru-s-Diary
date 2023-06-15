@@ -35,6 +35,7 @@
             android:background="@drawable/left_arrow" />
 
         <ImageButton
+            android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
@@ -60,10 +61,11 @@
                     android:layout_height="wrap_content"
                     android:hint="2000.00.00"
                     android:layout_marginLeft="33dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="29dp"
                     android:textSize="14dp"
                     android:drawablePadding="10dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:background="@android:color/transparent"/>
 
                 <ImageButton
                     android:id="@+id/weather"
@@ -71,7 +73,7 @@
                     android:layout_height="35dp"
                     android:src="@drawable/weather"
                     android:layout_marginLeft="2dp"
-                    android:layout_marginTop="13dp"
+                    android:layout_marginTop="22dp"
                     android:background="@android:color/transparent"/>
 
 
@@ -86,7 +88,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:src="@drawable/mood"
-                    android:layout_marginLeft="30dp"/>
+                    android:layout_marginLeft="30dp" />
 
                 <EditText
                     android:id="@+id/post_title_edit"
@@ -100,13 +102,15 @@
                     android:background="@android:color/transparent"/>
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imgv1"
+
+            <ImageButton
+                android:id="@+id/imgbtn"
+                android:src="@drawable/photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/photo" />
+                android:layout_marginLeft="30dp"
+                android:background="@android:color/transparent"/>
 
             <EditText
                 android:id="@+id/post_contents_edit"
@@ -131,51 +135,5 @@
 
 
     </FrameLayout>
-    <!--하단바 코드 -->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="@drawable/menu"-->
-<!--        android:backgroundTint="@color/yellow"-->
-<!--        android:layout_weight="13">-->
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_weight="1">-->
-<!--            <ImageView-->
-<!--                android:id="@+id/new_image_view"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:src="@drawable/mypage" />-->
-<!--        </RelativeLayout>-->
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/money_off_image_view"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:src="@drawable/home" />-->
-<!--        </RelativeLayout>-->
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:padding="10dp"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/home_image_view"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerVertical="true"-->
-<!--                android:src="@drawable/setting" />-->
-<!--        </RelativeLayout>-->
-<!--    </LinearLayout>-->
 
 </LinearLayout>

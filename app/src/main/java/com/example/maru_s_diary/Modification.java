@@ -14,16 +14,16 @@ import android.view.Window;
 
 public class Modification extends AppCompatActivity {
 
-    Dialog dilaog02; // 커스텀 다이얼로그
+    Dialog dialog02; // 커스텀 다이얼로그
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.writing_diary);
 
-        dilaog02 = new Dialog(Modification.this);       // Dialog 초기화
-        dilaog02.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
-        dilaog02.setContentView(R.layout.dialog02);             // xml 레이아웃 파일과 연결
+        dialog02 = new Dialog(Modification.this);       // Dialog 초기화
+        dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        dialog02.setContentView(R.layout.dialog02);             // xml 레이아웃 파일과 연결
 
         // 버튼: 커스텀 다이얼로그 띄우기
         findViewById(R.id.mood).setOnClickListener(new View.OnClickListener() {
@@ -36,8 +36,8 @@ public class Modification extends AppCompatActivity {
 
     // dialog01을 디자인하는 함수
     public void showDialog02(){
-        dilaog02.show(); // 다이얼로그 띄우기
-        dilaog02.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
+        dialog02.show(); // 다이얼로그 띄우기
+        dialog02.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
         /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
 
         // 위젯 연결 방식은 각자 취향대로~

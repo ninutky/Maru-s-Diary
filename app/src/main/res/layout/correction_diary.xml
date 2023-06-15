@@ -59,7 +59,7 @@
                 android:id="@+id/days"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:textSize="12dp"
                 android:drawablePadding="10dp"
@@ -94,12 +94,13 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/mood"
-                    android:layout_marginLeft="25dp"/>
+                    android:layout_marginLeft="30dp"
+                    android:background="@android:color/transparent"/>
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:text="제목을 입력하세요"
+                    android:hint="제목을 입력하세요"
                     android:textSize="16dp"
                     android:textStyle="bold"
                     android:layout_marginLeft="5dp"
@@ -113,16 +114,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="30dp"
+                android:background="@android:color/transparent"/>
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="내용을 입력하세요(최대 1000자)"
+                android:hint="내용을 입력하세요(최대 1000자)"
                 android:textColor="@color/black"
                 android:textSize="12dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="30dp"
                 android:background="@android:color/transparent"/>
         </LinearLayout>
 
