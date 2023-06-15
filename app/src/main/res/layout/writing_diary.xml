@@ -88,7 +88,8 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:src="@drawable/mood"
-                    android:layout_marginLeft="30dp" />
+                    android:layout_marginLeft="30dp"
+                    android:background="@android:color/transparent"/>
 
                 <EditText
                     android:id="@+id/post_title_edit"
