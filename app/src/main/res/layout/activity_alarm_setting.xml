@@ -82,7 +82,7 @@
             android:backgroundTint="@color/yellow" />
 
         <Switch
-            android:text="방해금지 모드"
+            android:text="야간 방해금지 모드"
             android:textSize="18sp"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -109,31 +109,13 @@
                 android:backgroundTint="@color/yellow" />
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="175dp"
-                android:layout_height="195dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginTop="2dp"
                 android:layout_marginLeft="30dp">
                 <TextView
-                    android:text="시작"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="25dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="175dp"
-                android:layout_height="195dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="30dp">
-                <TextView
-                    android:text="종료"
+                    android:text="20:00 ~ 06:00\n\n이 시간에는 알림이 오지 않습니다."
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"

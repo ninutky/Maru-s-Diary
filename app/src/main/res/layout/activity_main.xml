@@ -23,30 +23,39 @@
         android:id="@+id/main_bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:padding="10dp"
         android:background="@color/white"
         android:layout_alignParentBottom="true"
         app:itemTextColor="@color/black"
         app:menu="@menu/home"
         app:labelVisibilityMode="labeled"/>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="60dp"
+        android:background="@drawable/menu"
+        android:backgroundTint="@color/yellow"/>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:src="@drawable/maru_logo_simple_version" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_gravity="start"
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/top_nav_menu"
-            app:popupTheme="@style/Theme.MarusDiary.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
+    <ImageView
+        android:id="@+id/alarm_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/alarm"/>
 
 
 </RelativeLayout>
