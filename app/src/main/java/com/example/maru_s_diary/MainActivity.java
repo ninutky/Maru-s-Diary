@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         init(); // 객체 정의
         setupListeners(); // 리스너 등록
 
+        fragmentManager.beginTransaction()
+                .replace(R.id.home_ly, fragmentHome)
+                .commit();
+
     }
 
     private void init() {
