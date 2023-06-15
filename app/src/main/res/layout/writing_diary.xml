@@ -125,8 +125,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="750dp"
             android:layout_marginLeft="270dp"
+            android:background="@drawable/button_border"
+            android:backgroundTint="@color/black_10"
             android:textColor="@color/black"
-            android:text="게시"/>
+            android:text="게시"
+            android:textSize="15sp"/>
 
 
     </FrameLayout>

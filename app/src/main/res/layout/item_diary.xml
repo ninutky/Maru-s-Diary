@@ -12,7 +12,8 @@
     android:paddingBottom="20dp"
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
-    android:layout_marginBottom="20dp">
+    android:layout_marginBottom="20dp"
+    android:id="@+id/diary_lly">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,13 +45,12 @@
             android:id="@+id/list_feeling_img"
             android:src="@drawable/feeling_happy"/>
         <TextView
+            android:id="@+id/list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="제목"
             android:textStyle="bold"
-            android:id="@+id/list_title"
-            android:textSize="18dp"
-            />
+            android:textSize="18dp"/>
     </LinearLayout>
 
     <TextView
@@ -70,7 +70,7 @@
         android:gravity="center_vertical">
 
         <ImageButton
-            android:id="@+id/list_heart_imgbtn"
+            android:id="@+id/heart_btn"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="heart"
@@ -78,12 +78,12 @@
             android:scaleType="centerCrop"
             android:src="@drawable/full_heart"/>
         <TextView
+            android:id="@+id/heart_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginLeft="5dp"
             android:textSize="15dp"
-            android:id="@+id/list_heart_count"
             android:text="100"/>
     </LinearLayout>
 

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -31,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HomeFragment extends Fragment implements View.OnClickListener{
+public class HomeFragment extends Fragment implements View.OnClickListener, PostAdapter.OnItemClickListener {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     public RecyclerView mPostRecyclerView;
@@ -80,42 +81,42 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 //        mDatas.add(new Post(null,"title","contents",1,1,"2023/05/30"));
 
 
-        // 리사이클러뷰 아이템 클릭 리스너 구현
-        mPostRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                // 사용자가 터치한 좌표를 확인하여 클릭한 아이템 가져오기
-                View childView = rv.findChildViewUnder(e.getX(), e.getY());
-                int position = rv.getChildAdapterPosition(childView);
-
-                // 클릭한 아이템의 프래그먼트 전환을 위한 작업 수행
-                if (position != RecyclerView.NO_POSITION) {
-                    // 프래그먼트 전환 코드 작성
-                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                    // 전환할 프래그먼트 생성 및 추가 작업
-                    Diary newFragment = new Diary();
-                    fragmentTransaction.replace(R.id.fragment_container, newFragment);
-                    fragmentTransaction.addToBackStack(null);
-
-                    // 프래그먼트 전환 실행
-                    fragmentTransaction.commit();
-                }
-
-                return true;
-            }
-
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                // 터치 이벤트 처리
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-                // 인터셉트 터치 이벤트 요청 처리
-            }
-        });
+//        // 리사이클러뷰 아이템 클릭 리스너 구현
+//        mPostRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+//            @Override
+//            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+//                // 사용자가 터치한 좌표를 확인하여 클릭한 아이템 가져오기
+//                View childView = rv.findChildViewUnder(e.getX(), e.getY());
+//                int position = rv.getChildAdapterPosition(childView);
+//
+//                // 클릭한 아이템의 프래그먼트 전환을 위한 작업 수행
+//                if (position != RecyclerView.NO_POSITION) {
+//                    // 프래그먼트 전환 코드 작성
+//                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//                    // 전환할 프래그먼트 생성 및 추가 작업
+//                    Diary newFragment = new Diary();
+//                    fragmentTransaction.replace(R.id.fragment_container, newFragment);
+//                    fragmentTransaction.addToBackStack(null);
+//
+//                    // 프래그먼트 전환 실행
+//                    fragmentTransaction.commit();
+//                }
+//
+//                return true;
+//            }
+//
+//            @Override
+//            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+//                // 터치 이벤트 처리
+//            }
+//
+//            @Override
+//            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+//                // 인터셉트 터치 이벤트 요청 처리
+//            }
+//        });
 
         return v;
     }
@@ -125,7 +126,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onStart() {
         super.onStart();
-        mDatas=new ArrayList<>();
+        mDatas = new ArrayList<>();
+        mAdapter = new PostAdapter(mDatas);
+        mAdapter.setOnItemClickListener(this);
+        mPostRecyclerView.setAdapter(mAdapter);
+
         mStore.collection(FirebaseID.post)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -138,21 +143,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                                     String documentId=String.valueOf(shot.get(FirebaseID.documentId));
                                     String title=String.valueOf(snap.get(FirebaseID.title));
                                     String contents=String.valueOf(shot.get(FirebaseID.contents));
-//                                    int weather=(int) shot.get(FirebaseID.weather);
-//                                    int feeling=(int)shot.get(FirebaseID.feeling);
                                     String date=String.valueOf(shot.get(FirebaseID.date));
-                                    //int heart=(int)shot.get(FirebaseID.heart);
                                     Post data=new Post(documentId,title,contents,date);
                                     mDatas.add(data);
                                 }
-                                mAdapter=new PostAdapter(mDatas);
-                                mPostRecyclerView.setAdapter(mAdapter);
+                                mAdapter.notifyDataSetChanged(); // 데이터 변경을 어댑터에 알려줌
                             }
-
                         }
                     }
                 });
-
     }
     @Override
     public void onClick(View view) {
@@ -170,7 +169,28 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         }
 
+    }
 
+    // 좋아요 버튼 클릭 이벤트 처리
+    @Override
+    public void onHeartBtnClick(int position) {
 
+        Toast.makeText(getActivity(), "좋아요 되었습니다. - position: " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    // 일기 클릭 이벤트 처리
+    @Override
+    public void onLlyClick(int position) {
+        // 프래그먼트 전환 코드 작성
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // 전환할 프래그먼트 생성 및 추가 작업
+        Diary newFragment = new Diary();
+        fragmentTransaction.replace(R.id.fragment_container, newFragment);
+        fragmentTransaction.addToBackStack(null);
+
+        // 프래그먼트 전환 실행
+        fragmentTransaction.commit();
     }
 }
