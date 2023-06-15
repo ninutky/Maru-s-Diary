@@ -88,8 +88,8 @@ public class SignUpPhotoActivity extends Activity implements View.OnClickListene
                 intent.setDataAndType(mImageCaptureUri, "image/*");
 
                 // CROP할 이미지를 200*200 크기로 저장
-                intent.putExtra("outputX", 200); // CROP한 이미지의 x축 크기
-                intent.putExtra("outputY", 200); // CROP한 이미지의 y축 크기
+                intent.putExtra("outputX", 1000); // CROP한 이미지의 x축 크기
+                intent.putExtra("outputY", 1000); // CROP한 이미지의 y축 크기
                 intent.putExtra("aspectX", 1); // CROP 박스의 X축 비율
                 intent.putExtra("aspectY", 1); // CROP 박스의 Y축 비율
                 intent.putExtra("scale", true);
