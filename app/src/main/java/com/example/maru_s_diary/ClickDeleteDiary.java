@@ -35,7 +35,7 @@ public class ClickDeleteDiary extends AppCompatActivity {
         setContentView(R.layout.correction_diary);
 
 //        dialog = (TextView) findViewById(R.id.days);
-        dialog = findViewById(R.id.days);
+        dialog = findViewById(R.id.date);
 
         dialog.setOnClickListener(new View.OnClickListener() {
             @Override

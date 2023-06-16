@@ -2,78 +2,92 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".ReportDialogFragment"
     android:background="@drawable/dialog_background"
     android:backgroundTint="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="신고 사유"
+            android:layout_weight="1"
             android:textStyle="bold"
             android:textSize="25sp"
             android:textColor="@color/black"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="25dp"/>
 
         <ImageButton
             android:id="@+id/exit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/cancel"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="170dp"/>
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/cancel"/>
 
     </LinearLayout>
 
     <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp">
+
         <RadioButton
-            android:text="광고, 스팸이 의심됩니다."
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"/>
+            android:layout_marginBottom="10dp"
+            android:checked="true"
+            android:text="광고, 스팸이 의심됩니다."
+            android:textSize="20sp"
+            android:padding="5dp"/>
+
         <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="과도한 욕설을 담고 있습니다."
             android:textSize="20sp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:padding="5dp" />
+
         <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="폭력적인 내용을 담고 있습니다."
             android:textSize="20sp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:padding="5dp" />
+
         <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="음란물을 포함하고 있습니다."
             android:textSize="20sp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:padding="5dp" />
+
         <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="민감한 개인정보가 노출되어있습니다."
             android:textSize="20sp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:padding="5dp" />
+
         <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="인종차별적인 내용을 담고 있습니다."
             android:textSize="20sp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:padding="5dp" />
     </RadioGroup>
 
     <android.widget.Button
@@ -85,9 +99,10 @@
         android:text="신고"
         android:textColor="@color/black"
         android:background="@drawable/button_border"
-        android:layout_marginBottom="25dp"
-        android:layout_marginRight="25dp"
+        android:backgroundTint="@color/black_10"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
         style="?android:attr/borderlessButtonStyle"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
 </LinearLayout>

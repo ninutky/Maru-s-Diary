@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:background="@drawable/diary_background">
+            android:background="@drawable/diary_background"
+            android:backgroundTint="@color/pink_50">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,17 +36,18 @@
                 android:textColor="@color/black" />
 
             <ImageButton
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/weather_sun"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/weather_sun"
                 android:scaleType="centerCrop" />
 
             <ImageButton
                 android:id="@+id/back_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/right_arrow"
+                android:background="@drawable/right_arrow"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="135dp" />
 
@@ -56,28 +58,30 @@
                 android:layout_height="wrap_content">
 
                 <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/mood"
-                    android:layout_marginLeft="15dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="제목"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="7dp"/>
-
-                <ImageButton
-                    android:id="@+id/report"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/report"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="150dp"/>
+                    android:background="@drawable/mood"
+                    android:layout_marginLeft="30dp"/>
+
+                <TextView
+                    android:layout_width="169dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="제목"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/report"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/report"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"/>
 
             </LinearLayout>
 

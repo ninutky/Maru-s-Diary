@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/menu"
-            android:backgroundTint="@color/yellow" />
+            android:backgroundTint="@color/pink" />
 
         <TextView
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="45dp"
             android:background="@drawable/diary_background"
-            android:backgroundTint="@color/yellow_50">
+            android:backgroundTint="@color/pink_50">
 
             <LinearLayout
             android:layout_width="wrap_content"

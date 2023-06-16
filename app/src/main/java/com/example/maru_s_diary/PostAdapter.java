@@ -65,7 +65,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             heartBtn = itemView.findViewById(R.id.heart_btn);
             diaryLly = itemView.findViewById(R.id.diary_lly);
 
-            // 좋아요 버튼 클릭 이벤트 처리
             heartBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,7 +76,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                     }
                 }
             });
-
             diaryLly.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
