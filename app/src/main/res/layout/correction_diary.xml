@@ -45,9 +45,9 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="450dp"
+            android:layout_height="530dp"
             android:orientation="vertical"
-            android:layout_marginTop="80dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="45dp"
             android:background="@drawable/diary_background"
             android:backgroundTint="@color/yellow_50">
@@ -56,32 +56,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/days"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:textSize="12dp"
-                android:drawablePadding="10dp"
-                android:textColor="@color/black" />
+                <EditText
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="2000.00.00"
+                    android:layout_marginLeft="33dp"
+                    android:layout_marginTop="29dp"
+                    android:textSize="14dp"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/black"
+                    android:background="@android:color/transparent"/>
 
-            <ImageButton
-                android:id="@+id/arrow"
-                android:layout_width="25dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="13dp"
-                android:layout_marginLeft="3dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/arrow" />
-
-            <ImageButton
-                android:id="@+id/weather"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="16dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/weather" />
+                <ImageButton
+                    android:id="@+id/weather"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sun_back"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@android:color/transparent"/>
 
 
         </LinearLayout>
@@ -133,7 +128,7 @@
             android:id="@+id/showBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="550dp"
+            android:layout_marginTop="750dp"
             android:layout_marginLeft="280dp"
             android:background="@drawable/button_border"
             android:backgroundTint="@color/black_10"

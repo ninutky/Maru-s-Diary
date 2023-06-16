@@ -62,11 +62,12 @@
 
                 <ImageButton
                     android:id="@+id/weather"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/weather"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="22dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sun_back"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="25dp"
                     android:background="@android:color/transparent"/>
 
 
