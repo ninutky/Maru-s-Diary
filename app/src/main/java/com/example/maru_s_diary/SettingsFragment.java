@@ -288,13 +288,34 @@ public class SettingsFragment extends Fragment {
         profiledlg.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         // 저장 버튼
-        profiledlg.findViewById(R.id.theme_save).setOnClickListener(new View.OnClickListener() {
+        profiledlg.findViewById(R.id.profile_save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "프로필 사진이 저장되었습니다.",Toast.LENGTH_SHORT).show();
                 profiledlg.dismiss();
-                // 원하는 기능 구현
-                // 테마 저장
+
+                // 프로필 저장
+                int selectedProfileIndex = -1;
+                for (int i = 0; i < 6; i++) {
+                    if (prfchks[i].getVisibility() == View.VISIBLE) {
+                        selectedProfileIndex = i;
+                        break;
+                    }
+                }
+
+                if (selectedProfileIndex == 0) {
+                    profile_img.setImageResource(R.drawable.pink_rabbit);
+                } else if (selectedProfileIndex == 1) {
+                    profile_img.setImageResource(R.drawable.blue_rabbit);
+                } else if (selectedProfileIndex == 2) {
+                    profile_img.setImageResource(R.drawable.yellow_rabbit);
+                } else if (selectedProfileIndex == 3) {
+                    profile_img.setImageResource(R.drawable.orange_rabbit);
+                } else if (selectedProfileIndex == 4) {
+                    profile_img.setImageResource(R.drawable.mint_rabbit);
+                } else {
+                    profile_img.setImageResource(R.drawable.purple_rabbit);
+                }
             }
         });
 
@@ -333,7 +354,5 @@ public class SettingsFragment extends Fragment {
                 }
             });
         }
-
-
     }
 }

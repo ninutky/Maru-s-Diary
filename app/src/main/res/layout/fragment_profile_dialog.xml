@@ -40,10 +40,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
                 <ImageView
-                    android:visibility="invisible"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:id="@+id/profile_chk_1"
+                    android:visibility="visible"
                     android:src="@drawable/theme_check"/>
             </LinearLayout>
         </FrameLayout>
@@ -170,7 +170,7 @@
     </LinearLayout>
 
     <android.widget.Button
-        android:id="@+id/theme_save"
+        android:id="@+id/profile_save"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
