@@ -1,6 +1,7 @@
 package com.example.maru_s_diary;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,7 @@ public class NewPageActivity extends AppCompatActivity  {
 //    private int mWeather,mFeeling;
     public PostAdapter mAdapter;
     private List<Post> mDatas;
+    ImageView back;
 //    HomeFragment homeFragment;
 
     @Override
@@ -45,6 +47,15 @@ public class NewPageActivity extends AppCompatActivity  {
 //      mWeather=findViewById(R.id.weather);
 //        mFeeling=findViewById(R.id.mood);
         mDate=findViewById(R.id.date);
+        back=findViewById(R.id.backBtn);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewPageActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
        // homeFragment=new HomeFragment();
         findViewById(R.id.post_save_btn).setOnClickListener(new View.OnClickListener() {
             @Override
