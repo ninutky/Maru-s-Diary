@@ -76,26 +76,31 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
-                <ImageButton
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/mood"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:scaleType="centerCrop"
                     android:src="@drawable/mood"
+                    android:scaleType="centerCrop"
                     android:layout_marginLeft="30dp"
                     android:background="@android:color/transparent"/>
-
-                <EditText
-                    android:id="@+id/post_title_edit"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:hint="제목을 입력하세요"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@android:color/transparent"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/post_title_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:hint="제목을 입력하세요"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@android:color/transparent"/>
+                </LinearLayout>
+
+
             </LinearLayout>
 
 

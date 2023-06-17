@@ -50,7 +50,7 @@
         </activity>
         <activity android:name=".HomeFragment" />
         <activity
-            android:name=".ClickDeleteDiary"
+            android:name=".Modification"
             android:exported="true">
         </activity>
         <activity
@@ -58,10 +58,6 @@
             android:exported="true">
 
         </activity>
-
-        <activity
-            android:name=".Modification"
-            android:exported="true" />
 
         <activity
             android:name="SignUpPhotoActivity"
