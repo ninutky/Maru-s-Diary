@@ -1,10 +1,15 @@
 package com.example.maru_s_diary;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Arrays;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -25,6 +32,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,6 +45,9 @@ public class SettingsFragment extends Fragment {
     LinearLayout[] themes;
     CircleImageView[] prfimgs;
     ImageView[] thmchks, prfchks;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    int themeColor;
 
     private TextView userIdTextView;    // 로그인되어 있는 아이디
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 관련
@@ -130,8 +141,14 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        return v;
+        preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        editor = preferences.edit();
+        int themeColor = preferences.getInt("themeColor", R.color.pink_50); // 기본 테마 분홍색
+        // 기존에 저장한 테마 가져옴
+        profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(themeColor)));
+        logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(themeColor)));
 
+        return v;
 
     }
 
@@ -188,7 +205,6 @@ public class SettingsFragment extends Fragment {
                 themedlg.dismiss();
                 // 원하는 기능 구현
                 // 테마 저장
-
                 int selectedThemeIndex = -1;
                 for (int i = 0; i < 4; i++) {
                     if (thmchks[i].getVisibility() == View.VISIBLE) {
@@ -198,35 +214,59 @@ public class SettingsFragment extends Fragment {
                 }
 
                 if (selectedThemeIndex == 0) {
-                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
-                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+                    editor.putInt("theme", 0);  // type 전달 (테마 변경)
+                    editor.putInt("themeColor", R.color.pink_50);   // 색 전달 (LinearLayout 변경)
+                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
+                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
+                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
+                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
+                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
+                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
 
                 } else if (selectedThemeIndex == 1) {
-                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
-                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
-                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
-                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
-                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
+                    editor.putInt("theme", 1);
+                    editor.putInt("themeColor", R.color.skyblue_50);
+                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+
                 } else if (selectedThemeIndex == 2) {
-                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
-                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
-                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
-                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
-                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+                    editor.putInt("theme", 2);
+                    editor.putInt("themeColor", R.color.green_50);
+                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+
                 } else {
-                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
-                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+                    editor.putInt("theme", 3);
+                    editor.putInt("themeColor", R.color.yellow_50);
+                    profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
+                    changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
+                    alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
+                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
+                    logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
+                    delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                 }
+                editor.apply();
+
+                if (getActivity() != null) {
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+
+                Diary diaryFragment = (Diary) requireActivity().getSupportFragmentManager().findFragmentByTag("diary_fragment");
+                if (diaryFragment != null) {
+                    diaryFragment.setSharedPreferences(preferences);
+                }
+
             }
         });
 

@@ -1,119 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
     android:paddingTop="50dp"
     tools:context=".SettingsFragment">
-
     <LinearLayout
-        android:id="@+id/profile_llbtn"
-        android:layout_width="350dp"
-        android:layout_height="100dp"
-        android:background="@drawable/profile_border"
-        android:backgroundTint="@color/pink_50"
-        android:gravity="center_vertical"
-        android:padding="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/pink_rabbit"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/set_profile_img"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <LinearLayout
+            android:id="@+id/profile_llbtn"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:background="@drawable/profile_border"
+            android:backgroundTint="@color/pink_50"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/pink_rabbit"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/set_profile_img"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/set_id_tv"
+                    android:textSize="20sp"
+                    android:textColor="#000" />
+            </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/set_id_tv"
-                android:textSize="20sp"
-                android:textColor="#000"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="69dp"
-            android:background="@drawable/rect1_arrow"
-            android:backgroundTint="@color/pink_50"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:id="@+id/set_changetheme_tvbtn"
-            android:text="테마 변경"/>
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="69dp"
-            android:background="@drawable/rect3_arrow"
-            android:backgroundTint="@color/pink_50"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="2dp"
-            android:id="@+id/set_alram_tvbtn"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:text="알림 설정"/>
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="69dp"
-            android:background="@drawable/rect3_arrow"
-            android:backgroundTint="@color/pink_50"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="2dp"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:id="@+id/set_changepw_tvbtn"
-            android:text="비밀번호 변경"/>
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="69dp"
-            android:id="@+id/set_logout_llbtn"
-            android:background="@drawable/rect3"
-            android:backgroundTint="@color/pink_50"
-            android:gravity="center_vertical"
-            android:layout_marginTop="2dp"
-            android:drawablePadding="5dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/set_changetheme_tvbtn"
+                android:layout_width="350dp"
+                android:layout_height="69dp"
+                android:background="@drawable/rect1_arrow"
+                android:gravity="center_vertical"
                 android:paddingLeft="20dp"
+                android:text="테마 변경"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="69dp"
+                android:background="@drawable/rect3_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="2dp"
+                android:id="@+id/set_alram_tvbtn"
                 android:textSize="18sp"
-                android:text="계정 로그아웃"
-                android:textColor="#000000"/>
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/logout_img"
-                android:layout_marginLeft="10dp"
-                />
+                android:textColor="#000000"
+                android:text="알림 설정"/>
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="69dp"
+                android:background="@drawable/rect3_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="2dp"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:id="@+id/set_changepw_tvbtn"
+                android:text="비밀번호 변경"/>
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="69dp"
+                android:id="@+id/set_logout_llbtn"
+                android:background="@drawable/rect3"
+                android:backgroundTint="@color/pink_50"
+                android:gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:drawablePadding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:textSize="18sp"
+                    android:text="계정 로그아웃"
+                    android:textColor="#000000"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/logout_img"
+                    android:layout_marginLeft="10dp"
+                    />
+            </LinearLayout>
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="69dp"
+                android:id="@+id/set_delaccount_tvbtn"
+                android:background="@drawable/rect2"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="2dp"
+                android:textSize="18sp"
+                android:textColor="#FF0000"
+                android:text="계정 삭제"
+                android:textStyle="bold"/>
         </LinearLayout>
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="69dp"
-            android:id="@+id/set_delaccount_tvbtn"
-            android:background="@drawable/rect2"
-            android:backgroundTint="@color/pink_50"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="2dp"
-            android:textSize="18sp"
-            android:textColor="#FF0000"
-            android:text="계정 삭제"
-            android:textStyle="bold"/>
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

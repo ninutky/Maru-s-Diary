@@ -29,4 +29,53 @@
         <item name="displayOptions">useLogo|showHome</item>
     </style>
 
+    <!-- 분홍색 테마 -->
+    <style name="CustomTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textViewStyle">@style/CustomTextView</item>
+        <item name="floatingActionButtonStyle">@style/CustomFloatingActionButton</item>
+    </style>
+    <style name="CustomTextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:backgroundTint">@color/pink_50</item>
+    </style>
+    <style name="CustomFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:backgroundTint">@color/pink</item>
+    </style>
+
+    <!-- 하늘색 테마 -->
+    <style name="CustomTheme2" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textViewStyle">@style/CustomTextView2</item>
+        <item name="floatingActionButtonStyle">@style/CustomFloatingActionButton2</item>
+    </style>
+    <style name="CustomTextView2" parent="Widget.MaterialComponents.TextView">
+        <item name="android:backgroundTint">@color/skyblue_50</item>
+    </style>
+    <style name="CustomFloatingActionButton2" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:backgroundTint">@color/skyblue</item>
+    </style>
+
+    <!-- 초록색 테마 -->
+    <style name="CustomTheme3" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textViewStyle">@style/CustomTextView3</item>
+        <item name="floatingActionButtonStyle">@style/CustomFloatingActionButton3</item>
+    </style>
+    <style name="CustomTextView3" parent="Widget.MaterialComponents.TextView">
+        <item name="android:backgroundTint">@color/green_50</item>
+    </style>
+    <style name="CustomFloatingActionButton3" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:backgroundTint">@color/green</item>
+    </style>
+
+    <!-- 노란색 테마 -->
+    <style name="CustomTheme4" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textViewStyle">@style/CustomTextView4</item>
+        <item name="floatingActionButtonStyle">@style/CustomFloatingActionButton4</item>
+    </style>
+    <style name="CustomTextView4" parent="Widget.MaterialComponents.TextView">
+        <item name="android:backgroundTint">@color/yellow_50</item>
+    </style>
+    <style name="CustomFloatingActionButton4" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:backgroundTint">@color/yellow</item>
+    </style>
+
+
 </resources>

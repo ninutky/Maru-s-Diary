@@ -1,16 +1,21 @@
 package com.example.maru_s_diary;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +28,8 @@ public class Diary extends Fragment {
     private ImageButton backBtn;
     private ImageButton reportBtn;
     private Dialog reportdlg;
+    private LinearLayout diaryLly;
+    private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +66,10 @@ public class Diary extends Fragment {
                 reportdlg.dismiss();
             }
         });
-
+        diaryLly = v.findViewById(R.id.diary_lly);
+        SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int theme = sharedPreferences.getInt("theme", 0);
+        changeTheme(theme);
 
         return v;
     }
@@ -68,6 +78,28 @@ public class Diary extends Fragment {
         reportdlg.show(); // 다이얼로그 띄우기
         reportdlg.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+    }
+
+    public void setSharedPreferences(SharedPreferences sharedPreferences) {
+        this.sharedPreferences = sharedPreferences;
+    }
+
+    public void changeTheme(int n) {
+        switch (n) {
+            case 0:
+            default:
+                diaryLly.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
+                break;
+            case 1:
+                diaryLly.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+                break;
+            case 2:
+                diaryLly.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+                break;
+            case 3:
+                diaryLly.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
+                break;
+        }
     }
 
 }

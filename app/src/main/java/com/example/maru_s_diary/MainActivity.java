@@ -7,7 +7,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -31,11 +35,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private HomeFragment fragmentHome = new HomeFragment();
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private ImageView alarmBtn;
+    private ImageView appbar_iv;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 값 가져오기
+        SharedPreferences preferences = getPreferences(Context.MODE_PRIVATE);
+        int theme = preferences.getInt("theme", 0); // 기본값은 0
+
+        // Diary 프래그먼트로 SharedPreferences 인스턴스 전달
+        Diary diaryFragment = new Diary();
+        SharedPreferences sharedPreferences = getSharedPreferences("theme", Context.MODE_PRIVATE);
+        diaryFragment.setSharedPreferences(sharedPreferences);
+
+        // 테마 설정
+        if (theme == 0) {
+            setTheme(R.style.CustomTheme); // 분홍색 테마
+        } else if (theme == 1) {
+            setTheme(R.style.CustomTheme2); // 하늘색 테마
+        } else if (theme == 2) {
+            setTheme(R.style.CustomTheme3); // 초록색 테마
+        } else {
+            setTheme(R.style.CustomTheme4); // 노란색 테마
+        }
+
         setContentView(R.layout.activity_main);
+        appbar_iv = findViewById(R.id.appbar_iv);
+        changeTheme(theme);
 
         alarmBtn = findViewById(R.id.alarm_btn);
         // 알람 버튼 클릭 시
@@ -46,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         });
+
 
         init(); // 객체 정의
         setupListeners(); // 리스너 등록
@@ -71,6 +101,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
+    }
+
+    public void changeTheme(int n) {
+        switch (n) {
+            case 0:
+            default:
+                appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+                break;
+            case 1:
+                appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
+                break;
+            case 2:
+                appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+                break;
+            case 3:
+                appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+                break;
+        }
     }
 
     class TabSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -99,7 +147,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return false;
         }
     }
-
-
 
 }

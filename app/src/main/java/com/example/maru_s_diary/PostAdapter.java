@@ -1,14 +1,16 @@
 package com.example.maru_s_diary;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,15 +21,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     private List<Post> datas;
     private OnItemClickListener mListener;
+    private Context context;
+    private LinearLayout diaryLly;
+    private SharedPreferences preferences;
 
-    public PostAdapter(List<Post> datas) {
+    public PostAdapter(Context context, List<Post> datas) {
+        this.context = context;
         this.datas = datas;
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @NonNull
     @Override
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new PostViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_diary,parent,false));
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_diary, parent, false);
+        diaryLly = itemView.findViewById(R.id.diary_lly);
+        int theme = preferences.getInt("theme", 0); // 기본 테마 분홍색
+        changeTheme(theme);
+        return new PostViewHolder(itemView);
     }
 
     @Override
@@ -36,7 +47,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.title.setText(data.getTitle());
         holder.contents.setText(data.getContents());
         holder.date.setText(data.getDate());
-
     }
 
     @Override
@@ -54,7 +64,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         private TextView contents;
         private TextView date;
         private ImageButton heartBtn;
-        private LinearLayout diaryLly;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,13 +96,35 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                     }
                 }
             });
-            
+
         }
     }
 
     // 외부에서 리스너를 설정하기 위한 메서드
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
+    }
+
+    public void changeTheme(int n) {
+        switch (n) {
+            case 0:
+            default:
+                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.pink_50)));
+                Log.d("mytag","pink_50");
+                break;
+            case 1:
+                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.skyblue_50)));
+                Log.d("mytag","skyblue_50");
+                break;
+            case 2:
+                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.green_50)));
+                Log.d("mytag","green_50");
+                break;
+            case 3:
+                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.yellow_50)));
+                Log.d("mytag","yellow_50");
+                break;
+        }
     }
 
 }

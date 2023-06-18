@@ -127,7 +127,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
     public void onStart() {
         super.onStart();
         mDatas = new ArrayList<>();
-        mAdapter = new PostAdapter(mDatas);
+        mAdapter = new PostAdapter(getContext(), mDatas);
         mAdapter.setOnItemClickListener(this);
         mPostRecyclerView.setAdapter(mAdapter);
 
