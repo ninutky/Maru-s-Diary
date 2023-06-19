@@ -24,9 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:padding="10dp"
-        android:background="@color/white"
         android:layout_alignParentBottom="true"
-        app:itemTextColor="@color/black"
         app:menu="@menu/home"
         app:labelVisibilityMode="labeled"/>
 

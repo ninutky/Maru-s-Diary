@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private LinearLayout home_ly;
     private BottomNavigationView bottomNavigationView;
+    private Menu menu;
     private SettingsFragment fragmentSetting = new SettingsFragment();
     private MypageCorrectionFragment fragmentMyPageCorrection = new MypageCorrectionFragment();
     private HomeFragment fragmentHome = new HomeFragment();
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         home_ly.setLayoutParams(layoutParams);
         bottomNavigationView = findViewById(R.id.main_bottom_navigation_view);
+        menu = bottomNavigationView.getMenu();
     }
 
     // 선택 리스너 등록
@@ -126,18 +129,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.mypage_item: {
+                    menuItem.setIcon(R.drawable.selected_mypage_icon);
+                    menu.findItem(R.id.home_item).setIcon(R.drawable.unselected_home_icon);
+                    menu.findItem(R.id.setting_item).setIcon(R.drawable.unselected_setting_icon);
                     fragmentManager.beginTransaction()
                             .replace(R.id.home_ly, fragmentMyPageCorrection)
                             .commit();
                     return true;
                 }
-                case R.id.home_item: {
+                case R.id.home_item:{
+                    menuItem.setIcon(R.drawable.selected_home_icon);
+                    menu.findItem(R.id.mypage_item).setIcon(R.drawable.unselected_mypage_icon);
+                    menu.findItem(R.id.setting_item).setIcon(R.drawable.unselected_setting_icon);
                     fragmentManager.beginTransaction()
                         .replace(R.id.home_ly, fragmentHome)
                         .commit();
                     return true;
                 }
                 case R.id.setting_item: {
+                    menuItem.setIcon(R.drawable.selected_setting_icon);
+                    menu.findItem(R.id.home_item).setIcon(R.drawable.unselected_home_icon);
+                    menu.findItem(R.id.mypage_item).setIcon(R.drawable.unselected_mypage_icon);
                     fragmentManager.beginTransaction()
                             .replace(R.id.home_ly, fragmentSetting)
                             .commit();

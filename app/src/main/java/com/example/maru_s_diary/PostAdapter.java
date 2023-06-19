@@ -1,5 +1,7 @@
 package com.example.maru_s_diary;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -23,12 +25,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     private OnItemClickListener mListener;
     private Context context;
     private LinearLayout diaryLly;
-    private SharedPreferences preferences;
+    private SharedPreferences sharedPreferences;
 
     public PostAdapter(Context context, List<Post> datas) {
         this.context = context;
         this.datas = datas;
-        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        sharedPreferences = context.getSharedPreferences("theme", Context.MODE_PRIVATE);
     }
 
     @NonNull
@@ -36,8 +38,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_diary, parent, false);
         diaryLly = itemView.findViewById(R.id.diary_lly);
-        int theme = preferences.getInt("theme", 0); // 기본 테마 분홍색
-        changeTheme(theme);
+        changeTheme(3);
         return new PostViewHolder(itemView);
     }
 

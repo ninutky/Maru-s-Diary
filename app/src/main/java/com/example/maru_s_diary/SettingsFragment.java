@@ -47,7 +47,6 @@ public class SettingsFragment extends Fragment {
     ImageView[] thmchks, prfchks;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    int themeColor;
 
     private TextView userIdTextView;    // 로그인되어 있는 아이디
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 관련
