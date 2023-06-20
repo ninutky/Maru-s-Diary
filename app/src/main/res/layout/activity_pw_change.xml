@@ -7,12 +7,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".PwChangeFragment">
+    tools:context=".PwChangeActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/appbar_iv"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/menu"

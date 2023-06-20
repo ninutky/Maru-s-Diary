@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
         // 값 가져오기
-        SharedPreferences preferences = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         int theme = preferences.getInt("theme", 0); // 기본값은 0
 
         // Diary 프래그먼트로 SharedPreferences 인스턴스 전달
@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         });
-
 
         init(); // 객체 정의
         setupListeners(); // 리스너 등록

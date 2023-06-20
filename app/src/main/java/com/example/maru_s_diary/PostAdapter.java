@@ -38,7 +38,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_diary, parent, false);
         diaryLly = itemView.findViewById(R.id.diary_lly);
-        changeTheme(3);
+//        changeTheme(0);
         return new PostViewHolder(itemView);
     }
 
@@ -48,6 +48,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.title.setText(data.getTitle());
         holder.contents.setText(data.getContents());
         holder.date.setText(data.getDate());
+        setItemColorBasedOnNumber(holder);
     }
 
     @Override
@@ -106,8 +107,34 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         mListener = listener;
     }
 
-    public void changeTheme(int n) {
-        switch (n) {
+//    public void changeTheme(int n) {
+//        switch (n) {
+//            case 0:
+//            default:
+//                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.pink_50)));
+//                Log.d("mytag","pink_50");
+//                break;
+//            case 1:
+//                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.skyblue_50)));
+//                Log.d("mytag","skyblue_50");
+//                break;
+//            case 2:
+//                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.green_50)));
+//                Log.d("mytag","green_50");
+//                break;
+//            case 3:
+//                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.yellow_50)));
+//                Log.d("mytag","yellow_50");
+//                break;
+//        }
+//    }
+
+    // SharedPreferences에서 값을 가져와서 색상을 변경하는 메서드
+    private void setItemColorBasedOnNumber(RecyclerView.ViewHolder holder) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        int number = sharedPreferences.getInt("theme", 0);
+
+        switch (number) {
             case 0:
             default:
                 diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.pink_50)));

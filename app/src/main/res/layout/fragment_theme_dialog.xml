@@ -34,7 +34,7 @@
             android:layout_marginRight="20dp">
             <ImageView
                 android:id="@+id/pink_check"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/theme_check"/>

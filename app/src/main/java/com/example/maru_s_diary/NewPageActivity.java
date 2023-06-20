@@ -1,6 +1,9 @@
 package com.example.maru_s_diary;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -41,6 +44,10 @@ public class NewPageActivity extends AppCompatActivity {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     private EditText mTitle, mContents, mDate;
+    private ImageView appbar_iv;
+    private LinearLayout writeLly;
+    private SharedPreferences preferences;
+    private SharedPreferences sharedPreferences;
 
     //    HomeFragment homeFragment;
     Dialog dialog02,dialog03; // 커스텀 다이얼로그
@@ -48,13 +55,25 @@ public class NewPageActivity extends AppCompatActivity {
     CircleImageView[] prfimgs;
     ImageView[] prfchks;
     CircleImageView mood_img,weather_img;
-    LinearLayout mood_llbtn,weather_llbtn;
     ImageView back;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 값 가져오기
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        int theme = sharedPreferences.getInt("theme", 0); // 기본값은 0
+        preferences = getPreferences(Context.MODE_PRIVATE);
+        int themeColor = preferences.getInt("themeColor", R.color.pink_50); // 기본 테마 분홍색
+
         setContentView(R.layout.writing_diary);
+
+        writeLly = findViewById(R.id.write_lly);
+        appbar_iv = findViewById(R.id.appbar_iv);
+        appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(themeColor)));
+        changeTheme(theme);
+
         mTitle = findViewById(R.id.post_title_edit);
         mContents = findViewById(R.id.post_contents_edit);
         mDate = findViewById(R.id.date);
@@ -336,5 +355,28 @@ public class NewPageActivity extends AppCompatActivity {
             });
         }
     }
+
+    public void changeTheme(int n) {
+        switch (n) {
+            case 0:
+            default:
+                appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+                writeLly.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
+                break;
+            case 1:
+                appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue)));
+                writeLly.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+                break;
+            case 2:
+                appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+                writeLly.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+                break;
+            case 3:
+                appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+                writeLly.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
+                break;
+        }
+    }
+
 
 }

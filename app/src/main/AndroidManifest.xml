@@ -20,7 +20,7 @@
             android:name=".FindId"
             android:exported="false" />
         <activity
-            android:name=".PwChangeFragment"
+            android:name=".PwChangeActivity"
             android:exported="false" />
         <activity
             android:name=".DeleteAccountActivity"
