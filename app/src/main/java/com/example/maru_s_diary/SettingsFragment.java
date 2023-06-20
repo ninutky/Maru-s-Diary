@@ -313,13 +313,6 @@ public class SettingsFragment extends Fragment {
     public void showProfileDialog() {
         profiledlg.show(); // 다이얼로그 띄우기
 
-        /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
-
-        // 위젯 연결 방식은 각자 취향대로~
-        // '아래 아니오 버튼'처럼 일반적인 방법대로 연결하면 재사용에 용이하고,
-        // '아래 네 버튼'처럼 바로 연결하면 일회성으로 사용하기 편함.
-        // *주의할 점: findViewById()를 쓸 때는 -> 앞에 반드시 다이얼로그 이름을 붙여야 한다.
-
         // dialog 라운드 끝 하얀 배경 삭제
         profiledlg.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 

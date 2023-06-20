@@ -60,7 +60,7 @@
                     android:textColor="@color/black"
                     android:background="@android:color/transparent"/>
 
-                <ImageButton
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/weather"
                     android:layout_width="25dp"
                     android:layout_height="25dp"

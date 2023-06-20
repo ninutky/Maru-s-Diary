@@ -8,14 +8,19 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -24,64 +29,68 @@ public class Modification extends AppCompatActivity {
 
     private static final String TAG = "Modification";
 
-//    private DatePickerDialog.OnDateSetListener mDateSetListener;
-    Dialog dialog01; // 커스텀 다이얼로그
-    Dialog dialog02; // 커스텀 다이얼로그
-    Dialog dialog03; // 커스텀 다이얼로그
+    Dialog dialog01,dialog02,dialog03; // 커스텀 다이얼로그
 
+    CircleImageView[] prfimgs;
     ImageView[] prfchks;
-    CircleImageView mood_img;
+    CircleImageView mood_img,weather_img;
+    LinearLayout mood_llbtn,weather_llbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.correction_diary);
-//        dialog = (TextView) findViewById(R.id.days);
-//        dialog = findViewById(R.id.date);
-//
-//        dialog.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Calendar cal = Calendar.getInstance();
-//                int year = cal.get(Calendar.YEAR);
-//                int month = cal.get(Calendar.MONTH);
-//                int day = cal.get(Calendar.DAY_OF_MONTH);
-//
-//                DatePickerDialog dialog = new DatePickerDialog(
-//                        Modification.this,
-//                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-//                        mDateSetListener,
-//                        year,month,day);
-//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                dialog.show();
-//            }
-//        });
+    }
 
-        dialog01 = new Dialog(Modification.this);       // Dialog 초기화
-        dialog01.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
-        dialog01.setContentView(R.layout.dialog01);             // xml 레이아웃 파일과 연결
 
-        // 버튼: 커스텀 다이얼로그 띄우기
-        findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.writing_diary, container, false);
+
+        mood_img = (CircleImageView) v.findViewById(R.id.mood);
+        mood_llbtn = v.findViewById(R.id.mood);
+        weather_img = (CircleImageView) v.findViewById(R.id.weather);
+        weather_llbtn = v.findViewById(R.id.weather);
+
+        dialog01 = new Dialog(Modification.this);
+        dialog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog01.setContentView(R.layout.dialog01);
+
+        dialog02 = new Dialog(Modification.this);
+        dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog02.setContentView(R.layout.dialog02);
+
+        dialog03 = new Dialog(Modification.this);
+        dialog03.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog03.setContentView(R.layout.dialog03);
+
+        mood_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog01(); // 아래 showDialog01() 함수 호출
-            }
+                    showDialog02();
+                }
         });
 
-        dialog02 = new Dialog(Modification.this);       // Dialog 초기화
-        dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
-        dialog02.setContentView(R.layout.dialog02);             // xml 레이아웃 파일과 연결
+        weather_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    showDialog03();
+                }
+        });
 
-        // 버튼: 커스텀 다이얼로그 띄우기
-        findViewById(R.id.mood).setOnClickListener(new View.OnClickListener() {
+        return v;
+    }
+
+    public void showDialog02(){
+        dialog02.show(); // 다이얼로그 띄우기
+        dialog02.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
+        dialog02.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 //Toast.makeText(getContext(), "기분이 저장되었습니다.",Toast.LENGTH_SHORT).show();
                 dialog02.dismiss();
 
-                // 프로필 저장
+                //기분저장
                 int selectedMoodIndex = -1;
                 for (int i = 0; i < 9; i++) {
                     if (prfchks[i].getVisibility() == View.VISIBLE) {
@@ -112,70 +121,119 @@ public class Modification extends AppCompatActivity {
             }
         });
 
-        dialog03 = new Dialog(Modification.this);       // Dialog 초기화
-        dialog03.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
-        dialog03.setContentView(R.layout.dialog03);             // xml 레이아웃 파일과 연결
-
-        // 버튼: 커스텀 다이얼로그 띄우기
-        findViewById(R.id.weather).setOnClickListener(new View.OnClickListener() {
+        dialog02.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog03(); // 아래 showDialog03() 함수 호출
+                dialog02.dismiss();
             }
         });
-    }
 
-    // dialog01을 디자인하는 함수
-    public void showDialog01(){
-        dialog01.show(); // 다이얼로그 띄우기
-        dialog01.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
-        /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
+        prfimgs = new CircleImageView[9];
+        prfimgs[0] = (dialog02.findViewById(R.id.mood_img_1));
+        prfimgs[1] = (dialog02.findViewById(R.id.mood_img_2));
+        prfimgs[2] = (dialog02.findViewById(R.id.mood_img_3));
+        prfimgs[3] = (dialog02.findViewById(R.id.mood_img_4));
+        prfimgs[4] = (dialog02.findViewById(R.id.mood_img_5));
+        prfimgs[5] = (dialog02.findViewById(R.id.mood_img_6));
+        prfimgs[6] = (dialog02.findViewById(R.id.mood_img_7));
+        prfimgs[7] = (dialog02.findViewById(R.id.mood_img_8));
+        prfimgs[8] = (dialog02.findViewById(R.id.mood_img_9));
 
-        // 위젯 연결 방식은 각자 취향대로~
-        // '아래 아니오 버튼'처럼 일반적인 방법대로 연결하면 재사용에 용이하고,
-        // '아래 네 버튼'처럼 바로 연결하면 일회성으로 사용하기 편함.
-        // *주의할 점: findViewById()를 쓸 때는 -> 앞에 반드시 다이얼로그 이름을 붙여야 한다.
+        prfchks = new ImageView[9];
+        prfchks[0] = (dialog02.findViewById(R.id.mood_chk_1));
+        prfchks[1] = (dialog02.findViewById(R.id.mood_chk_2));
+        prfchks[2] = (dialog02.findViewById(R.id.mood_chk_3));
+        prfchks[3] = (dialog02.findViewById(R.id.mood_chk_4));
+        prfchks[4] = (dialog02.findViewById(R.id.mood_chk_5));
+        prfchks[5] = (dialog02.findViewById(R.id.mood_chk_6));
+        prfchks[6] = (dialog02.findViewById(R.id.mood_chk_7));
+        prfchks[7] = (dialog02.findViewById(R.id.mood_chk_8));
+        prfchks[8] = (dialog02.findViewById(R.id.mood_chk_9));
 
-        // 아니오 버튼
-        Button noBtn = dialog01.findViewById(R.id.noBtn);
-        noBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 원하는 기능 구현
-                dialog01.dismiss(); // 다이얼로그 닫기
-            }
-        });
-        // 네 버튼
-        dialog01.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 원하는 기능 구현
-                finish();           // 앱 종료
-            }
-        });
-    }
-
-    public void showDialog02(){
-        dialog02.show(); // 다이얼로그 띄우기
-        dialog02.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
-        /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
-
-        // 위젯 연결 방식은 각자 취향대로~
-        // '아래 아니오 버튼'처럼 일반적인 방법대로 연결하면 재사용에 용이하고,
-        // '아래 네 버튼'처럼 바로 연결하면 일회성으로 사용하기 편함.
-        // *주의할 점: findViewById()를 쓸 때는 -> 앞에 반드시 다이얼로그 이름을 붙여야 한다.
-
+        for(int i = 0; i < 9; i++){
+            int finalI = i;
+            prfimgs[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    for (int j = 0; j < 9; j++) {
+                        prfchks[j].setVisibility(View.INVISIBLE);
+                    }
+                    prfchks[finalI].setVisibility(View.VISIBLE);
+                }
+            });
+        }
     }
 
     public void showDialog03(){
         dialog03.show(); // 다이얼로그 띄우기
         dialog03.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
-        /* 이 함수 안에 원하는 디자인과 기능을 구현하면 된다. */
+        dialog03.findViewById(R.id.weather).setOnClickListener(new View.OnClickListener() {
 
-        // 위젯 연결 방식은 각자 취향대로~
-        // '아래 아니오 버튼'처럼 일반적인 방법대로 연결하면 재사용에 용이하고,
-        // '아래 네 버튼'처럼 바로 연결하면 일회성으로 사용하기 편함.
-        // *주의할 점: findViewById()를 쓸 때는 -> 앞에 반드시 다이얼로그 이름을 붙여야 한다.
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(getContext(), "기분이 저장되었습니다.",Toast.LENGTH_SHORT).show();
+                dialog03.dismiss();
 
+                //기분저장
+                int selectedMoodIndex = -1;
+                for (int i = 0; i < 6; i++) {
+                    if (prfchks[i].getVisibility() == View.VISIBLE) {
+                        selectedMoodIndex = i;
+                        break;
+                    }
+                }
+
+                if (selectedMoodIndex == 0) {
+                    weather_img.setImageResource(R.drawable.sun);
+                } else if (selectedMoodIndex == 1) {
+                    weather_img.setImageResource(R.drawable.cloud);
+                } else if (selectedMoodIndex == 2) {
+                    weather_img.setImageResource(R.drawable.wind);
+                } else if (selectedMoodIndex == 3) {
+                    weather_img.setImageResource(R.drawable.rain);
+                } else if (selectedMoodIndex == 4) {
+                    weather_img.setImageResource(R.drawable.lighntnong);
+                } else {
+                    weather_img.setImageResource(R.drawable.snow);
+                }
+            }
+        });
+
+        dialog02.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog03.dismiss();
+            }
+        });
+
+        prfimgs = new CircleImageView[6];
+        prfimgs[0] = (dialog03.findViewById(R.id.weather_img_1));
+        prfimgs[1] = (dialog03.findViewById(R.id.weather_img_2));
+        prfimgs[2] = (dialog03.findViewById(R.id.weather_img_3));
+        prfimgs[3] = (dialog03.findViewById(R.id.weather_img_4));
+        prfimgs[4] = (dialog03.findViewById(R.id.weather_img_5));
+        prfimgs[5] = (dialog03.findViewById(R.id.weather_img_6));
+
+        prfchks = new ImageView[6];
+        prfchks[0] = (dialog03.findViewById(R.id.weather_chk_1));
+        prfchks[1] = (dialog03.findViewById(R.id.weather_chk_2));
+        prfchks[2] = (dialog03.findViewById(R.id.weather_chk_3));
+        prfchks[3] = (dialog03.findViewById(R.id.weather_chk_4));
+        prfchks[4] = (dialog03.findViewById(R.id.weather_chk_5));
+        prfchks[5] = (dialog03.findViewById(R.id.weather_chk_6));
+
+        for(int i = 0; i < 6; i++){
+            int finalI = i;
+            prfimgs[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    for (int j = 0; j < 6; j++) {
+                        prfchks[j].setVisibility(View.INVISIBLE);
+                    }
+                    prfchks[finalI].setVisibility(View.VISIBLE);
+                }
+            });
+        }
     }
+
 }
