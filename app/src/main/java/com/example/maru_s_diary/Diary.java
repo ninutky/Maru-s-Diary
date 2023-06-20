@@ -16,6 +16,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +31,7 @@ public class Diary extends Fragment {
     private ImageButton reportBtn;
     private Dialog reportdlg;
     private LinearLayout diaryLly;
+    private RadioGroup radioGroup;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -64,6 +67,20 @@ public class Diary extends Fragment {
             @Override
             public void onClick(View view) {
                 reportdlg.dismiss();
+            }
+        });
+        radioGroup = reportdlg.findViewById(R.id.report_group);
+        reportdlg.findViewById(R.id.report_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                if (selectedId != -1) {
+                    Toast.makeText(getContext(), "신고가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                    reportdlg.dismiss();
+                } else {
+                    Toast.makeText(getContext(), "신고 사유를 선택해주세요.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         diaryLly = v.findViewById(R.id.diary_lly);
