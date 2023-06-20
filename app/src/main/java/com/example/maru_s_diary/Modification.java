@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class Modification extends AppCompatActivity {
     ImageView[] prfchks;
     CircleImageView mood_img,weather_img;
     LinearLayout mood_llbtn,weather_llbtn;
+    ImageButton cancelButton, cancelButton2, cancelButton3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +59,9 @@ public class Modification extends AppCompatActivity {
 
         dialog02 = new Dialog(Modification.this);
         dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog02.setContentView(R.layout.dialog02);
 
         dialog03 = new Dialog(Modification.this);
         dialog03.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog03.setContentView(R.layout.dialog03);
 
         mood_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,13 +118,6 @@ public class Modification extends AppCompatActivity {
                 } else {
                     mood_img.setImageResource(R.drawable.mood9);
                 }
-            }
-        });
-
-        dialog02.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog02.dismiss();
             }
         });
 
@@ -196,13 +189,6 @@ public class Modification extends AppCompatActivity {
                 } else {
                     weather_img.setImageResource(R.drawable.snow);
                 }
-            }
-        });
-
-        dialog02.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog03.dismiss();
             }
         });
 

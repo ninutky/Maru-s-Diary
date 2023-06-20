@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -72,37 +73,45 @@ public class MypageCorrectionFragment extends Fragment implements View.OnClickLi
         mAdapter = new PostAdapter(getContext(), mDatas);
         mAdapter.setOnItemClickListener(this);
         mPostRecyclerView.setAdapter(mAdapter);
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mStore.collection(FirebaseID.post)
-                .whereEqualTo("owner", userId)  // owner 필드가 현재 사용자의 ID와 일치하는 문서만 가져옴
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                            String title = documentSnapshot.getString("title");
-                            String contents = documentSnapshot.getString("contents");
-                            String documentId = documentSnapshot.getString("owner");
-                            String date = documentSnapshot.getString("date");
-                            //date 필드명이 2000/01/01이라서 불러오면 에러남 ㅠㅠ
 
-                            Log.d("Firestore", "제목: " + title);
-                            Log.d("Firestore", "내용: " + contents);
-                            Log.d("Firestore", "아이디: " + documentId);
-                            Log.d("Firestore", "날짜: " + date);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(currentUser != null){
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            mStore.collection(FirebaseID.post)
+                    .whereEqualTo("owner", userId)  // owner 필드가 현재 사용자의 ID와 일치하는 문서만 가져옴
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                                String title = documentSnapshot.getString("title");
+                                String contents = documentSnapshot.getString("contents");
+                                String documentId = documentSnapshot.getString("owner");
+                                String date = documentSnapshot.getString("date");
+                                //date 필드명이 2000/01/01이라서 불러오면 에러남 ㅠㅠ
 
-                            Post data = new Post(documentId, title, contents, date);
-                            mDatas.add(data);
+                                Log.d("Firestore", "제목: " + title);
+                                Log.d("Firestore", "내용: " + contents);
+                                Log.d("Firestore", "아이디: " + documentId);
+                                Log.d("Firestore", "날짜: " + date);
+
+                                Post data = new Post(documentId, title, contents, date);
+                                mDatas.add(data);
+                            }
+                            mAdapter.notifyDataSetChanged();
                         }
-                        mAdapter.notifyDataSetChanged();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("Firestore", "일기 불러오기 실패", e);
-                    }
-                });
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("Firestore", "일기 불러오기 실패", e);
+                        }
+                    });
+        } else  {
+            Toast.makeText(getContext(), "로그인 후 사용해주세요.", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
     @Override
     public void onClick(View view) {
