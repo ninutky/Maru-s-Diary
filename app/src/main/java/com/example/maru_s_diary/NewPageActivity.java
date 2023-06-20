@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,6 +49,7 @@ public class NewPageActivity extends AppCompatActivity {
     ImageView[] prfchks;
     CircleImageView mood_img,weather_img;
     LinearLayout mood_llbtn,weather_llbtn;
+    ImageView back;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,6 +65,15 @@ public class NewPageActivity extends AppCompatActivity {
 //        View v = inflater.inflate(R.layout.writing_diary, container, false);
 
         // homeFragment=new HomeFragment();
+        back=findViewById(R.id.backBtn);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewPageActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         findViewById(R.id.post_save_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

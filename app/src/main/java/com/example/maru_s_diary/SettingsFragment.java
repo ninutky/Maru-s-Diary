@@ -51,11 +51,12 @@ public class SettingsFragment extends Fragment {
     private TextView userIdTextView;    // 로그인되어 있는 아이디
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 관련
     private DatabaseReference mDatabaseReference; // 데이터베이스 관련련
-
+    //private FirebaseStorage mStorage;
    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFirebaseAuth = FirebaseAuth.getInstance();
+       //mStorage = FirebaseStorage.getInstance();
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
