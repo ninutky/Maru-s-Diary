@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
+import org.w3c.dom.Text;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingsFragment extends Fragment {
@@ -31,10 +33,12 @@ public class SettingsFragment extends Fragment {
 
     LinearLayout logout_llbtn, profile_llbtn;
     Dialog loutdlg, themedlg, profiledlg;
+    TextView loginOrLogoutTv;
     CircleImageView profile_img;
     LinearLayout[] themes;
     CircleImageView[] prfimgs;
     ImageView[] thmchks, prfchks;
+    ImageView logoutImg;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
@@ -61,8 +65,10 @@ public class SettingsFragment extends Fragment {
         changetheme_tvbtn = v.findViewById(R.id.set_changetheme_tvbtn);
         alram_tvbtn = v.findViewById(R.id.set_alram_tvbtn);
 //        changepw_tvbtn = v.findViewById(R.id.set_changepw_tvbtn);
-        logout_llbtn = v.findViewById(R.id.set_logout_llbtn);
+        logout_llbtn = v.findViewById(R.id.set_login_or_logout_llbtn);
         delaccount_tvbtn = v.findViewById(R.id.set_delaccount_tvbtn);
+        loginOrLogoutTv = v.findViewById(R.id.login_or_logout_tv);
+        logoutImg = v.findViewById(R.id.logout_img);
 
         loutdlg = new Dialog(getActivity());
         loutdlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -82,9 +88,16 @@ public class SettingsFragment extends Fragment {
             if(email != null){
                 String displayEmail = email.substring(0, email.indexOf('@'));
                 userIdTextView.setText(displayEmail);
+                loginOrLogoutTv.setText("계정 로그아웃");
+                logoutImg.setVisibility(View.VISIBLE);
             }
+
+
         } else {
             userIdTextView.setText("(null)");
+            loginOrLogoutTv.setText("로그인 / 회원가입");
+            logoutImg.setVisibility(View.INVISIBLE);
+
         }
 
         delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
@@ -106,8 +119,13 @@ public class SettingsFragment extends Fragment {
         logout_llbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showloutDialog();
+                if (currentUser != null) showloutDialog();
+                else {
+                    Intent intent = new Intent(getActivity(), SigninActivity.class);
+                    startActivity(intent);
+                }
             }
+
         });
 
         alram_tvbtn.setOnClickListener(new View.OnClickListener() {

@@ -57,12 +57,6 @@
                 android:text="회원가입"
                 android:id="@+id/tvbtn_signup"
                 android:layout_marginRight="20px" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvbtn_idfind"
-                android:text="아이디 찾기" />
         </LinearLayout>
     </LinearLayout>
 

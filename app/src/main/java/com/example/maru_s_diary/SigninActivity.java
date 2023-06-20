@@ -36,7 +36,7 @@ public class SigninActivity extends AppCompatActivity {
         mSignup = findViewById(R.id.tvbtn_signup);
         mId = findViewById(R.id.et_id);
         mPassword = findViewById(R.id.et_pw);
-        findId = findViewById(R.id.tvbtn_idfind);
+//        findId = findViewById(R.id.tvbtn_idfind);
 
         // 회원가입을 누르면
         mSignup.setOnClickListener(new View.OnClickListener() {
