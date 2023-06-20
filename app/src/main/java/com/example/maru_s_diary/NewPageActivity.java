@@ -40,11 +40,9 @@ public class NewPageActivity extends AppCompatActivity {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     private EditText mTitle, mContents, mDate;
-    //    private int mWeather,mFeeling;
-    public PostAdapter mAdapter;
-    private List<Post> mDatas;
+
     //    HomeFragment homeFragment;
-    Dialog dialog01,dialog02,dialog03; // 커스텀 다이얼로그
+    Dialog dialog02,dialog03; // 커스텀 다이얼로그
 
     CircleImageView[] prfimgs;
     ImageView[] prfchks;
@@ -52,12 +50,18 @@ public class NewPageActivity extends AppCompatActivity {
     LinearLayout mood_llbtn,weather_llbtn;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.writing_diary);
         mTitle = findViewById(R.id.post_title_edit);
         mContents = findViewById(R.id.post_contents_edit);
         mDate = findViewById(R.id.date);
+
+//        LayoutInflater inflater = getLayoutInflater();
+//        ViewGroup container = findViewById(R.id.container);
+//
+//        View v = inflater.inflate(R.layout.writing_diary, container, false);
+
         // homeFragment=new HomeFragment();
         findViewById(R.id.post_save_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,19 +108,17 @@ public class NewPageActivity extends AppCompatActivity {
 
             }
         });
-    }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.writing_diary, container, false);
 
-        mood_img = (CircleImageView) v.findViewById(R.id.mood);
-        mood_llbtn = v.findViewById(R.id.mood);
-        weather_img = (CircleImageView) v.findViewById(R.id.weather);
-        weather_llbtn = v.findViewById(R.id.weather);
 
-        dialog01 = new Dialog(NewPageActivity.this);
-        dialog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog01.setContentView(R.layout.dialog01);
+        mood_img = (CircleImageView) findViewById(R.id.mood);
+       // mood_llbtn = findViewById(R.id.mood);
+        weather_img = (CircleImageView) findViewById(R.id.weather);
+//        weather_llbtn = findViewById(R.id.weather);
+
+//        dialog01 = new Dialog(NewPageActivity.this);
+//        dialog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog01.setContentView(R.layout.dialog01);
 
         dialog02 = new Dialog(NewPageActivity.this);
         dialog02.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -140,33 +142,33 @@ public class NewPageActivity extends AppCompatActivity {
             }
         });
 
-        return v;
+
     }
 
 
     // dialog01을 디자인하는 함수
-    public void showDialog01(){
-        dialog01.show(); // 다이얼로그 띄우기
-        dialog01.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
-
-        // 아니오 버튼
-        Button noBtn = dialog01.findViewById(R.id.noBtn);
-        noBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 원하는 기능 구현
-                dialog01.dismiss(); // 다이얼로그 닫기
-            }
-        });
-        // 네 버튼
-        dialog01.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 원하는 기능 구현
-                finish();           // 앱 종료
-            }
-        });
-    }
+//    public void showDialog01(){
+//        dialog01.show(); // 다이얼로그 띄우기
+//        dialog01.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
+//
+//        // 아니오 버튼
+//        Button noBtn = dialog01.findViewById(R.id.noBtn);
+//        noBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // 원하는 기능 구현
+//                dialog01.dismiss(); // 다이얼로그 닫기
+//            }
+//        });
+//        // 네 버튼
+//        dialog01.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // 원하는 기능 구현
+//                finish();           // 앱 종료
+//            }
+//        });
+//    }
 
     public void showDialog02(){
         dialog02.show(); // 다이얼로그 띄우기
@@ -255,7 +257,7 @@ public class NewPageActivity extends AppCompatActivity {
     public void showDialog03(){
         dialog03.show(); // 다이얼로그 띄우기
         dialog03.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
-        dialog03.findViewById(R.id.weather).setOnClickListener(new View.OnClickListener() {
+        dialog03.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

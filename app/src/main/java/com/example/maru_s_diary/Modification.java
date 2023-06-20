@@ -43,7 +43,7 @@ public class Modification extends AppCompatActivity {
     }
 
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.writing_diary, container, false);
 
         mood_img = (CircleImageView) v.findViewById(R.id.mood);
@@ -167,7 +167,7 @@ public class Modification extends AppCompatActivity {
     public void showDialog03(){
         dialog03.show(); // 다이얼로그 띄우기
         dialog03.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 투명 배경
-        dialog03.findViewById(R.id.weather).setOnClickListener(new View.OnClickListener() {
+        dialog03.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
