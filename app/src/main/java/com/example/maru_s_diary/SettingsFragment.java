@@ -42,6 +42,7 @@ public class SettingsFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 관련
     private DatabaseReference mDatabaseReference; // 데이터베이스 관련련
     //private FirebaseStorage mStorage;
+
    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +60,7 @@ public class SettingsFragment extends Fragment {
 
         changetheme_tvbtn = v.findViewById(R.id.set_changetheme_tvbtn);
         alram_tvbtn = v.findViewById(R.id.set_alram_tvbtn);
-        changepw_tvbtn = v.findViewById(R.id.set_changepw_tvbtn);
+//        changepw_tvbtn = v.findViewById(R.id.set_changepw_tvbtn);
         logout_llbtn = v.findViewById(R.id.set_logout_llbtn);
         delaccount_tvbtn = v.findViewById(R.id.set_delaccount_tvbtn);
 
@@ -94,13 +95,13 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        changepw_tvbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PwChangeActivity.class);
-                startActivity(intent);
-            }
-        });
+//        changepw_tvbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), PwChangeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         logout_llbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,7 +210,7 @@ public class SettingsFragment extends Fragment {
                     profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
                     changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
                     alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
+//                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
                     logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
                     delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
 
@@ -219,7 +220,7 @@ public class SettingsFragment extends Fragment {
                     profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
                     changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
                     alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+//                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
                     logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
                     delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
 
@@ -229,7 +230,7 @@ public class SettingsFragment extends Fragment {
                     profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
                     changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
                     alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+//                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
                     logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
                     delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
 
@@ -239,7 +240,7 @@ public class SettingsFragment extends Fragment {
                     profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                     changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                     alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
+//                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                     logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                     delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                 }

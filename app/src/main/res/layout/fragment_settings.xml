@@ -69,17 +69,7 @@
                 android:textSize="18sp"
                 android:textColor="#000000"
                 android:text="알림 설정"/>
-            <TextView
-                android:layout_width="350dp"
-                android:layout_height="69dp"
-                android:background="@drawable/rect3_arrow"
-                android:gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:layout_marginTop="2dp"
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:id="@+id/set_changepw_tvbtn"
-                android:text="비밀번호 변경"/>
+
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="69dp"
