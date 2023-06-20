@@ -109,24 +109,24 @@
                 android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="200dp"
-                    android:contentDescription="chat"
-                    android:padding="1sp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/comments" />
+<!--                <ImageButton-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:layout_gravity="bottom"-->
+<!--                    android:layout_marginLeft="200dp"-->
+<!--                    android:contentDescription="chat"-->
+<!--                    android:padding="1sp"-->
+<!--                    android:scaleType="centerCrop"-->
+<!--                    android:src="@drawable/comments" />-->
 
                 <ImageButton
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_gravity="bottom"
-                    android:layout_marginLeft="10dp"
                     android:contentDescription="heart"
                     android:padding="1sp"
                     android:scaleType="centerCrop"
+                    android:layout_marginLeft="230dp"
                     android:src="@drawable/full_heart" />
 
                 <TextView
