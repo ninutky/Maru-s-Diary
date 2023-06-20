@@ -21,8 +21,8 @@
             android:backgroundTint="@color/pink_50"
             android:gravity="center_vertical"
             android:padding="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp">
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="40dp">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -69,27 +69,18 @@
                 android:textSize="18sp"
                 android:textColor="#000000"
                 android:text="알림 설정"/>
-            <TextView
-                android:layout_width="350dp"
-                android:layout_height="69dp"
-                android:background="@drawable/rect3_arrow"
-                android:gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:layout_marginTop="2dp"
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:id="@+id/set_changepw_tvbtn"
-                android:text="비밀번호 변경"/>
+
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="69dp"
-                android:id="@+id/set_logout_llbtn"
+                android:id="@+id/set_login_or_logout_llbtn"
                 android:background="@drawable/rect3"
                 android:backgroundTint="@color/pink_50"
                 android:gravity="center_vertical"
                 android:layout_marginTop="2dp"
                 android:drawablePadding="5dp">
                 <TextView
+                    android:id="@+id/login_or_logout_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
@@ -97,6 +88,7 @@
                     android:text="계정 로그아웃"
                     android:textColor="#000000"/>
                 <ImageView
+                    android:id="@+id/logout_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/logout_img"

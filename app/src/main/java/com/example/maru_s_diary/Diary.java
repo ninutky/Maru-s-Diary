@@ -1,5 +1,7 @@
 package com.example.maru_s_diary;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -84,7 +86,7 @@ public class Diary extends Fragment {
             }
         });
         diaryLly = v.findViewById(R.id.diary_lly);
-        SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE);
         int theme = sharedPreferences.getInt("theme", 0);
         changeTheme(theme);
 

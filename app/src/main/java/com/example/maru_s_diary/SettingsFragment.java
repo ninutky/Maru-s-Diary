@@ -1,15 +1,12 @@
 package com.example.maru_s_diary;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,19 +17,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.Arrays;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.w3c.dom.Text;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -41,10 +33,12 @@ public class SettingsFragment extends Fragment {
 
     LinearLayout logout_llbtn, profile_llbtn;
     Dialog loutdlg, themedlg, profiledlg;
+    TextView loginOrLogoutTv;
     CircleImageView profile_img;
     LinearLayout[] themes;
     CircleImageView[] prfimgs;
     ImageView[] thmchks, prfchks;
+    ImageView logoutImg;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
@@ -52,6 +46,7 @@ public class SettingsFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth; // 파이어베이스 관련
     private DatabaseReference mDatabaseReference; // 데이터베이스 관련련
     //private FirebaseStorage mStorage;
+
    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +64,11 @@ public class SettingsFragment extends Fragment {
 
         changetheme_tvbtn = v.findViewById(R.id.set_changetheme_tvbtn);
         alram_tvbtn = v.findViewById(R.id.set_alram_tvbtn);
-        changepw_tvbtn = v.findViewById(R.id.set_changepw_tvbtn);
-        logout_llbtn = v.findViewById(R.id.set_logout_llbtn);
+//        changepw_tvbtn = v.findViewById(R.id.set_changepw_tvbtn);
+        logout_llbtn = v.findViewById(R.id.set_login_or_logout_llbtn);
         delaccount_tvbtn = v.findViewById(R.id.set_delaccount_tvbtn);
+        loginOrLogoutTv = v.findViewById(R.id.login_or_logout_tv);
+        logoutImg = v.findViewById(R.id.logout_img);
 
         loutdlg = new Dialog(getActivity());
         loutdlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -91,9 +88,16 @@ public class SettingsFragment extends Fragment {
             if(email != null){
                 String displayEmail = email.substring(0, email.indexOf('@'));
                 userIdTextView.setText(displayEmail);
+                loginOrLogoutTv.setText("계정 로그아웃");
+                logoutImg.setVisibility(View.VISIBLE);
             }
+
+
         } else {
             userIdTextView.setText("(null)");
+            loginOrLogoutTv.setText("로그인 / 회원가입");
+            logoutImg.setVisibility(View.INVISIBLE);
+
         }
 
         delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
@@ -104,19 +108,24 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        changepw_tvbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PwChangeFragment.class);
-                startActivity(intent);
-            }
-        });
+//        changepw_tvbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), PwChangeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         logout_llbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showloutDialog();
+                if (currentUser != null) showloutDialog();
+                else {
+                    Intent intent = new Intent(getActivity(), SigninActivity.class);
+                    startActivity(intent);
+                }
             }
+
         });
 
         alram_tvbtn.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +150,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        preferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         editor = preferences.edit();
         int themeColor = preferences.getInt("themeColor", R.color.pink_50); // 기본 테마 분홍색
         // 기존에 저장한 테마 가져옴
@@ -214,12 +223,12 @@ public class SettingsFragment extends Fragment {
                 }
 
                 if (selectedThemeIndex == 0) {
-                    editor.putInt("theme", 0);  // type 전달 (테마 변경)
+                    editor.putInt("theme", 0);  // theme에 type 0 전달 (테마 변경)
                     editor.putInt("themeColor", R.color.pink_50);   // 색 전달 (LinearLayout 변경)
                     profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
                     changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
                     alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
+//                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
                     logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
                     delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_50)));
 
@@ -229,7 +238,7 @@ public class SettingsFragment extends Fragment {
                     profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
                     changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
                     alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
+//                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
                     logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
                     delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.skyblue_50)));
 
@@ -239,7 +248,7 @@ public class SettingsFragment extends Fragment {
                     profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
                     changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
                     alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
+//                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
                     logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
                     delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green_50)));
 
@@ -249,7 +258,7 @@ public class SettingsFragment extends Fragment {
                     profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                     changetheme_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                     alram_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
-                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
+//                    changepw_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                     logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                     delaccount_tvbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                 }
