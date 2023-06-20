@@ -41,7 +41,7 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/weather_sun"
+                android:background="@drawable/sun"
                 android:scaleType="centerCrop" />
 
             <ImageButton
