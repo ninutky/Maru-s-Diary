@@ -14,6 +14,6 @@ public class FirebaseID {
 
     public static int weather=1;
     public static int feeling=1;
-    public static String date="2000/01/01";
+    public static String date="date";
    // public static int heart=100;
 }
