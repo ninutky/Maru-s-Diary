@@ -13,13 +13,15 @@
         android:layout_gravity="end"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/cancel_button"
         android:background="@drawable/cancel" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"
         android:layout_marginBottom="20dp">
 
         <FrameLayout
@@ -27,8 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/sun"
                 android:id="@+id/weather_img_1"
                 android:gravity="center"/>
@@ -37,8 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:id="@+id/weather_chk_1"
                     android:visibility="visible"
                     android:src="@drawable/theme_check"/>
@@ -49,8 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/cloud"
                 android:id="@+id/weather_img_2"
                 android:gravity="center"/>
@@ -60,8 +62,8 @@
                 android:layout_gravity="center">
                 <ImageView
                     android:visibility="invisible"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:id="@+id/weather_chk_2"
                     android:src="@drawable/theme_check"/>
             </LinearLayout>
@@ -71,8 +73,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/wind"
                 android:id="@+id/weather_img_3"
                 android:gravity="center"/>
@@ -82,8 +84,8 @@
                 android:layout_gravity="center">
                 <ImageView
                     android:visibility="invisible"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:id="@+id/weather_chk_3"
                     android:src="@drawable/theme_check"/>
             </LinearLayout>
@@ -93,7 +95,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"
         android:layout_marginBottom="20dp">
 
         <FrameLayout
@@ -101,8 +104,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/rain"
                 android:id="@+id/weather_img_4"
                 android:gravity="center"/>
@@ -112,8 +115,8 @@
                 android:layout_gravity="center">
                 <ImageView
                     android:visibility="invisible"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:id="@+id/weather_chk_4"
                     android:src="@drawable/theme_check"/>
             </LinearLayout>
@@ -124,8 +127,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/lighntnong"
                 android:id="@+id/weather_img_5"
                 android:gravity="center"/>
@@ -135,8 +138,8 @@
                 android:layout_gravity="center">
                 <ImageView
                     android:visibility="invisible"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:id="@+id/weather_chk_5"
                     android:src="@drawable/theme_check"/>
             </LinearLayout>
@@ -146,8 +149,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/snow"
                 android:id="@+id/weather_img_6"
                 android:gravity="center"/>
@@ -157,8 +160,8 @@
                 android:layout_gravity="center">
                 <ImageView
                     android:visibility="invisible"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:id="@+id/weather_chk_6"
                     android:src="@drawable/theme_check"/>
             </LinearLayout>
