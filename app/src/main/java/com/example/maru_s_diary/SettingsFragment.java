@@ -162,6 +162,10 @@ public class SettingsFragment extends Fragment {
         profile_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(themeColor)));
         logout_llbtn.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(themeColor)));
 
+        int profile = preferences.getInt("profile", R.drawable.pink_rabbit); // 기본 테마 분홍색
+        // 기존에 저장한 프로필가져옴
+        profile_img.setImageResource(profile);
+
         return v;
 
     }
@@ -348,18 +352,25 @@ public class SettingsFragment extends Fragment {
                 }
 
                 if (selectedProfileIndex == 0) {
+                    editor.putInt("profile", R.drawable.pink_rabbit);
                     profile_img.setImageResource(R.drawable.pink_rabbit);
                 } else if (selectedProfileIndex == 1) {
+                    editor.putInt("profile", R.drawable.blue_rabbit);
                     profile_img.setImageResource(R.drawable.blue_rabbit);
                 } else if (selectedProfileIndex == 2) {
+                    editor.putInt("profile", R.drawable.yellow_rabbit);
                     profile_img.setImageResource(R.drawable.yellow_rabbit);
                 } else if (selectedProfileIndex == 3) {
+                    editor.putInt("profile", R.drawable.orange_rabbit);
                     profile_img.setImageResource(R.drawable.orange_rabbit);
                 } else if (selectedProfileIndex == 4) {
+                    editor.putInt("profile", R.drawable.mint_rabbit);
                     profile_img.setImageResource(R.drawable.mint_rabbit);
                 } else {
+                    editor.putInt("profile", R.drawable.purple_rabbit);
                     profile_img.setImageResource(R.drawable.purple_rabbit);
                 }
+                editor.apply();
             }
         });
 
