@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,9 +41,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
     public RecyclerView mPostRecyclerView;
     private EditText mTitle,mContents,mDate;
     //    private int mWeather,mFeeling;
+    private TextView heart;
     public PostAdapter mAdapter;
     private List<Post> mDatas;
     FloatingActionButton writeButton;
+    ImageView heartBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
 
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         View v2 = inflater.inflate(R.layout.writing_diary, container, false);
+        View v3 = inflater.inflate(R.layout.item_diary, container, false);
 
         mTitle=v2.findViewById(R.id.post_title_edit);
         mContents=v2.findViewById(R.id.post_contents_edit);
@@ -62,6 +67,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
 //        mFeeling=findViewById(R.id.mood);
         mDate=v2.findViewById(R.id.date);
         writeButton=v.findViewById(R.id.btn_write);
+        heart=v3.findViewById(R.id.heart_count);
+
         v2.findViewById(R.id.post_save_btn).setOnClickListener(this);
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         writeButton.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +158,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
                                     String title=String.valueOf(snap.get(FirebaseID.title));
                                     String contents=String.valueOf(shot.get(FirebaseID.contents));
                                     String date=String.valueOf(shot.get(FirebaseID.date));
-                                    Post data=new Post(documentId,title,contents,date);
+                                    String mood=String.valueOf(shot.get("mood"));
+                                    Post data=new Post(documentId,title,contents,date,mood);
                                     mDatas.add(data);
                                 }
                                 mAdapter.notifyDataSetChanged(); // 데이터 변경을 어댑터에 알려줌

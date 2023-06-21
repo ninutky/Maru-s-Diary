@@ -10,18 +10,29 @@ public class Post {
 //    private int feeling;
     private String date;
 
+    public String getMood() {
+        return mood;
+    }
+
+    public void setMood(String mood) {
+        this.mood = mood;
+    }
+
+    private String mood;
+
 
     public Post() {
     }
 
     //int weather, int feeling,
-    public Post(String documentId, String title, String contents, String date) {
+    public Post(String documentId, String title, String contents, String date,String mood) {
         this.documentId = documentId;
         this.title = title;
         this.contents = contents;
 //        this.weather = weather;
 //        this.feeling = feeling;
         this.date = date;
+        this.mood=mood;
     }
 
     public String getDocumentId() {

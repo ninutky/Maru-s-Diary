@@ -68,6 +68,8 @@ public class NewPageActivity extends AppCompatActivity {
     CircleImageView mood_img,weather_img;
     ImageView back;
 
+    String selectedMood = "emoji0";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,8 +112,8 @@ public class NewPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 select();
-                upload();
-                show(uri);
+                // upload();
+                // show(uri);
             }
         });
 
@@ -125,6 +127,7 @@ public class NewPageActivity extends AppCompatActivity {
                 data.put(FirebaseID.title, mTitle.getText().toString());
                 data.put(FirebaseID.contents, mContents.getText().toString());
                 data.put(FirebaseID.date, mDate.getText().toString());
+                data.put("mood", selectedMood);
                 String value1 = mTitle.getText().toString().trim();
                 String value2 = mContents.getText().toString().trim();
                 String value3 = mDate.getText().toString().trim();
@@ -200,18 +203,43 @@ public class NewPageActivity extends AppCompatActivity {
     }
 
     private void select() {
+        /*
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT );
         intent.setType("image/*");
         launcher.launch(intent);
+
+         */
+
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        photoPickerIntent.setType("image/*");
+        startActivityForResult(photoPickerIntent, 1);
     }
 
-    private void upload() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference("Study");
-        storageReference.child("images").child("image").putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        if (requestCode == 1) {
+
+            if (resultCode == RESULT_OK) {
+                if (intent != null) {
+                    // Get the URI of the selected file
+                    final Uri uri = intent.getData();
+                    Log.d("mytag", uri.toString());
+                    upload(uri);
+                }
+            }
+            super.onActivityResult(requestCode, resultCode, intent);
+
+        }
+    }
+
+    private void upload(Uri uri) {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference(mAuth.getUid());
+        storageReference.child("images").child("filename").putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                 if(task.isSuccessful()) {
                     Toast.makeText(NewPageActivity.this, "업로드에 성공했습니다", Toast.LENGTH_SHORT).show();
+
                 }
                 else {
                     Toast.makeText(NewPageActivity.this, "업로드에 실패했습니다", Toast.LENGTH_SHORT).show();
@@ -315,6 +343,8 @@ public class NewPageActivity extends AppCompatActivity {
                 } else {
                     mood_img.setImageResource(R.drawable.mood9);
                 }
+
+                selectedMood = "emoji" + selectedMoodIndex;
             }
         });
 

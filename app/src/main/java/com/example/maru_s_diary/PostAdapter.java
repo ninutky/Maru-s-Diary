@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -48,6 +49,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.title.setText(data.getTitle());
         holder.contents.setText(data.getContents());
         holder.date.setText(data.getDate());
+        String mood = data.getMood();
+        if(mood.equals("emoji0")) holder.moodImage.setImageResource(R.drawable.mood1);
+        if(mood.equals("emoji1")) holder.moodImage.setImageResource(R.drawable.mood2);
+        if(mood.equals("emoji2")) holder.moodImage.setImageResource(R.drawable.mood3);
+        if(mood.equals("emoji3")) holder.moodImage.setImageResource(R.drawable.mood4);
+        if(mood.equals("emoji4")) holder.moodImage.setImageResource(R.drawable.mood5);
+        if(mood.equals("emoji5")) holder.moodImage.setImageResource(R.drawable.mood6);
+        if(mood.equals("emoji6")) holder.moodImage.setImageResource(R.drawable.mood7);
+        if(mood.equals("emoji7")) holder.moodImage.setImageResource(R.drawable.mood8);
+        if(mood.equals("emoji8")) holder.moodImage.setImageResource(R.drawable.mood9);
         setItemColorBasedOnNumber(holder);
     }
 
@@ -66,6 +77,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         private TextView contents;
         private TextView date;
         private ImageButton heartBtn;
+        private ImageView moodImage;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,6 +87,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             date=itemView.findViewById(R.id.list_datetime);
             heartBtn = itemView.findViewById(R.id.heart_btn);
             diaryLly = itemView.findViewById(R.id.diary_lly);
+            moodImage = itemView.findViewById(R.id.list_feeling_img);
 
             heartBtn.setOnClickListener(new View.OnClickListener() {
                 @Override

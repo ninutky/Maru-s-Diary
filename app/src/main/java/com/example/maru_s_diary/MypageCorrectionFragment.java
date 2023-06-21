@@ -88,6 +88,7 @@ public class MypageCorrectionFragment extends Fragment implements View.OnClickLi
                                 String contents = documentSnapshot.getString("contents");
                                 String documentId = documentSnapshot.getString("owner");
                                 String date = documentSnapshot.getString("date");
+                                String mood = documentSnapshot.getString("mood");
                                 //date 필드명이 2000/01/01이라서 불러오면 에러남 ㅠㅠ
 
                                 Log.d("Firestore", "제목: " + title);
@@ -95,7 +96,7 @@ public class MypageCorrectionFragment extends Fragment implements View.OnClickLi
                                 Log.d("Firestore", "아이디: " + documentId);
                                 Log.d("Firestore", "날짜: " + date);
 
-                                Post data = new Post(documentId, title, contents, date);
+                                Post data = new Post(documentId, title, contents, date, mood);
                                 mDatas.add(data);
                             }
                             mAdapter.notifyDataSetChanged();
