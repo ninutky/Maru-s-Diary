@@ -128,6 +128,7 @@ public class NewPageActivity extends AppCompatActivity {
                 data.put(FirebaseID.contents, mContents.getText().toString());
                 data.put(FirebaseID.date, mDate.getText().toString());
                 data.put("mood", selectedMood);
+                data.put("postId",postId);
                 String value1 = mTitle.getText().toString().trim();
                 String value2 = mContents.getText().toString().trim();
                 String value3 = mDate.getText().toString().trim();
