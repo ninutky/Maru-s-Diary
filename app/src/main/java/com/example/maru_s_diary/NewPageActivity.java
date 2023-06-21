@@ -241,13 +241,6 @@ public class NewPageActivity extends AppCompatActivity {
             }
         });
 
-        dialog02.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog02.dismiss();
-            }
-        });
-
         prfimgs = new CircleImageView[9];
         prfimgs[0] = (dialog02.findViewById(R.id.mood_img_1));
         prfimgs[1] = (dialog02.findViewById(R.id.mood_img_2));
@@ -316,13 +309,6 @@ public class NewPageActivity extends AppCompatActivity {
                 } else {
                     weather_img.setImageResource(R.drawable.snow);
                 }
-            }
-        });
-
-        dialog02.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog03.dismiss();
             }
         });
 

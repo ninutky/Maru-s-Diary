@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -62,11 +63,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
         mDate=v2.findViewById(R.id.date);
         writeButton=v.findViewById(R.id.btn_write);
         v2.findViewById(R.id.post_save_btn).setOnClickListener(this);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         writeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), NewPageActivity.class);
-                startActivity(intent);
+                if(currentUser != null){
+                    Intent intent = new Intent(getActivity(), NewPageActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "로그인 후 사용해주세요.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
