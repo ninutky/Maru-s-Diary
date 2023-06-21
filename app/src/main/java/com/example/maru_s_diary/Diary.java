@@ -19,14 +19,25 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 public class Diary extends Fragment {
     private ImageButton backBtn;
@@ -46,6 +57,19 @@ public class Diary extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.diary, container, false);
+
+        // Find the TextViews by their respective IDs
+        TextView datesTextView = v.findViewById(R.id.dates);
+        TextView contentsTextView = v.findViewById(R.id.contents);
+        TextView titleTextView = v.findViewById(R.id.title);
+
+        Bundle args = getArguments();
+        if (args != null) {
+            String documentId = args.getString("documentId");
+
+            // Load data from Firestore using the documentId
+            loadDataFromFirestore(documentId, datesTextView, contentsTextView, titleTextView);
+        }
 
         backBtn = v.findViewById(R.id.back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +143,36 @@ public class Diary extends Fragment {
                 diaryLly.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow_50)));
                 break;
         }
+    }
+
+
+    private void loadDataFromFirestore(String documentId, TextView datesTextView, TextView contentsTextView, TextView titleTextView) {
+        // Load the data from Firestore or any other data source based on the documentId
+        // For example, assuming you have a Firestore collection called "posts" and you want to load data from a document with the given documentId
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore.collection("post").document(documentId).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            // Extract the data from the document
+                            String contents = documentSnapshot.getString("contents");
+                            String title = documentSnapshot.getString("title");
+
+                            // Set the data to the respective TextViews
+                            contentsTextView.setText(contents);
+                            titleTextView.setText(title);
+                        } else {
+                            Log.d("Diary", "No such document");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("Diary", "Error retrieving document", e);
+                    }
+                });
     }
 
 }
