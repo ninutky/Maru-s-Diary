@@ -103,8 +103,13 @@ public class SettingsFragment extends Fragment {
         delaccount_tvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), DeleteAccountActivity.class);
-                startActivity(intent);
+                if(currentUser != null) {
+                    Intent intent = new Intent(getActivity(), DeleteAccountActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "로그인 후 사용해주세요.", Toast.LENGTH_SHORT).show();
+                }
+                
             }
         });
 
