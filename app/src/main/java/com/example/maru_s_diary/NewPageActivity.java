@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +20,16 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.content.Intent;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -31,6 +37,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,10 +54,11 @@ public class NewPageActivity extends AppCompatActivity {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     private EditText mTitle, mContents, mDate;
-    private ImageView appbar_iv;
+    private ImageView appbar_iv, mPhoto;
     private LinearLayout writeLly;
     private SharedPreferences preferences;
     private SharedPreferences sharedPreferences;
+    private Uri uri;
 
     //    HomeFragment homeFragment;
     Dialog dialog02,dialog03; // 커스텀 다이얼로그
@@ -77,6 +88,7 @@ public class NewPageActivity extends AppCompatActivity {
         mTitle = findViewById(R.id.post_title_edit);
         mContents = findViewById(R.id.post_contents_edit);
         mDate = findViewById(R.id.date);
+        mPhoto = findViewById(R.id.imgbtn);
 
 //        LayoutInflater inflater = getLayoutInflater();
 //        ViewGroup container = findViewById(R.id.container);
@@ -93,6 +105,16 @@ public class NewPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                select();
+                upload();
+                show(uri);
+            }
+        });
+
         findViewById(R.id.post_save_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,6 +158,9 @@ public class NewPageActivity extends AppCompatActivity {
                             });
                 }
 
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT );
+                intent.setType("image/*");
+                launcher.launch(intent);
             }
         });
 
@@ -172,9 +197,61 @@ public class NewPageActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
+    private void select() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT );
+        intent.setType("image/*");
+        launcher.launch(intent);
+    }
+
+    private void upload() {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference("Study");
+        storageReference.child("images").child("image").putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                if(task.isSuccessful()) {
+                    Toast.makeText(NewPageActivity.this, "업로드에 성공했습니다", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(NewPageActivity.this, "업로드에 실패했습니다", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void show(Uri imageUri) {
+        // Firebase Storage 참조 가져오기
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+
+        // 이미지 파일 이름 설정 (예: "images/profile.jpg")
+        String fileName = "images/" + System.currentTimeMillis() + ".jpg";
+
+        // Storage에 파일 업로드
+        StorageReference imageRef = storageRef.child(fileName);
+        imageRef.putFile(imageUri)
+                .addOnSuccessListener(taskSnapshot -> {
+                    // 업로드 성공 시
+                    // ...
+                })
+                .addOnFailureListener(e -> {
+                    // 업로드 실패 시
+                    // ...
+                });
+    }
+
+    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if(result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        uri = result.getData().getData();
+                        Log.d("test", uri.toString());
+
+                    }
+                }
+            });
 
     // dialog01을 디자인하는 함수
 //    public void showDialog01(){
