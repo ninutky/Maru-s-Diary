@@ -69,6 +69,7 @@ public class NewPageActivity extends AppCompatActivity {
     ImageView back;
 
     String selectedMood = "emoji0";
+    String selectedWeather = "weather0";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -128,6 +129,7 @@ public class NewPageActivity extends AppCompatActivity {
                 data.put(FirebaseID.contents, mContents.getText().toString());
                 data.put(FirebaseID.date, mDate.getText().toString());
                 data.put("mood", selectedMood);
+                data.put("weather", selectedWeather);
                 data.put("postId",postId);
                 String value1 = mTitle.getText().toString().trim();
                 String value2 = mContents.getText().toString().trim();
@@ -346,6 +348,7 @@ public class NewPageActivity extends AppCompatActivity {
                 }
 
                 selectedMood = "emoji" + selectedMoodIndex;
+
             }
         });
 
@@ -417,6 +420,7 @@ public class NewPageActivity extends AppCompatActivity {
                 } else {
                     weather_img.setImageResource(R.drawable.snow);
                 }
+                selectedWeather = "weather" + selectedMoodIndex;
             }
         });
 

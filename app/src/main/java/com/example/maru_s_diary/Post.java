@@ -20,12 +20,21 @@ public class Post {
 
     private String mood;
 
+    public String getWeather() {
+        return weather;
+    }
+
+    public void setWeather(String weather) {
+        this.weather = weather;
+    }
+
+    private String weather;
 
     public Post() {
     }
 
     //int weather, int feeling,
-    public Post(String documentId, String title, String contents, String date,String mood) {
+    public Post(String documentId, String title, String contents, String date,String mood,String weather) {
         this.documentId = documentId;
         this.title = title;
         this.contents = contents;
@@ -33,6 +42,7 @@ public class Post {
 //        this.feeling = feeling;
         this.date = date;
         this.mood=mood;
+        this.weather=weather;
     }
 
     public String getDocumentId() {

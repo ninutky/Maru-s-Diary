@@ -159,7 +159,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
                                     String contents=String.valueOf(shot.get(FirebaseID.contents));
                                     String date=String.valueOf(shot.get(FirebaseID.date));
                                     String mood=String.valueOf(shot.get("mood"));
-                                    Post data=new Post(documentId,title,contents,date,mood);
+                                    String weather=String.valueOf(shot.get("weather"));
+                                    Post data=new Post(documentId,title,contents,date,mood,weather);
                                     mDatas.add(data);
                                 }
                                 mAdapter.notifyDataSetChanged(); // 데이터 변경을 어댑터에 알려줌

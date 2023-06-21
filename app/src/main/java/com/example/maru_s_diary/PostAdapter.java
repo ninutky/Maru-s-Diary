@@ -59,6 +59,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         if(mood.equals("emoji6")) holder.moodImage.setImageResource(R.drawable.mood7);
         if(mood.equals("emoji7")) holder.moodImage.setImageResource(R.drawable.mood8);
         if(mood.equals("emoji8")) holder.moodImage.setImageResource(R.drawable.mood9);
+        String weather=data.getWeather();
+        if(weather.equals("weather0")) holder.weatherImage.setImageResource(R.drawable.sun);
+        if(weather.equals("weather1")) holder.weatherImage.setImageResource(R.drawable.cloud);
+        if(weather.equals("weather2")) holder.weatherImage.setImageResource(R.drawable.wind);
+        if(weather.equals("weather3")) holder.weatherImage.setImageResource(R.drawable.rain);
+        if(weather.equals("weather4")) holder.weatherImage.setImageResource(R.drawable.lighntnong);
+        if(weather.equals("weather5")) holder.weatherImage.setImageResource(R.drawable.snow);
         setItemColorBasedOnNumber(holder);
     }
 
@@ -78,6 +85,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         private TextView date;
         private ImageButton heartBtn;
         private ImageView moodImage;
+        private ImageView weatherImage;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +96,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             heartBtn = itemView.findViewById(R.id.heart_btn);
             diaryLly = itemView.findViewById(R.id.diary_lly);
             moodImage = itemView.findViewById(R.id.list_feeling_img);
+            weatherImage=itemView.findViewById(R.id.list_weather_img);
 
             heartBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
