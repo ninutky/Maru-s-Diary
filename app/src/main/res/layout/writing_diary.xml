@@ -13,6 +13,7 @@
         android:layout_weight="1">
 
         <ImageView
+            android:id="@+id/appbar_iv"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/menu"
@@ -36,11 +37,11 @@
             android:background="@drawable/left_arrow" />
 
         <LinearLayout
+            android:id="@+id/write_lly"
             android:layout_width="wrap_content"
             android:layout_height="530dp"
             android:orientation="vertical"
-            android:layout_marginLeft="45dp"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
             android:background="@drawable/diary_background"
             android:backgroundTint="@color/pink_50">
 
@@ -129,13 +130,13 @@
             android:id="@+id/post_save_btn"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="750dp"
             android:layout_marginLeft="270dp"
+            android:layout_marginTop="650dp"
             android:background="@drawable/button_border"
             android:backgroundTint="@color/black_10"
-            android:textColor="@color/black"
             android:text="게시"
-            android:textSize="15sp"/>
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
 
     </FrameLayout>

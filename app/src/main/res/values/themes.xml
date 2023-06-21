@@ -34,6 +34,7 @@
         <item name="android:textViewStyle">@style/CustomTextView</item>
         <item name="floatingActionButtonStyle">@style/CustomFloatingActionButton</item>
         <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle</item>
+        <item name="android:switchStyle">@style/CustomSwitchStyle</item>
     </style>
     <style name="CustomTextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:backgroundTint">@color/pink_50</item>
@@ -45,6 +46,9 @@
         <item name="android:background">@color/pink</item>
         <item name="itemIconTint">@color/black</item>
     </style>
+    <style name="CustomSwitchStyle" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:backgroundTint">@color/pink_50</item>
+    </style>
 
 
     <!-- 하늘색 테마 -->
@@ -52,6 +56,7 @@
         <item name="android:textViewStyle">@style/CustomTextView2</item>
         <item name="floatingActionButtonStyle">@style/CustomFloatingActionButton2</item>
         <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle2</item>
+        <item name="android:switchStyle">@style/CustomSwitchStyle2</item>
     </style>
     <style name="CustomTextView2" parent="Widget.MaterialComponents.TextView">
         <item name="android:backgroundTint">@color/skyblue_50</item>
@@ -63,12 +68,16 @@
         <item name="android:background">@color/skyblue</item>
         <item name="itemIconTint">@color/black</item>
     </style>
+    <style name="CustomSwitchStyle2" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:backgroundTint">@color/skyblue_50</item>
+    </style>
 
     <!-- 초록색 테마 -->
     <style name="CustomTheme3" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:textViewStyle">@style/CustomTextView3</item>
         <item name="floatingActionButtonStyle">@style/CustomFloatingActionButton3</item>
         <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle3</item>
+        <item name="android:switchStyle">@style/CustomSwitchStyle3</item>
     </style>
     <style name="CustomTextView3" parent="Widget.MaterialComponents.TextView">
         <item name="android:backgroundTint">@color/green_50</item>
@@ -80,12 +89,16 @@
         <item name="android:background">@color/green</item>
         <item name="itemIconTint">@color/black</item>
     </style>
+    <style name="CustomSwitchStyle3" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:backgroundTint">@color/green_50</item>
+    </style>
 
     <!-- 노란색 테마 -->
     <style name="CustomTheme4" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:textViewStyle">@style/CustomTextView4</item>
         <item name="floatingActionButtonStyle">@style/CustomFloatingActionButton4</item>
         <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle4</item>
+        <item name="android:switchStyle">@style/CustomSwitchStyle4</item>
     </style>
     <style name="CustomTextView4" parent="Widget.MaterialComponents.TextView">
         <item name="android:backgroundTint">@color/yellow_50</item>
@@ -96,6 +109,9 @@
     <style name="BottomNavigationViewStyle4" parent="Widget.Design.BottomNavigationView">
         <item name="android:background">@color/yellow</item>
         <item name="itemIconTint">@color/black</item>
+    </style>
+    <style name="CustomSwitchStyle4" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:backgroundTint">@color/yellow_50</item>
     </style>
 
 

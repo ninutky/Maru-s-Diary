@@ -43,7 +43,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:id="@+id/profile_chk_1"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     android:src="@drawable/theme_check"/>
             </LinearLayout>
         </FrameLayout>

@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -62,11 +63,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
         mDate=v2.findViewById(R.id.date);
         writeButton=v.findViewById(R.id.btn_write);
         v2.findViewById(R.id.post_save_btn).setOnClickListener(this);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         writeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), NewPageActivity.class);
-                startActivity(intent);
+                if(currentUser != null){
+                    Intent intent = new Intent(getActivity(), NewPageActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "로그인 후 사용해주세요.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -181,16 +188,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
     // 일기 클릭 이벤트 처리
     @Override
     public void onLlyClick(int position) {
-        // 프래그먼트 전환 코드 작성
+        String documentId = mDatas.get(position).getTitle(); // Get the documentId from the clicked item
+        System.out.println(documentId+ "192");
+
+        // Create a new instance of the Diary fragment
+        Diary newFragment = new Diary();
+
+        // Pass the documentId as an argument to the Diary fragment
+        Bundle args = new Bundle();
+        args.putString("documentId", documentId);
+        newFragment.setArguments(args);
+
+        // Perform the fragment transaction
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        // 전환할 프래그먼트 생성 및 추가 작업
-        Diary newFragment = new Diary();
         fragmentTransaction.replace(R.id.fragment_container, newFragment);
         fragmentTransaction.addToBackStack(null);
-
-        // 프래그먼트 전환 실행
         fragmentTransaction.commit();
     }
 }

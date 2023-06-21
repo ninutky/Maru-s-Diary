@@ -8,6 +8,7 @@
     tools:context=".AlarmSettingActivity">
 
     <ImageView
+        android:id="@+id/appbar_iv"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/menu"
@@ -37,6 +38,7 @@
         android:orientation="vertical">
 
         <Switch
+            android:id="@+id/all_swt"
             android:text="모든 알림"
             android:textSize="18sp"
             android:layout_width="350dp"
@@ -52,6 +54,7 @@
             android:backgroundTint="@color/pink_50"/>
 
         <Switch
+            android:id="@+id/comm_swt"
             android:text="댓글 알림"
             android:textSize="18sp"
             android:layout_width="350dp"
@@ -67,6 +70,7 @@
             android:backgroundTint="@color/pink_50" />
 
         <Switch
+            android:id="@+id/like_swt"
             android:text="좋아요 알림"
             android:textSize="18sp"
             android:layout_width="350dp"
@@ -82,6 +86,7 @@
             android:backgroundTint="@color/pink_50" />
 
         <Switch
+            android:id="@+id/night_swt"
             android:text="야간 방해금지 모드"
             android:textSize="18sp"
             android:layout_width="350dp"
@@ -101,6 +106,7 @@
             android:layout_height="fill_parent"
             android:visibility="visible">
             <ImageView
+                android:id="@+id/night_iv"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -109,6 +115,7 @@
                 android:backgroundTint="@color/pink_50" />
 
             <LinearLayout
+                android:id="@+id/night_text_lly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"

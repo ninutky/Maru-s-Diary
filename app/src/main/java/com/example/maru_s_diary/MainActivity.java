@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
         // 값 가져오기
-        SharedPreferences preferences = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         int theme = preferences.getInt("theme", 0); // 기본값은 0
 
         // Diary 프래그먼트로 SharedPreferences 인스턴스 전달
@@ -73,11 +74,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alarmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
+//                startActivity(intent);
+                Toast.makeText(MainActivity.this, "준비 중입니다.", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         init(); // 객체 정의
         setupListeners(); // 리스너 등록
