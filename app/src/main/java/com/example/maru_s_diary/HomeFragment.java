@@ -1,7 +1,10 @@
 package com.example.maru_s_diary;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +43,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
     private TextView heart;
     public PostAdapter mAdapter;
     private List<Post> mDatas;
+    private SharedPreferences preferences;
+    private int heartCnt;
     FloatingActionButton writeButton;
     ImageView heartBtn;
-    int heartCnt=0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -129,6 +133,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
 //            }
 //        });
 
+        preferences = getContext().getSharedPreferences("heart", Context.MODE_PRIVATE);
+
         return v;
     }
 
@@ -188,9 +194,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
     // 좋아요 버튼 클릭 이벤트 처리
     @Override
     public void onHeartBtnClick(int position) {
-        ++heartCnt;
+        // 여긴 전달 잘 받는 듯
+        heartCnt = preferences.getInt("heart", 0); // 기존 값 가져와서 초기화
+        heartCnt++;
         heart.setText(heartCnt + "");
         Toast.makeText(getActivity(), "좋아요 되었습니다. - position: " + position, Toast.LENGTH_SHORT).show();
+        Log.d("mytag", "home: "+heartCnt);
     }
 
     // 일기 클릭 이벤트 처리

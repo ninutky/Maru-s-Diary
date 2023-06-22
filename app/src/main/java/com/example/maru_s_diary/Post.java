@@ -1,5 +1,6 @@
 package com.example.maru_s_diary;
 
+import android.content.SharedPreferences;
 import android.widget.ImageView;
 
 public class Post {
@@ -9,6 +10,8 @@ public class Post {
 //    private int weather;
 //    private int feeling;
     private String date;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     public String getPostId() {
         return postId;
@@ -62,6 +65,7 @@ public class Post {
         this.date = date;
         this.mood=mood;
         this.weather=weather;
+
     }
 
     public String getDocumentId() {

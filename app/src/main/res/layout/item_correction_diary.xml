@@ -31,7 +31,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:id="@+id/list_weather_img"
-            android:src="@drawable/weather_sun" />
+            android:src="@drawable/sun_back" />
 
         <View
             android:layout_width="0dp"
@@ -42,7 +42,7 @@
             android:id="@+id/btn_mypage_correction"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/correction" />
+            android:background="@drawable/correction"/>
 
     </LinearLayout>
 

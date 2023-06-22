@@ -26,12 +26,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     private OnItemClickListener mListener;
     private Context context;
     private LinearLayout diaryLly;
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    private int heartCnt;
 
     public PostAdapter(Context context, List<Post> datas) {
         this.context = context;
         this.datas = datas;
-        sharedPreferences = context.getSharedPreferences("theme", Context.MODE_PRIVATE);
+        preferences = context.getSharedPreferences("heart", Context.MODE_PRIVATE);
+        editor = preferences.edit();
+
     }
 
     @NonNull
@@ -39,7 +43,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_diary, parent, false);
         diaryLly = itemView.findViewById(R.id.diary_lly);
-//        changeTheme(0);
+
         return new PostViewHolder(itemView);
     }
 
@@ -49,6 +53,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.title.setText(data.getTitle());
         holder.contents.setText(data.getContents());
         holder.date.setText(data.getDate());
+        heartCnt = preferences.getInt("heart", 0); // 기존 값 가져와서 초기화
+
         String mood = data.getMood();
         if(mood.equals("emoji0")) holder.moodImage.setImageResource(R.drawable.mood1);
         if(mood.equals("emoji1")) holder.moodImage.setImageResource(R.drawable.mood2);
@@ -69,7 +75,33 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         String heart=data.getHeart();
         String postId=data.getPostId();
 
+        // 항목의 "좋아요" 수를 설정합니다.
+        holder.heartText.setText(String.valueOf(heartCnt));
         setItemColorBasedOnNumber(holder);
+
+        // 좋아요 버튼에 클릭 리스너를 설정합니다.
+        holder.heartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    int position = holder.getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        heartCnt = Integer.parseInt(String.valueOf(preferences.getInt("heart", 0)));    // 기존 하트 값 불러오기
+                        // 선택한 항목의 "좋아요" 수를 증가
+                        heartCnt++;
+                        holder.heartText.setText(String.valueOf(heartCnt));
+
+                        // 업데이트된 데이터 객체를 다시 목록에 저장
+                        editor.putInt("heart", heartCnt).apply();
+                        data.setHeart(String.valueOf(heartCnt));
+                        Log.d("mytag", "post: "+heartCnt);
+
+                        // 리스너에게 클릭 이벤트를 알림
+                        mListener.onHeartBtnClick(position);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -102,24 +134,30 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             moodImage = itemView.findViewById(R.id.list_feeling_img);
             weatherImage=itemView.findViewById(R.id.list_weather_img);
             heartText=itemView.findViewById(R.id.heart_count);
+            heartText.setText(
+                    "" + heartCnt
+            );
 
-            heartBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            // mListener.onHeartBtnClick(position);
-                            int heartCnt = Integer.parseInt(heartText.getText().toString()) + 1;
 
-                            heartText.setText(
-                                "" + heartCnt
-                            );
-
-                        }
-                    }
-                }
-            });
+//            heartBtn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (mListener != null) {
+//                        int position = getAdapterPosition();
+//                        if (position != RecyclerView.NO_POSITION) {
+//                            heartText.setText("" + heartCnt);
+//
+//                            heartCnt++;
+//                            heartText.setText(
+//                                "" + heartCnt
+//                            );
+//                            editor.putInt("heart", heartCnt);
+//                            editor.apply();
+//
+//                        }
+//                    }
+//                }
+//            });
             diaryLly.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -140,28 +178,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         mListener = listener;
     }
 
-//    public void changeTheme(int n) {
-//        switch (n) {
-//            case 0:
-//            default:
-//                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.pink_50)));
-//                Log.d("mytag","pink_50");
-//                break;
-//            case 1:
-//                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.skyblue_50)));
-//                Log.d("mytag","skyblue_50");
-//                break;
-//            case 2:
-//                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.green_50)));
-//                Log.d("mytag","green_50");
-//                break;
-//            case 3:
-//                diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.yellow_50)));
-//                Log.d("mytag","yellow_50");
-//                break;
-//        }
-//    }
-
     // SharedPreferences에서 값을 가져와서 색상을 변경하는 메서드
     private void setItemColorBasedOnNumber(RecyclerView.ViewHolder holder) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -171,19 +187,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             case 0:
             default:
                 diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.pink_50)));
-                Log.d("mytag","pink_50");
                 break;
             case 1:
                 diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.skyblue_50)));
-                Log.d("mytag","skyblue_50");
                 break;
             case 2:
                 diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.green_50)));
-                Log.d("mytag","green_50");
                 break;
             case 3:
                 diaryLly.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.yellow_50)));
-                Log.d("mytag","yellow_50");
                 break;
         }
     }

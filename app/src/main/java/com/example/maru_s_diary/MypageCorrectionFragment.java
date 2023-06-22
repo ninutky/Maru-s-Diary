@@ -61,7 +61,6 @@ public class MypageCorrectionFragment extends Fragment implements View.OnClickLi
         mDate=v2.findViewById(R.id.date);
         v2.findViewById(R.id.post_save_btn).setOnClickListener(this);
 
-
         mPostRecyclerView=v.findViewById(R.id.mypage_recyclerview);
 
         return v;

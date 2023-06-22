@@ -126,7 +126,8 @@ public class NewPageActivity extends AppCompatActivity {
                 String postId = mStore.collection(FirebaseID.post).document().getId();
                 Map<String, Object> data = new HashMap<>();
                 String uid = mAuth.getCurrentUser().getUid();
-                int heart=0;
+                sharedPreferences = getSharedPreferences("heart", MODE_PRIVATE);
+                int heart = sharedPreferences.getInt("heart", 0);
                 data.put("owner", uid);
                 data.put(FirebaseID.title, mTitle.getText().toString());
                 data.put(FirebaseID.contents, mContents.getText().toString());
