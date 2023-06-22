@@ -1,6 +1,7 @@
 package com.example.maru_s_diary;
 
 import android.app.Dialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -9,14 +10,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
+import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.content.Intent;
 
@@ -28,22 +28,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -53,12 +52,14 @@ public class NewPageActivity extends AppCompatActivity {
     private static final String TAG = "NewPageActivity";
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference("image");
+    private StorageReference reference = FirebaseStorage.getInstance().getReference();
     private EditText mTitle, mContents, mDate;
     private ImageView appbar_iv, mPhoto;
     private LinearLayout writeLly;
     private SharedPreferences preferences;
     private SharedPreferences sharedPreferences;
-    private Uri uri;
+    private Uri imageUri;
 
     //    HomeFragment homeFragment;
     Dialog dialog02,dialog03; // 커스텀 다이얼로그
@@ -112,9 +113,10 @@ public class NewPageActivity extends AppCompatActivity {
         mPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                select();
-                // upload();
-                // show(uri);
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                activityResult.launch(galleryIntent);
             }
         });
 
@@ -171,9 +173,12 @@ public class NewPageActivity extends AppCompatActivity {
                             });
                 }
 
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                launcher.launch(intent);
+                if(imageUri != null) {
+                    uploadtoFirebase(imageUri);
+                } else {
+                    Toast.makeText(NewPageActivity.this, "사진을 선택해주세요",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -212,84 +217,56 @@ public class NewPageActivity extends AppCompatActivity {
 
     }
 
-    private void select() {
-        /*
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT );
-        intent.setType("image/*");
-        launcher.launch(intent);
-
-         */
-
-        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-        photoPickerIntent.setType("image/*");
-        startActivityForResult(photoPickerIntent, 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
-        if (requestCode == 1) {
-
-            if (resultCode == RESULT_OK) {
-                if (intent != null) {
-                    // Get the URI of the selected file
-                    final Uri uri = intent.getData();
-                    Log.d("mytag", uri.toString());
-                    upload(uri);
-                }
-            }
-            super.onActivityResult(requestCode, resultCode, intent);
-
-        }
-    }
-
-    private void upload(Uri uri) {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference(mAuth.getUid());
-        storageReference.child("images").child("filename").putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+    public void uploadtoFirebase(Uri uri) {
+        StorageReference fileRef = reference.child(System.currentTimeMillis() + "." +
+                getFileExtension(uri));
+        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if(task.isSuccessful()) {
-                    Toast.makeText(NewPageActivity.this, "업로드에 성공했습니다", Toast.LENGTH_SHORT).show();
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // 성공시
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        // 이미지 모델에 담기
+                        Model model = new Model(uri.toString());
 
-                }
-                else {
-                    Toast.makeText(NewPageActivity.this, "업로드에 실패했습니다", Toast.LENGTH_SHORT).show();
-                }
+                        // 키로 아이디 생성
+                        String modelId = root.push().getKey();
+
+                        // 데이터 넣기
+                        root.child(modelId).setValue(model);
+                        Toast.makeText(NewPageActivity.this, "업로드 성공", Toast.LENGTH_SHORT).show();
+                        mPhoto.setImageResource(R.drawable.feeling_happy);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(NewPageActivity.this, "업로드 실패", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void show(Uri imageUri) {
-        // Firebase Storage 참조 가져오기
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+    public String getFileExtension(Uri uri) {
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
 
-        // 이미지 파일 이름 설정 (예: "images/profile.jpg")
-        String fileName = "images/" + System.currentTimeMillis() + ".jpg";
-
-        // Storage에 파일 업로드
-        StorageReference imageRef = storageRef.child(fileName);
-        imageRef.putFile(imageUri)
-                .addOnSuccessListener(taskSnapshot -> {
-                    // 업로드 성공 시
-                    // ...
-                })
-                .addOnFailureListener(e -> {
-                    // 업로드 실패 시
-                    // ...
-                });
+        return mime.getExtensionFromMimeType(cr.getType(uri));
     }
 
-    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+    ActivityResultLauncher<Intent> activityResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if(result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        uri = result.getData().getData();
-                        Log.d("test", uri.toString());
-
+                        imageUri = result.getData().getData();
+                        mPhoto.setImageURI(imageUri);
                     }
                 }
-            });
+            }
+    );
 
     // dialog01을 디자인하는 함수
 //    public void showDialog01(){
