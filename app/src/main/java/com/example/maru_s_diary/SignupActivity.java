@@ -52,8 +52,8 @@ public class SignupActivity extends AppCompatActivity {
         mPasswordText = findViewById(R.id.et_signup_pwd);
         mPasswordcheckText = findViewById(R.id.et_checksignup_pwd);
         mregisterBtn = findViewById(R.id.btn_signup);
-        mId = findViewById(R.id.et_signup_id);
-        mCheckId = findViewById(R.id.tvbtn_pwdoublechk);
+//        mId = findViewById(R.id.et_signup_id);
+//        mCheckId = findViewById(R.id.tvbtn_pwdoublechk);
         backBtn = findViewById(R.id.backBtn);
 
         //파이어베이스 user 로 접글
@@ -67,36 +67,36 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        mCheckId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String id = mId.getText().toString().trim();
-                if (id.isEmpty()) {
-                    Toast.makeText(SignupActivity.this, "아이디를 입력해 주세요.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // 중복확인
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-                reference.orderByChild("id").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            Toast.makeText(SignupActivity.this, "이미 사용 중인 아이디입니다", Toast.LENGTH_SHORT).show();
-                            isIdAvailable = false;
-                        } else {
-                            Toast.makeText(SignupActivity.this, "사용 가능한 아이디입니다", Toast.LENGTH_SHORT).show();
-                            isIdAvailable = true;
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Log.e(TAG, "아이디 중복확인 오류", error.toException());
-                    }
-                });
-            }
-        });
+//        mCheckId.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String id = mId.getText().toString().trim();
+////                if (id.isEmpty()) {
+////                    Toast.makeText(SignupActivity.this, "아이디를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+////                    return;
+////                }
+//
+//                // 중복확인
+//                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+//                reference.orderByChild("id").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if (snapshot.exists()) {
+//                            Toast.makeText(SignupActivity.this, "이미 사용 중인 아이디입니다", Toast.LENGTH_SHORT).show();
+//                            isIdAvailable = false;
+//                        } else {
+//                            Toast.makeText(SignupActivity.this, "사용 가능한 아이디입니다", Toast.LENGTH_SHORT).show();
+//                            isIdAvailable = true;
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        Log.e(TAG, "아이디 중복확인 오류", error.toException());
+//                    }
+//                });
+//            }
+//        });
         mregisterBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -104,11 +104,6 @@ public class SignupActivity extends AppCompatActivity {
                 final String email = mEmailText.getText().toString().trim();
                 String pwd = mPasswordText.getText().toString().trim();
                 String pwdcheck = mPasswordcheckText.getText().toString().trim();
-
-                if(!isIdAvailable) {
-                    Toast.makeText(SignupActivity.this, "아이디 중복을 확인해주세요", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
                 if(pwd.equals(pwdcheck)) {
                     Log.d(TAG, "등록 버튼 " + email + " , " + pwd);
@@ -135,7 +130,7 @@ public class SignupActivity extends AppCompatActivity {
 
                                 hashMap.put("uid",uid);
                                 hashMap.put("email",email);
-                                hashMap.put("id",name);
+//                                hashMap.put("id",name);
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference reference = database.getReference("Users");

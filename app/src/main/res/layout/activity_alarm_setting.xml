@@ -55,7 +55,7 @@
 
         <Switch
             android:id="@+id/comm_swt"
-            android:text="댓글 알림"
+            android:text="공지 사항 알림"
             android:textSize="18sp"
             android:layout_width="350dp"
             android:layout_height="wrap_content"

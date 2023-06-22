@@ -32,24 +32,34 @@
         android:layout_marginBottom="30dp"
         android:orientation="vertical">
 
+<!--        <EditText-->
+<!--            android:layout_width="320dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:background="@drawable/edittext_border"-->
+<!--            android:hint="ID"-->
+<!--            android:paddingLeft="20dp"-->
+<!--            android:id="@+id/et_signup_id"-->
+<!--            android:textColor="#4E4E4E" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="right"-->
+<!--            android:layout_marginRight="8dp"-->
+<!--            android:layout_marginBottom="35dp"-->
+<!--            android:id="@+id/tvbtn_pwdoublechk"-->
+<!--            android:text="중복확인" />-->
+
         <EditText
+            android:id="@+id/emailEt"
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/edittext_border"
-            android:hint="ID"
+            android:hint="EMAIL"
             android:paddingLeft="20dp"
-            android:id="@+id/et_signup_id"
             android:textColor="#4E4E4E" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="35dp"
-            android:id="@+id/tvbtn_pwdoublechk"
-            android:text="중복확인" />
 
         <EditText
             android:layout_width="320dp"
@@ -57,6 +67,7 @@
             android:layout_marginBottom="15dp"
             android:background="@drawable/edittext_border"
             android:hint="PW"
+            android:layout_marginTop="13dp"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:id="@+id/et_signup_pwd"
@@ -73,15 +84,6 @@
             android:inputType="textPassword"
             android:textColor="#4E4E4E" />
 
-        <EditText
-            android:id="@+id/emailEt"
-            android:layout_width="320dp"
-            android:layout_height="45dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_border"
-            android:hint="EMAIL"
-            android:paddingLeft="20dp"
-            android:textColor="#4E4E4E" />
 
         <!--
         <TextView
