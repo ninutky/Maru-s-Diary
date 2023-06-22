@@ -236,7 +236,6 @@ public class NewPageActivity extends AppCompatActivity {
                         // 데이터 넣기
                         root.child(modelId).setValue(model);
                         Toast.makeText(NewPageActivity.this, "업로드 성공", Toast.LENGTH_SHORT).show();
-                        mPhoto.setImageResource(R.drawable.feeling_happy);
                     }
                 });
             }
