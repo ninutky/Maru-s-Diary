@@ -67,6 +67,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         if(weather.equals("weather4")) holder.weatherImage.setImageResource(R.drawable.lighntnong);
         if(weather.equals("weather5")) holder.weatherImage.setImageResource(R.drawable.snow);
         String heart=data.getHeart();
+        String postId=data.getPostId();
 
         setItemColorBasedOnNumber(holder);
     }

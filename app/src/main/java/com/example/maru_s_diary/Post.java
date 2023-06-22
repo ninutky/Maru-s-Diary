@@ -10,6 +10,15 @@ public class Post {
 //    private int feeling;
     private String date;
 
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    private String postId;
     public String getHeart() {
         return heart;
     }
