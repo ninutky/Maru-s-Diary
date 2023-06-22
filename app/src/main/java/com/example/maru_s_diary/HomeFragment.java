@@ -2,12 +2,9 @@ package com.example.maru_s_diary;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,6 +42,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
     private List<Post> mDatas;
     FloatingActionButton writeButton;
     ImageView heartBtn;
+    int heartCnt=0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -160,7 +157,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
                                     String date=String.valueOf(shot.get(FirebaseID.date));
                                     String mood=String.valueOf(shot.get("mood"));
                                     String weather=String.valueOf(shot.get("weather"));
-                                    Post data=new Post(documentId,title,contents,date,mood,weather);
+                                    String heart=String.valueOf(shot.get("heart"));
+                                    Post data=new Post(documentId,title,contents,date,mood,weather,heart);
                                     mDatas.add(data);
                                 }
                                 mAdapter.notifyDataSetChanged(); // 데이터 변경을 어댑터에 알려줌
@@ -190,7 +188,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
     // 좋아요 버튼 클릭 이벤트 처리
     @Override
     public void onHeartBtnClick(int position) {
-
+        ++heartCnt;
+        heart.setText(heartCnt + "");
         Toast.makeText(getActivity(), "좋아요 되었습니다. - position: " + position, Toast.LENGTH_SHORT).show();
     }
 

@@ -10,6 +10,16 @@ public class Post {
 //    private int feeling;
     private String date;
 
+    public String getHeart() {
+        return heart;
+    }
+
+    public void setHeart(String heart) {
+        this.heart = heart;
+    }
+
+    private String heart;
+
     public String getMood() {
         return mood;
     }
@@ -34,7 +44,7 @@ public class Post {
     }
 
     //int weather, int feeling,
-    public Post(String documentId, String title, String contents, String date,String mood,String weather) {
+    public Post(String documentId, String title, String contents, String date,String mood,String weather,String heart) {
         this.documentId = documentId;
         this.title = title;
         this.contents = contents;

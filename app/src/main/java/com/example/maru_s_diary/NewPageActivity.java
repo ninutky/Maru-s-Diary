@@ -124,6 +124,7 @@ public class NewPageActivity extends AppCompatActivity {
                 String postId = mStore.collection(FirebaseID.post).document().getId();
                 Map<String, Object> data = new HashMap<>();
                 String uid = mAuth.getCurrentUser().getUid();
+                int heart=0;
                 data.put("owner", uid);
                 data.put(FirebaseID.title, mTitle.getText().toString());
                 data.put(FirebaseID.contents, mContents.getText().toString());
@@ -131,6 +132,7 @@ public class NewPageActivity extends AppCompatActivity {
                 data.put("mood", selectedMood);
                 data.put("weather", selectedWeather);
                 data.put("postId",postId);
+                data.put("heart",heart);
                 String value1 = mTitle.getText().toString().trim();
                 String value2 = mContents.getText().toString().trim();
                 String value3 = mDate.getText().toString().trim();

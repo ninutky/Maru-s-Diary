@@ -66,6 +66,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         if(weather.equals("weather3")) holder.weatherImage.setImageResource(R.drawable.rain);
         if(weather.equals("weather4")) holder.weatherImage.setImageResource(R.drawable.lighntnong);
         if(weather.equals("weather5")) holder.weatherImage.setImageResource(R.drawable.snow);
+        String heart=data.getHeart();
+
         setItemColorBasedOnNumber(holder);
     }
 
@@ -86,6 +88,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         private ImageButton heartBtn;
         private ImageView moodImage;
         private ImageView weatherImage;
+        private TextView heartText;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -97,6 +100,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             diaryLly = itemView.findViewById(R.id.diary_lly);
             moodImage = itemView.findViewById(R.id.list_feeling_img);
             weatherImage=itemView.findViewById(R.id.list_weather_img);
+            heartText=itemView.findViewById(R.id.heart_count);
 
             heartBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -104,7 +108,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                     if (mListener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            mListener.onHeartBtnClick(position);
+                            // mListener.onHeartBtnClick(position);
+                            int heartCnt = Integer.parseInt(heartText.getText().toString()) + 1;
+
+                            heartText.setText(
+                                "" + heartCnt
+                            );
+
                         }
                     }
                 }
