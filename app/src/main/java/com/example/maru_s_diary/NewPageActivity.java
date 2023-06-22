@@ -130,7 +130,8 @@ public class NewPageActivity extends AppCompatActivity {
                 data.put(FirebaseID.date, mDate.getText().toString());
                 data.put("mood", selectedMood);
                 data.put("weather", selectedWeather);
-                data.put("postId",postId);
+                data.put("postId", postId);
+
                 String value1 = mTitle.getText().toString().trim();
                 String value2 = mContents.getText().toString().trim();
                 String value3 = mDate.getText().toString().trim();
@@ -151,20 +152,24 @@ public class NewPageActivity extends AppCompatActivity {
                             .show();
                 } else {
                     // 모든 필수 값이 채워진 경우 파이어베이스로 전송하는 로직 작성
-                    mStore
-                            .collection(FirebaseID.post)
-                            .add(data)
-                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    mStore.collection(FirebaseID.post).document(postId)
+                            .set(data)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onComplete(@NonNull Task<DocumentReference> task) {
-                                    Log.d("mytag", "complete");
-                                    Toast.makeText(NewPageActivity.this, "글이 등록되었습니다", Toast.LENGTH_SHORT).show();
-                                    NewPageActivity.this.finish();
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d("mytag", "Post saved successfully!");
+                                        Toast.makeText(NewPageActivity.this, "글이 등록되었습니다", Toast.LENGTH_SHORT).show();
+                                        NewPageActivity.this.finish();
+                                    } else {
+                                        Log.d("mytag", "Failed to save post: " + task.getException());
+                                        Toast.makeText(NewPageActivity.this, "글 등록에 실패했습니다", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             });
                 }
 
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT );
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 launcher.launch(intent);
             }
