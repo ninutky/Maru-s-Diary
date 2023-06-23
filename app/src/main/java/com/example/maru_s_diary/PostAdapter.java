@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
@@ -137,6 +139,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             heartText.setText(
                     "" + heartCnt
             );
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                date.setText(LocalDate.now().toString());
+            }
 
 
 //            heartBtn.setOnClickListener(new View.OnClickListener() {

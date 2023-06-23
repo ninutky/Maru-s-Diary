@@ -38,9 +38,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Post
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     public RecyclerView mPostRecyclerView;
-    private EditText mTitle,mContents,mDate;
+    private EditText mTitle,mContents;
     //    private int mWeather,mFeeling;
-    private TextView heart;
+    private TextView heart, mDate;
     public PostAdapter mAdapter;
     private List<Post> mDatas;
     private SharedPreferences preferences;

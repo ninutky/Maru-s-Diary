@@ -2,6 +2,8 @@ package com.example.maru_s_diary;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import static com.example.maru_s_diary.FirebaseID.documentId;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +30,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +50,7 @@ public class Diary extends Fragment {
     private Dialog reportdlg;
     private LinearLayout diaryLly;
     private RadioGroup radioGroup;
+    private TextView mDate;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -59,17 +65,31 @@ public class Diary extends Fragment {
         View v = inflater.inflate(R.layout.diary, container, false);
 
         // Find the TextViews by their respective IDs
-        TextView datesTextView = v.findViewById(R.id.dates);
         TextView contentsTextView = v.findViewById(R.id.contents);
         TextView titleTextView = v.findViewById(R.id.title);
 
-        Bundle args = getArguments();
-        if (args != null) {
-            String documentId = args.getString("documentId");
-
-            // Load data from Firestore using the documentId
-            loadDataFromFirestore(documentId, datesTextView, contentsTextView, titleTextView);
+        mDate=v.findViewById(R.id.dates);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDate now = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+            String formatedNow = now.format(formatter);
+            mDate.setText(formatedNow);
         }
+        LocalDate now;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            now = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+            loadDataFromFirestore(documentId, mDate, contentsTextView, titleTextView);
+            String formatedNow = now.format(formatter);
+
+            Bundle args = getArguments();
+            if (args != null) {
+                String documentId = args.getString("documentId");
+                // Load data from Firestore using the documentId
+                mDate.setText(formatedNow);
+            }
+        }
+
 
         backBtn = v.findViewById(R.id.back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {

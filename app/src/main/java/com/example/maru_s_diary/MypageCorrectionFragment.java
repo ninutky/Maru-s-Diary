@@ -7,12 +7,14 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +30,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +41,8 @@ public class MypageCorrectionFragment extends Fragment implements View.OnClickLi
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     public RecyclerView mPostRecyclerView;
-    private EditText mTitle,mContents,mDate;
+    private EditText mTitle,mContents;
+    private TextView mDate;
     //    private int mWeather,mFeeling;
     public PostAdapter mAdapter;
     private List<Post> mDatas;
@@ -59,6 +64,12 @@ public class MypageCorrectionFragment extends Fragment implements View.OnClickLi
 //        mWeather=findViewById(R.id.weather);
 //        mFeeling=findViewById(R.id.mood);
         mDate=v2.findViewById(R.id.date);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDate now = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+            String formatedNow = now.format(formatter);
+            mDate.setText(formatedNow);
+        }
         v2.findViewById(R.id.post_save_btn).setOnClickListener(this);
 
         mPostRecyclerView=v.findViewById(R.id.mypage_recyclerview);

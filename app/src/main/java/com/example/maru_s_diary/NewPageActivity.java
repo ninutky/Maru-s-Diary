@@ -8,6 +8,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
@@ -42,6 +44,8 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,7 +58,8 @@ public class NewPageActivity extends AppCompatActivity {
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference("image");
     private StorageReference reference = FirebaseStorage.getInstance().getReference();
-    private EditText mTitle, mContents, mDate;
+    private EditText mTitle, mContents;
+    private TextView mDate;
     private ImageView appbar_iv, mPhoto;
     private LinearLayout writeLly;
     private SharedPreferences preferences;
@@ -101,6 +106,13 @@ public class NewPageActivity extends AppCompatActivity {
 
         // homeFragment=new HomeFragment();
         back=findViewById(R.id.backBtn);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDate now = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+            String formatedNow = now.format(formatter);
+            mDate.setText(formatedNow);
+        }
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
