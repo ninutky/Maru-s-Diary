@@ -39,7 +39,7 @@ public class Modification extends AppCompatActivity {
     ImageButton cancelButton, cancelButton2, cancelButton3;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.correction_diary);
     }
