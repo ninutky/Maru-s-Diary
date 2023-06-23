@@ -89,8 +89,8 @@ public class MypageCorrectionFragment extends Fragment implements View.OnClickLi
                                 String date = documentSnapshot.getString("date");
                                 String mood = documentSnapshot.getString("mood");
                                 String weather = documentSnapshot.getString("weather");
-                                String heart = documentSnapshot.getString("heart");
-
+//                                String heart = documentSnapshot.getString("heart");
+                                String heart = "0";
                                 Log.d("Firestore", "제목: " + title);
                                 Log.d("Firestore", "내용: " + contents);
                                 Log.d("Firestore", "아이디: " + documentId);
