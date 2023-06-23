@@ -114,14 +114,19 @@
                 android:background="@android:color/transparent"/>
 
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="내용을 입력하세요(최대 1000자)"
+                android:id="@+id/post_contents_edit"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:hint="내용을 입력하세요(최대 200자)"
                 android:textColor="@color/black"
-                android:textSize="12dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"
-                android:background="@android:color/transparent"/>
+                android:layout_marginRight="35dp"
+                android:layout_marginLeft="35dp"
+                android:background="@android:color/transparent"
+                android:inputType="textMultiLine"
+                android:gravity="top|left"
+                android:maxLines="8"
+                android:maxLength="200"/>
         </LinearLayout>
 
         <Button
