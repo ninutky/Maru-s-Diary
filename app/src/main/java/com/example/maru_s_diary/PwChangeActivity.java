@@ -31,6 +31,12 @@ public class PwChangeActivity extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 값 가져오기
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        int theme = sharedPreferences.getInt("theme", 0); // 기본값은 0
+        preferences = getPreferences(Context.MODE_PRIVATE);
+        int themeColor = preferences.getInt("themeColor", R.color.pink_50); // 기본 테마 분홍색
+
         setContentView(R.layout.activity_pw_change);
 
         backBtn = findViewById(R.id.backBtn);
@@ -52,14 +58,6 @@ public class PwChangeActivity extends AppCompatActivity {
                 changePW();
             }
         });
-
-        // 값 가져오기
-        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        int theme = sharedPreferences.getInt("theme", 0); // 기본값은 0
-        preferences = getPreferences(Context.MODE_PRIVATE);
-        int themeColor = preferences.getInt("themeColor", R.color.pink_50); // 기본 테마 분홍색
-
-        setContentView(R.layout.activity_delete_account);
 
         appbar_iv = findViewById(R.id.appbar_iv);
         appbar_iv.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(themeColor)));

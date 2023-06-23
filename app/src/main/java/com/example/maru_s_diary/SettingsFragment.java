@@ -8,6 +8,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,7 +95,7 @@ public class SettingsFragment extends Fragment {
 
 
         } else {
-            userIdTextView.setText("(null)");
+            userIdTextView.setText("Guest");
             loginOrLogoutTv.setText("로그인 / 회원가입");
             logoutImg.setVisibility(View.INVISIBLE);
 
@@ -116,8 +117,12 @@ public class SettingsFragment extends Fragment {
         changepw_tvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PwChangeActivity.class);
-                startActivity(intent);
+                if(currentUser != null) {
+                    Intent intent = new Intent(getActivity(), PwChangeActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "로그인 후 사용해주세요.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
